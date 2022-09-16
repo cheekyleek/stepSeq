@@ -44,7 +44,7 @@ document.addEventListener("DOMContentLoaded", () => {
    //working on step to show up
 
    const testStep = new Step();
-   console.log(testStep);
+   console.log(testStep.test());
 
 
 
