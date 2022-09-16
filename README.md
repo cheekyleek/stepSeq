@@ -33,8 +33,8 @@ to select / chop / add specific sections of that sample into the sequencer.
 
 **Wireframe Mockup**
 
+![stepSeq mockup1](https://user-images.githubusercontent.com/66338879/190670304-a8cf0adf-78ed-4a28-b198-710315223993.jpg)
 
-[Loading, please wait...]
 
 
 ---------------------------------------------------------------------------------------
