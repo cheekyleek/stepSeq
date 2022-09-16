@@ -13,9 +13,19 @@
 /*!**********************!*\
   !*** ./src/index.js ***!
   \**********************/
-/***/ (function() {
+/***/ (function(__unused_webpack_module, __unused_webpack_exports, __webpack_require__) {
 
-eval("document.addEventListener(\"DOMContentLoaded\", e => {\n  console.log(\"Welcome to hotSteps\");\n});//# sourceURL=[module]\n//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiLi9zcmMvaW5kZXguanMuanMiLCJuYW1lcyI6WyJkb2N1bWVudCIsImFkZEV2ZW50TGlzdGVuZXIiLCJlIiwiY29uc29sZSIsImxvZyJdLCJzb3VyY2VSb290IjoiIiwic291cmNlcyI6WyJ3ZWJwYWNrOi8vanNfcHJvamVjdC8uL3NyYy9pbmRleC5qcz9iNjM1Il0sInNvdXJjZXNDb250ZW50IjpbImRvY3VtZW50LmFkZEV2ZW50TGlzdGVuZXIoXCJET01Db250ZW50TG9hZGVkXCIsIChlKSA9PiB7XG4gICBjb25zb2xlLmxvZyhcIldlbGNvbWUgdG8gaG90U3RlcHNcIilcblxuXG5cblxuXG5cblxuXG5cblxuXG5cblxuXG5cblxuXG5cblxuXG5cblxuXG4gICBcbn0pOyJdLCJtYXBwaW5ncyI6IkFBQUFBLFFBQVEsQ0FBQ0MsZ0JBQVQsQ0FBMEIsa0JBQTFCLEVBQStDQyxDQUFELElBQU87RUFDbERDLE9BQU8sQ0FBQ0MsR0FBUixDQUFZLHFCQUFaO0FBeUJGLENBMUJEIn0=\n//# sourceURL=webpack-internal:///./src/index.js\n");
+eval("const Sequencer = __webpack_require__(/*! ./scripts/sequencer */ \"./src/scripts/sequencer.js\");\n\ndocument.addEventListener(\"DOMContentLoaded\", () => {\n  console.log(\"Welcome to stepSeq\");\n});//# sourceURL=[module]\n//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiLi9zcmMvaW5kZXguanMuanMiLCJtYXBwaW5ncyI6IkFBQUEsTUFBTUEsU0FBUyxHQUFHQyxtQkFBTyxDQUFDLHVEQUFELENBQXpCOztBQUVBQyxRQUFRLENBQUNDLGdCQUFULENBQTBCLGtCQUExQixFQUE4QyxNQUFNO0VBQ2pEQyxPQUFPLENBQUNDLEdBQVIsQ0FBWSxvQkFBWjtBQXlCRixDQTFCRCIsInNvdXJjZXMiOlsid2VicGFjazovL2pzX3Byb2plY3QvLi9zcmMvaW5kZXguanM/YjYzNSJdLCJzb3VyY2VzQ29udGVudCI6WyJjb25zdCBTZXF1ZW5jZXIgPSByZXF1aXJlKCcuL3NjcmlwdHMvc2VxdWVuY2VyJylcblxuZG9jdW1lbnQuYWRkRXZlbnRMaXN0ZW5lcihcIkRPTUNvbnRlbnRMb2FkZWRcIiwgKCkgPT4ge1xuICAgY29uc29sZS5sb2coXCJXZWxjb21lIHRvIHN0ZXBTZXFcIilcblxuXG5cblxuXG5cblxuXG5cblxuXG5cblxuXG5cblxuXG5cblxuXG5cblxuXG4gICBcbn0pOyJdLCJuYW1lcyI6WyJTZXF1ZW5jZXIiLCJyZXF1aXJlIiwiZG9jdW1lbnQiLCJhZGRFdmVudExpc3RlbmVyIiwiY29uc29sZSIsImxvZyJdLCJzb3VyY2VSb290IjoiIn0=\n//# sourceURL=webpack-internal:///./src/index.js\n");
+
+/***/ }),
+
+/***/ "./src/scripts/sequencer.js":
+/*!**********************************!*\
+  !*** ./src/scripts/sequencer.js ***!
+  \**********************************/
+/***/ (function(module) {
+
+eval("class Sequencer {}\n\nmodule.exports = Sequencer;//# sourceURL=[module]\n//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiLi9zcmMvc2NyaXB0cy9zZXF1ZW5jZXIuanMuanMiLCJuYW1lcyI6WyJTZXF1ZW5jZXIiLCJtb2R1bGUiLCJleHBvcnRzIl0sInNvdXJjZVJvb3QiOiIiLCJzb3VyY2VzIjpbIndlYnBhY2s6Ly9qc19wcm9qZWN0Ly4vc3JjL3NjcmlwdHMvc2VxdWVuY2VyLmpzP2U4YzgiXSwic291cmNlc0NvbnRlbnQiOlsiY2xhc3MgU2VxdWVuY2VyIHtcblxuXG4gICBcbn1cblxubW9kdWxlLmV4cG9ydHMgPSBTZXF1ZW5jZXI7Il0sIm1hcHBpbmdzIjoiQUFBQSxNQUFNQSxTQUFOLENBQWdCOztBQU1oQkMsTUFBTSxDQUFDQyxPQUFQLEdBQWlCRixTQUFqQiJ9\n//# sourceURL=webpack-internal:///./src/scripts/sequencer.js\n");
 
 /***/ }),
 
@@ -32,8 +42,29 @@ eval("__webpack_require__.r(__webpack_exports__);\n// extracted by mini-css-extr
 
 /******/ 	});
 /************************************************************************/
-/******/ 	// The require scope
-/******/ 	var __webpack_require__ = {};
+/******/ 	// The module cache
+/******/ 	var __webpack_module_cache__ = {};
+/******/ 	
+/******/ 	// The require function
+/******/ 	function __webpack_require__(moduleId) {
+/******/ 		// Check if module is in cache
+/******/ 		var cachedModule = __webpack_module_cache__[moduleId];
+/******/ 		if (cachedModule !== undefined) {
+/******/ 			return cachedModule.exports;
+/******/ 		}
+/******/ 		// Create a new module (and put it into the cache)
+/******/ 		var module = __webpack_module_cache__[moduleId] = {
+/******/ 			// no module.id needed
+/******/ 			// no module.loaded needed
+/******/ 			exports: {}
+/******/ 		};
+/******/ 	
+/******/ 		// Execute the module function
+/******/ 		__webpack_modules__[moduleId](module, module.exports, __webpack_require__);
+/******/ 	
+/******/ 		// Return the exports of the module
+/******/ 		return module.exports;
+/******/ 	}
 /******/ 	
 /************************************************************************/
 /******/ 	/* webpack/runtime/make namespace object */
@@ -52,9 +83,8 @@ eval("__webpack_require__.r(__webpack_exports__);\n// extracted by mini-css-extr
 /******/ 	// startup
 /******/ 	// Load entry module and return exports
 /******/ 	// This entry module can't be inlined because the eval-source-map devtool is used.
-/******/ 	__webpack_modules__["./src/index.js"](0, {}, __webpack_require__);
-/******/ 	var __webpack_exports__ = {};
-/******/ 	__webpack_modules__["./src/index.scss"](0, __webpack_exports__, __webpack_require__);
+/******/ 	__webpack_require__("./src/index.js");
+/******/ 	var __webpack_exports__ = __webpack_require__("./src/index.scss");
 /******/ 	
 /******/ })()
 ;
