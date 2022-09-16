@@ -52,10 +52,11 @@ to select / chop / add specific sections of that sample into the sequencer.
 
 **Implementation Timeline**
 
-FINISH TIMELINE / PROPOSAL TODAY ;)
-
-
-
-
-
+- 9/16/22 > finish wireframe mockup, learn / begin canvas page structure
+- 9/17/22 > finish rough canvas, begin structuring logic
+- 9/18/22 > build out basic looping and audio functions, create effects if time
+- 9/19/22 > get started with browser "DB" and microphone recording
+- 9/20/22 > start polishing and making sure all features are working, refactoring
+- 9/21/22 > add css animations/transitions
+- 9/22/22 > tie up any loose ends / finishing touches
 
