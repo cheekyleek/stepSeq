@@ -1,7 +1,9 @@
 class Sequencer {
+   constructor() {
+
+   }
 
 
-   
 }
 
-module.exports = Sequencer;
+// module.exports = Sequencer;
