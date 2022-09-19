@@ -61,13 +61,21 @@ document.addEventListener("DOMContentLoaded", () => {
          console.log('pressed');
          console.log(blob);
       };
-      
+
       xhr.send();
       return player;
    }
 
-   let newSample = blobify("./src/samples/hiphop/hip_hop_kick.wav");
-   console.log(newSample);
+   const hiphopSamples = {
+      kick: blobify("./src/samples/hiphop/hip_hop_kick.wav"),
+      snare: blobify("./src/samples/hiphop/hip_hop_snare.wav"),
+      hihat: blobify("./src/samples/hiphop/hip_hop_hihat.wav")
+   }
+
+   let hello = hiphopSamples['hihat'].toDestination();
+   hello.autostart = true;
+   
+
    
 
 
