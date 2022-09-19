@@ -33,19 +33,44 @@ document.addEventListener("DOMContentLoaded", () => {
       console.log(Tone.Transport.progress);
    })
 
-   const hiphopSamples = new Tone.ToneAudioBuffer("https://tonejs.github.io/audio/berklee/gong_1.mp3", () => {
-      const player = new Tone.Player().toDestination();
-      player.buffer = hiphopSamples
-      player.start();
-   });
+   // const hiphopSamples = new Tone.ToneAudioBuffer("https://tonejs.github.io/audio/berklee/gong_1.mp3", () => {
+   //    const player = new Tone.Player().toDestination();
+   //    player.buffer = hiphopSamples
+   //    player.start();
+   // });
    
-   console.log(hiphopSamples);
-   const defaultSteps = [];
-   for (let i = 0; i < 32; i++) {
-      defaultSteps.push("A4");
+   // console.log(hiphopSamples);
+   // const defaultSteps = [];
+   // for (let i = 0; i < 32; i++) {
+   //    defaultSteps.push("A4");
+   // }
+   // const altTrack = new Tone.Sequence();
+   // console.log(defaultSteps);
+   
+
+   function blobify(samplePath) {
+      let xhr = new XMLHttpRequest();
+      let player = new Tone.Player;
+
+      xhr.open("GET", samplePath, true)
+      xhr.responseType = 'blob';
+
+      xhr.onload = function(){
+         let blob = URL.createObjectURL(this.response);
+         player.load(blob);
+         console.log('pressed');
+         console.log(blob);
+      };
+      
+      xhr.send();
+      return player;
    }
-   const altTrack = new Tone.Sequence();
-   console.log(defaultSteps);
+
+   let newSample = blobify("./src/samples/hiphop/hip_hop_kick.wav");
+   console.log(newSample);
+   
+
+
 
 
    
