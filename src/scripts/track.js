@@ -2,8 +2,7 @@ import Step from './step.js';
 import * as Tone from 'tone'
 
 class Track {
-   constructor(trackID, sample, stepCount = 32) {
-      this.trackID = trackID;
+   constructor(sample, stepCount = 32) {
       this.stepCount = stepCount;
       this.row = [];
       this.sample = sample;

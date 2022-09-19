@@ -1,6 +1,5 @@
 class Step {
-   constructor(stepID, pitch = 50, velocity = 100, glide = false) {
-      this.stepID = stepID;
+   constructor(pitch = 50, velocity = 100, glide = false) {
       this.pitch = pitch;
       this.velocity = velocity;
       this.glide = glide;

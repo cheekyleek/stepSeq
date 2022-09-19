@@ -1,6 +1,6 @@
 .unit {
    // align-self: center;
-   background-color: darkslategray;
+   background-color: rgb(52, 36, 23);
    position: absolute;
    padding: 20px;
    width: 1500px;
@@ -114,4 +114,8 @@ div > button:hover {
 
 .playback-controls:nth-child(1) {
    background-color: green;
+}
+
+.step[data-is-playing="true"] {
+   background-color: lime;
 }

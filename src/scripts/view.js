@@ -43,6 +43,7 @@ class View {
          for (let j = 0; j < 32; j++) {
             const step = document.createElement("button");
             step.classList.add('step');
+            step.setAttribute('data-is-playing', false);
             step.setAttribute('data-step-id', j);
             step.setAttribute('data-is-active', false);
 

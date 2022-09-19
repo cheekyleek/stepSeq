@@ -27,18 +27,47 @@ document.addEventListener("DOMContentLoaded", () => {
 
    const playback = document.getElementsByClassName("playback-controls");
    const playButton = playback[0].firstChild;
+   console.log(playback);
+   const stopButton = playback[0].children[1];
+   stopButton.innerHTML = "Stop";
    playButton.innerHTML = "Play";
+   let hello = seq.grid[0].sample.toDestination();
+
+   stopButton.addEventListener("click", () => {
+      Tone.Transport.stop();
+   })
+   
+   
+
+   const testSequence = new Tone.Sequence((time) => {
+      hello.start(time);
+      console.log("hello!!!");
+   }, [[1], [], [1], [], [1], [], [1], [], [1], [], [1], [], [1], [], [1], []]);
+
+
+
+   // const seqContainer = document.getElementsByClassName("sequencer");
+   // const allTracks = seqContainer.getElementsByClassName("track");
+   // const currentPlayingSteps = allTracks.querySelector("data-step-id", i);
 
    playButton.addEventListener("click", () => {
-      Tone.Transport.scheduleRepeat((time) => {
-         let hello = seq.grid[6].sample.toDestination();
-         hello.start(time).stop(time + 0.1);
+      // Tone.Transport.scheduleRepeat((time) => {
+      //    for (i = 0; i < 32; i++) {
 
-      }, "8n");
+      //    }
+      //    currentPlayingSteps.setAttribute("data-is-playing", true);
+      //    currentPlayingSteps.setAttribute("data-is-playing", false);
+      // }, "32n");
+      testSequence.start();
       Tone.Transport.start();
       Tone.start();
-      console.log(Tone.Transport.progress);
+      console.log(Tone.Transport.bpm.value)
    })
+
+   const defaultGrid = [[], [], [], [], [], [], [], [], [], [], [], [], [], [], [], []];
+   // [[1, , , ], [, , , ], [1, , , ], [, , , ], [1, , , ], [, , , ], [1, , , ], [, , , ]]
+
+   
 
 
 
