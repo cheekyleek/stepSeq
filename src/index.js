@@ -23,13 +23,20 @@ document.addEventListener("DOMContentLoaded", () => {
    const seq = new Sequencer(hiphopSamples());     
    window.view = new View(unitElement, seq);                     //sets up all views
 
+   // seq.grid[0].loopTrack();
+
    const playback = document.getElementsByClassName("playback-controls");
    const playButton = playback[0].firstChild;
    playButton.innerHTML = "Play";
 
    playButton.addEventListener("click", () => {
-      Tone.start();
+      Tone.Transport.scheduleRepeat((time) => {
+         let hello = seq.grid[6].sample.toDestination();
+         hello.start(time).stop(time + 0.1);
+
+      }, "8n");
       Tone.Transport.start();
+      Tone.start();
       console.log(Tone.Transport.progress);
    })
 

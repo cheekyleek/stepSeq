@@ -64,19 +64,19 @@ class View {
             const stepID = selectedStep.getAttribute("data-step-id");
             const currentTrack = e.currentTarget;
             const trackID = currentTrack.getAttribute("data-track-id");
-            console.log(selectedStep);
-            console.log(currentTrack);
-            console.log(sequencer);
-            console.log(stepID);
-            console.log(trackID);
-            console.log(sequencer.grid);
+           
+            //possibly need to add stopPropogation to prevent track click or refactor
 
             if (selectedStep.getAttribute('data-is-active') === 'false') {
                selectedStep.setAttribute('data-is-active', true);
+               console.log(selectedStep);
                sequencer.grid[trackID].row[stepID].isActive = true;
+               console.log(sequencer);
             } else {
                selectedStep.setAttribute('data-is-active', false);
+               console.log(selectedStep);
                sequencer.grid[trackID].row[stepID].isActive = false;
+               console.log(sequencer);
             }       
          })
       }

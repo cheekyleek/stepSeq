@@ -18,8 +18,13 @@ class Track {
       let sample = this.sample;
       for (let i = 0; i < this.row.length; i++) {
          let step = this.row[i];
+         console.log(i);
          if (step.isActive === true) {
-            sample.start();
+            if (i === 0) {
+               sample.start();
+            } else {
+               sample.restart();
+            }
          }
       }
    }

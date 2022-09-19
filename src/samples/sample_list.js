@@ -30,6 +30,3 @@ function blobify(samplePath) {
    xhr.send();
    return player;
 }
-
-let newSample = blobify("./src/samples/hiphop/hip_hop_kick.wav");
-console.log(newSample);
