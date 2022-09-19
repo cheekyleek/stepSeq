@@ -1,4 +1,105 @@
 /*!*************************************************************************************************************************************!*\
   !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].use[1]!./node_modules/sass-loader/dist/cjs.js!./src/index.scss ***!
   \*************************************************************************************************************************************/
+.unit {
+  background-color: darkslategray;
+  position: absolute;
+  padding: 20px;
+  width: 1500px;
+  height: 350px;
+  top: 40%;
+  left: 10%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-items: space-between;
+}
 
+.control-bar {
+  display: flex;
+  justify-content: space-around;
+  order: 1;
+  height: 40px;
+  width: 1200px;
+  border-color: black;
+  border-style: solid;
+  border-width: 1px;
+  margin: 4px;
+  background-color: grey;
+}
+
+.control-bar > div {
+  display: flex;
+  justify-content: space-around;
+  width: 300px;
+  border-color: black;
+  border-style: dotted;
+  border-width: 1px;
+  border-radius: 5px;
+}
+
+div > button {
+  border-radius: 5px;
+  height: 30px;
+  width: 50px;
+  border-style: solid;
+  border-width: 1px;
+  border-color: black;
+  margin: 3px;
+  outline: none;
+  background-color: lightgrey;
+}
+
+.sequencer {
+  order: 2;
+  display: flex;
+  position: relative;
+  width: 1200px;
+  height: auto;
+  flex-direction: column;
+  border-radius: 1px;
+  border-width: 1px;
+  border-style: solid;
+  border-color: black;
+}
+
+.track {
+  display: flex;
+  border-style: double;
+  background-color: grey;
+  border-width: 1px;
+  border-color: black;
+}
+
+.step {
+  border-radius: 5px;
+  height: 30px;
+  width: 40px;
+  border-style: solid;
+  border-width: 1px;
+  border-color: black;
+  margin: 3px;
+  outline: none;
+  background-color: lightgrey;
+}
+
+.step[data-is-active=true] {
+  background-color: yellow;
+}
+
+.step:hover {
+  border-color: red;
+}
+
+div > button:hover {
+  background-color: white;
+  border-color: red;
+}
+
+.track-action {
+  align-self: flex-start;
+}
+
+.playback-controls:nth-child(1) {
+  background-color: green;
+}

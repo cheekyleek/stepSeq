@@ -1,51 +1,60 @@
-// const Sequencer = require('./scripts/sequencer');
-const Track = require('./scripts/track');
-const Step = require('./scripts/step.js');
-const PatternGrid = require('./scripts/pattern_grid.js');
-// window.Step = require('./scripts/step.js');
+import * as Tone from 'tone';
+import { View } from './scripts/view.js'
+import {Step, Track, Sequencer} from './scripts/sequencer.js';
 
 
 document.addEventListener("DOMContentLoaded", () => {
    console.log("Welcome to stepSeq")
+   
+   const unitElement = document.querySelector(".unit");     
+   window.view = new View(unitElement);                     //sets up all views
 
-   const audioContext = new AudioContext();
-   const sampleRate = audioContext.sampleRate;
-   const buffer = audioContext.createBuffer(1, sampleRate * 1, sampleRate) 
+   const allSteps = document.getElementsByClassName("step");      //gives all steps event listeners
 
-   const channelData = buffer.getChannelData(0)
+   for (let i = 0; i < allSteps.length; i++) {
+      allSteps[i].addEventListener("click", (e) => {
+         const selectedStep = e.target;
 
-   for (let i = 0; i < buffer.length; i++) {
-      channelData[i] = Math.random() * 2 - 1;
+         if (selectedStep.getAttribute('data-is-active') === 'false') {
+            selectedStep.setAttribute('data-is-active', true);
+         } else {
+            selectedStep.setAttribute('data-is-active', false);
+         }       
+      })
    }
 
-   
+   const playback = document.getElementsByClassName("playback-controls");
+   const playButton = playback[0].firstChild;
+   playButton.innerHTML = "Play";
 
-   const primaryGainControl = audioContext.createGain();
-   primaryGainControl.gain.setValueAtTime(0.05, 0);
-
-   
-   primaryGainControl.connect(audioContext.destination);
-
-   const button = document.createElement('button');
-   button.innerText = "White Noise";
-   button.addEventListener("click", () => {
-      const whiteNoiseSource = audioContext.createBufferSource();
-      whiteNoiseSource.buffer = buffer;
-      whiteNoiseSource.connect(primaryGainControl);
-
-      whiteNoiseSource.start();
+   playButton.addEventListener("click", () => {
+      Tone.start();
+      Tone.Transport.start();
+      console.log(Tone.Transport.progress);
    })
 
-   document.body.appendChild(button);
+   const hiphopSamples = new Tone.ToneAudioBuffer("https://tonejs.github.io/audio/berklee/gong_1.mp3", () => {
+      const player = new Tone.Player().toDestination();
+      player.buffer = hiphopSamples
+      player.start();
+   });
+   
+   console.log(hiphopSamples);
+   const defaultSteps = [];
+   for (let i = 0; i < 32; i++) {
+      defaultSteps.push("A4");
+   }
+   const altTrack = new Tone.Sequence();
+   console.log(defaultSteps);
 
 
-
-
-   //working on step to show up
-
-   const testStep = new Step();
-   console.log(testStep.test());
-
+   
+   
+   // const osc = new Tone.Oscillator().toDestination();
+   // console.log(osc)
+   // Tone.Transport.scheduleRepeat((time) => {
+   //    osc.start(time).stop(time + 0.1);
+   // }, "8n");
 
 
 

@@ -3,12 +3,13 @@ class Step {
       this.pitch = pitch;
       this.velocity = velocity;
       this.glide = glide;
-   }
-
-   test() {
-      const hello = console.log("saying hi");
-      return hello;
+      this.isActive = false;
    }
 }
 
-module.exports = Step;
+
+
+
+
+
+export default Step;
