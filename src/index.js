@@ -4,24 +4,24 @@ import {Step, Track, Sequencer} from './scripts/sequencer.js';
 
 
 document.addEventListener("DOMContentLoaded", () => {
-   console.log("Welcome to stepSeq")
+   console.log("Welcome to stepSeq");
+
+   const hiphopSamples = function() {
+      let kick = blobify("./src/samples/hiphop/hip_hop_kick.wav");
+      let snare = blobify("./src/samples/hiphop/hip_hop_snare.wav");
+      let open_hihat = blobify("./src/samples/hiphop/hip_hop_hihat_open.wav");
+      let closed_hihat = blobify("./src/samples/hiphop/hip_hop_hihat_closed.wav");
+      let sub_bass = blobify("./src/samples/hiphop/hip_hop_sub.wav");
+      let fx_hit = blobify("./src/samples/hiphop/hip_hop_orch_hit.wav");
+      let lead = blobify("./src/samples/hiphop/hip_hop_lead.wav");
+      let vox = blobify("./src/samples/hiphop/hip_hop_vox.wav");
    
-   const unitElement = document.querySelector(".unit");     
-   window.view = new View(unitElement);                     //sets up all views
-
-   const allSteps = document.getElementsByClassName("step");      //gives all steps event listeners
-
-   for (let i = 0; i < allSteps.length; i++) {
-      allSteps[i].addEventListener("click", (e) => {
-         const selectedStep = e.target;
-
-         if (selectedStep.getAttribute('data-is-active') === 'false') {
-            selectedStep.setAttribute('data-is-active', true);
-         } else {
-            selectedStep.setAttribute('data-is-active', false);
-         }       
-      })
+      return [kick, snare, open_hihat, closed_hihat, sub_bass, fx_hit, lead, vox];
    }
+   
+   const unitElement = document.querySelector(".unit");
+   const seq = new Sequencer(hiphopSamples());     
+   window.view = new View(unitElement, seq);                     //sets up all views
 
    const playback = document.getElementsByClassName("playback-controls");
    const playButton = playback[0].firstChild;
@@ -32,6 +32,8 @@ document.addEventListener("DOMContentLoaded", () => {
       Tone.Transport.start();
       console.log(Tone.Transport.progress);
    })
+
+
 
    // const hiphopSamples = new Tone.ToneAudioBuffer("https://tonejs.github.io/audio/berklee/gong_1.mp3", () => {
    //    const player = new Tone.Player().toDestination();
@@ -58,22 +60,21 @@ document.addEventListener("DOMContentLoaded", () => {
       xhr.onload = function(){
          let blob = URL.createObjectURL(this.response);
          player.load(blob);
-         console.log('pressed');
-         console.log(blob);
       };
 
       xhr.send();
       return player;
    }
 
-   const hiphopSamples = {
-      kick: blobify("./src/samples/hiphop/hip_hop_kick.wav"),
-      snare: blobify("./src/samples/hiphop/hip_hop_snare.wav"),
-      hihat: blobify("./src/samples/hiphop/hip_hop_hihat.wav")
-   }
+   
 
-   let hello = hiphopSamples['hihat'].toDestination();
-   hello.autostart = true;
+   // let c = new Sequencer(hiphopSamples());
+   // console.log(c);
+   // let hello = c.grid[7].sample.toDestination();
+   
+
+   // // let hello = hiphopSamples['lead'].toDestination();
+   // hello.autostart = true;
    
 
    

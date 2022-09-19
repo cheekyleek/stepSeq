@@ -2,13 +2,25 @@ import Step from './step.js';
 import * as Tone from 'tone'
 
 class Track {
-   constructor(stepCount = 32) {
+   constructor(trackID, sample, stepCount = 32) {
+      this.trackID = trackID;
       this.stepCount = stepCount;
       this.row = [];
-      this.sample = new Tone.Player("https://tonejs.github.io/audio/berklee/gong_1.mp3").toDestination();
-      const step = new Step;
+      this.sample = sample;
+      
       for (let i = 0; i < this.stepCount; i++) {
+         const step = new Step(i);
          this.row.push(step);
+      }
+   }
+
+   loopTrack() {
+      let sample = this.sample;
+      for (let i = 0; i < this.row.length; i++) {
+         let step = this.row[i];
+         if (step.isActive === true) {
+            sample.start();
+         }
       }
    }
 }

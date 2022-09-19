@@ -22,7 +22,7 @@
   height: 40px;
   width: 1200px;
   border-color: black;
-  border-style: solid;
+  border-style: double;
   border-width: 1px;
   margin: 4px;
   background-color: grey;
@@ -94,6 +94,7 @@ div > button {
 div > button:hover {
   background-color: white;
   border-color: red;
+  cursor: pointer;
 }
 
 .track-action {

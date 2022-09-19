@@ -1,22 +1,18 @@
 import {Step, Track} from './track.js';
 
 class Sequencer {
-   constructor() {
+   constructor(sampleList) {
       this.grid = [];
-      const track = new Track();
-      for (let i = 0; i < 8; i++) {
+      for (let i = 0; i < sampleList.length; i++) {
+         const track = new Track(i, sampleList[i]);
          this.grid.push(track);
       }
    }
-
-
    
+
+
 }
 
-
-function loopGrid() {
-   
-}
 
 
 

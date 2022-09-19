@@ -1,7 +1,7 @@
 class View {
-   constructor(unit) {  //, seq, fx, rec, vis
+   constructor(unit, seq) {  //, seq, fx, rec, vis
       this.unit = unit;
-      // this.seq = seq;
+      this.seq = seq;
       // this.fx = fx;
       // this.rec = rec;
       // this.vis = vis;
@@ -11,12 +11,15 @@ class View {
       // const newFX = this.setupFX();
       // const newRec = this.setupRec();
       // const newVis = this.setupVis();
+      
 
       unit.appendChild(newControlBar);
       unit.appendChild(newSeq);
       // unit.appendChild(newFX);
       // unit.appendChild(newRec);
       // unit.appendChild(newVis);
+      this.setupTrackListeners(this.seq);
+
       return unit;
    }
 
@@ -27,11 +30,11 @@ class View {
    setupSteps() {
 
    }
+
    setupSeq() {
       const seq = document.createElement("div");
       seq.classList.add('sequencer');
       
-
       for (let i = 0; i < 8; i++) {
          const track = document.createElement("div");
          track.classList.add('track');
@@ -50,6 +53,33 @@ class View {
       }
 
       return seq;
+   }
+
+   setupTrackListeners(sequencer) {
+      const allTracks = document.getElementsByClassName("track");      //gives all tracks event listeners to be bubbled up to
+
+      for (let i = 0; i < allTracks.length; i++) {
+         allTracks[i].addEventListener("click", (e) => {
+            const selectedStep = e.target;
+            const stepID = selectedStep.getAttribute("data-step-id");
+            const currentTrack = e.currentTarget;
+            const trackID = currentTrack.getAttribute("data-track-id");
+            console.log(selectedStep);
+            console.log(currentTrack);
+            console.log(sequencer);
+            console.log(stepID);
+            console.log(trackID);
+            console.log(sequencer.grid);
+
+            if (selectedStep.getAttribute('data-is-active') === 'false') {
+               selectedStep.setAttribute('data-is-active', true);
+               sequencer.grid[trackID].row[stepID].isActive = true;
+            } else {
+               selectedStep.setAttribute('data-is-active', false);
+               sequencer.grid[trackID].row[stepID].isActive = false;
+            }       
+         })
+      }
    }
 
    setupSeqPlaybackControl() {
