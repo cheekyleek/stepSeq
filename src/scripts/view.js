@@ -23,28 +23,20 @@ class View {
       return unit;
    }
 
-   setupTrack() {
-      const track = doscument.createElement
-   }
-
-   setupSteps() {
-
-   }
-
    setupSeq() {
       const seq = document.createElement("div");
       seq.classList.add('sequencer');
       
       for (let i = 0; i < 8; i++) {
-         const track = document.createElement("div");
+         const track = document.createElement("div");          //DONE EXCEPT CUSTOM TRACK INPUT
          track.classList.add('track');
          track.setAttribute('data-track-id', i);
 
          for (let j = 0; j < 32; j++) {
             const step = document.createElement("button");
             step.classList.add('step');
-            step.setAttribute('data-is-playing', false);
             step.setAttribute('data-step-id', j);
+            step.setAttribute('data-is-playing', false);
             step.setAttribute('data-is-active', false);
 
             track.appendChild(step);
@@ -71,12 +63,14 @@ class View {
             if (selectedStep.getAttribute('data-is-active') === 'false') {
                selectedStep.setAttribute('data-is-active', true);
                console.log(selectedStep);
-               sequencer.grid[trackID].row[stepID].isActive = true;
                console.log(sequencer);
+               let row = sequencer.grid[trackID].row;
+               row[stepID].isActive = true;
             } else {
                selectedStep.setAttribute('data-is-active', false);
                console.log(selectedStep);
-               sequencer.grid[trackID].row[stepID].isActive = false;
+               let row = sequencer.grid[trackID].row;
+               row[stepID].isActive = false;
                console.log(sequencer);
             }       
          })
@@ -115,7 +109,7 @@ class View {
    }
 }
 
-export {View};
+export { View };
 
 
 

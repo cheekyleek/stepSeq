@@ -1,4 +1,5 @@
 import * as Tone from 'tone';
+import { Samples } from './samples/sample_list.js'
 import { View } from './scripts/view.js'
 import {Step, Track, Sequencer} from './scripts/sequencer.js';
 
@@ -7,7 +8,7 @@ document.addEventListener("DOMContentLoaded", () => {
    console.log("Welcome to stepSeq");
 
    const hiphopSamples = function() {
-      let kick = blobify("./src/samples/hiphop/hip_hop_kick.wav");
+      let kick = blobify("./src/samples/hiphop/hip_hop_kick.wav");               //need to make required from sample_list
       let snare = blobify("./src/samples/hiphop/hip_hop_snare.wav");
       let open_hihat = blobify("./src/samples/hiphop/hip_hop_hihat_open.wav");
       let closed_hihat = blobify("./src/samples/hiphop/hip_hop_hihat_closed.wav");
@@ -19,11 +20,13 @@ document.addEventListener("DOMContentLoaded", () => {
       return [kick, snare, open_hihat, closed_hihat, sub_bass, fx_hit, lead, vox];
    }
    
-   const unitElement = document.querySelector(".unit");
-   const seq = new Sequencer(hiphopSamples());     
-   window.view = new View(unitElement, seq);                     //sets up all views
+   const unit = document.querySelector(".unit");
+   const seq = new Sequencer(hiphopSamples());
+   // const fx = new FXRack();
+   // const rec = new Recorder();
+   // const vis = new Visualizer();
 
-   // seq.grid[0].loopTrack();
+   window.view = new View(unit, seq);                   //sets up all views initially
 
    const playback = document.getElementsByClassName("playback-controls");
    const playButton = playback[0].firstChild;
@@ -32,59 +35,30 @@ document.addEventListener("DOMContentLoaded", () => {
    stopButton.innerHTML = "Stop";
    playButton.innerHTML = "Play";
    let hello = seq.grid[0].sample.toDestination();
+   let hello2 = seq.grid[1].sample.toDestination();
 
    stopButton.addEventListener("click", () => {
       Tone.Transport.stop();
    })
-   
-   
-
-   const testSequence = new Tone.Sequence((time) => {
-      hello.start(time);
-      console.log("hello!!!");
-   }, [[1], [], [1], [], [1], [], [1], [], [1], [], [1], [], [1], [], [1], []]);
-
-
-
-   // const seqContainer = document.getElementsByClassName("sequencer");
-   // const allTracks = seqContainer.getElementsByClassName("track");
-   // const currentPlayingSteps = allTracks.querySelector("data-step-id", i);
 
    playButton.addEventListener("click", () => {
-      // Tone.Transport.scheduleRepeat((time) => {
-      //    for (i = 0; i < 32; i++) {
-
-      //    }
-      //    currentPlayingSteps.setAttribute("data-is-playing", true);
-      //    currentPlayingSteps.setAttribute("data-is-playing", false);
-      // }, "32n");
-      testSequence.start();
+      // let allTracks = seq.grid.slice();
+      
+      Tone.Transport.bpm.value = 120;
+      Tone.Transport.scheduleRepeat(seq.loop, "8n");
       Tone.Transport.start();
-      Tone.start();
+      // Tone.start();
+
+      // allTracks[0].startLoop();
+      
+      
+      // testSequence.start();
+      // testSequence2.start();
+      
+      
+      
       console.log(Tone.Transport.bpm.value)
    })
-
-   const defaultGrid = [[], [], [], [], [], [], [], [], [], [], [], [], [], [], [], []];
-   // [[1, , , ], [, , , ], [1, , , ], [, , , ], [1, , , ], [, , , ], [1, , , ], [, , , ]]
-
-   
-
-
-
-   // const hiphopSamples = new Tone.ToneAudioBuffer("https://tonejs.github.io/audio/berklee/gong_1.mp3", () => {
-   //    const player = new Tone.Player().toDestination();
-   //    player.buffer = hiphopSamples
-   //    player.start();
-   // });
-   
-   // console.log(hiphopSamples);
-   // const defaultSteps = [];
-   // for (let i = 0; i < 32; i++) {
-   //    defaultSteps.push("A4");
-   // }
-   // const altTrack = new Tone.Sequence();
-   // console.log(defaultSteps);
-   
 
    function blobify(samplePath) {
       let xhr = new XMLHttpRequest();
@@ -101,32 +75,6 @@ document.addEventListener("DOMContentLoaded", () => {
       xhr.send();
       return player;
    }
-
-   
-
-   // let c = new Sequencer(hiphopSamples());
-   // console.log(c);
-   // let hello = c.grid[7].sample.toDestination();
-   
-
-   // // let hello = hiphopSamples['lead'].toDestination();
-   // hello.autostart = true;
-   
-
-   
-
-
-
-
-   
-   
-   // const osc = new Tone.Oscillator().toDestination();
-   // console.log(osc)
-   // Tone.Transport.scheduleRepeat((time) => {
-   //    osc.start(time).stop(time + 0.1);
-   // }, "8n");
-
-
 
 
 
