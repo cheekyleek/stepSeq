@@ -103,7 +103,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 // PUSH SAMPLE PLAYER OBJECTS INTO GRID
 
-   const masterGrid = function(sampleList) {
+   function masterGrid(sampleList) {
       const grid = [];
 
       for (let i = 0; i < 8; i++) {
@@ -122,6 +122,7 @@ document.addEventListener("DOMContentLoaded", () => {
       return grid;
    }
    
+   const MG = masterGrid(hiphopSamples());
    // SET UP CONTROL BAR
    
    const controlBar = function() {
@@ -237,11 +238,12 @@ document.addEventListener("DOMContentLoaded", () => {
          // unit.appendChild(newFX);
          // unit.appendChild(newRec);
          // unit.appendChild(newVis);
-         setupStepListeners(masterGrid(hiphopSamples()));
+         setupStepListeners(MG);
    
          return unit;
       }
    }
+   
    
    const seq = sequencer();
    const bar = controlBar();
@@ -257,20 +259,43 @@ document.addEventListener("DOMContentLoaded", () => {
    const stopButton = playback[0].children[1];
    stopButton.innerHTML = "Stop";
    playButton.innerHTML = "Play";
-   // let hello = seq.grid[0].sample.toDestination();
-   // let hello2 = seq.grid[1].sample.toDestination();
+
+   let currentPlayMark = 0;
+
+   const loop = function(time) {
+      let nextStep = currentPlayMark % 32;
+      let currentSteps = seq.getElementsByClassName('step');
+
+      let masterGrid = MG;
+   
+      for (let i = 0; i < masterGrid.length; i++) {
+         let columnStep = masterGrid[i][nextStep];
+         console.log(nextStep);
+         
+         if (columnStep.isActive === true) {
+            columnStep.sample.toDestination().start(time);
+            console.log(columnStep);
+         }
+      }
+
+      // console.log(seq.querySelectorAll("data-track-id"));
+
+      currentPlayMark++;
+   }
 
    stopButton.addEventListener("click", () => {
       Tone.Transport.stop();
    })
 
    playButton.addEventListener("click", () => {
-      // let allTracks = seq.grid.slice();
       
-      Tone.Transport.bpm.value = 120;
-      Tone.Transport.scheduleRepeat(seq.loop, "8n");
-      Tone.Transport.start();
       Tone.start();
+      Tone.Transport.start();
+      Tone.Transport.loopEnd = "1m"
+      Tone.Transport.bpm.value = 120;
+      Tone.Transport.scheduleRepeat(loop, "8n");
+      
+      
       
       
       // testSequence.start();
