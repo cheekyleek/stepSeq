@@ -28,50 +28,69 @@ document.addEventListener("DOMContentLoaded", () => {
    // FUNCTION THAT TURNS AUDIO INTO BLOBS (THEY ARE LITTLE PLAYER OBJECTS)
    
    const hiphopSamples = function() {
-      let kick = blobify("./src/samples/hiphop/hip_hop_kick.wav");               //need to make required from sample_list
-      let snare = blobify("./src/samples/hiphop/hip_hop_snare.wav");
-      let open_hihat = blobify("./src/samples/hiphop/hip_hop_hihat_open.wav");
-      let closed_hihat = blobify("./src/samples/hiphop/hip_hop_hihat_closed.wav");
-      let sub_bass = blobify("./src/samples/hiphop/hip_hop_sub.wav");
-      let fx_hit = blobify("./src/samples/hiphop/hip_hop_orch_hit.wav");
-      let lead = blobify("./src/samples/hiphop/hip_hop_lead.wav");
-      let vox = blobify("./src/samples/hiphop/hip_hop_vox.wav");
+      let inst1 = blobify("./src/samples/hiphop/hip_hop_kick.wav");               //need to make required from sample_list
+      let inst2 = blobify("./src/samples/hiphop/hip_hop_snare.wav");
+      let inst3 = blobify("./src/samples/hiphop/hip_hop_hihat_open.wav");
+      let inst4 = blobify("./src/samples/hiphop/hip_hop_hihat_closed.wav");
+      let inst5 = blobify("./src/samples/hiphop/hip_hop_sub.wav");
+      let inst6 = blobify("./src/samples/hiphop/hip_hop_orch_hit.wav");
+      let inst7 = blobify("./src/samples/hiphop/hip_hop_lead.wav");
+      let inst8 = blobify("./src/samples/hiphop/hip_hop_vox.wav");
    
-      return [kick, snare, open_hihat, closed_hihat, sub_bass, fx_hit, lead, vox];
+      return [inst1, inst2, inst3, inst4, inst5, inst6, inst7, inst8];
+   }
+
+   const technoSamples = function() {
+      let inst1 = blobify("./src/samples/techno/techno_kick.wav");               //need to make required from sample_list
+      let inst2 = blobify("./src/samples/techno/techno_clap.wav");
+      let inst3 = blobify("./src/samples/techno/techno_hi_hat.wav");
+      let inst4 = blobify("./src/samples/techno/techno_sub_bass.wav");
+      let inst5 = blobify("./src/samples/techno/techno_chord_hit.wav");
+      let inst6 = blobify("./src/samples/techno/techno_fx_hit.wav");
+      let inst7 = blobify("./src/samples/techno/techno_white_noise");
+      let inst8 = blobify("./src/samples/techno/techno_pad.wav");
+   
+      return [inst1, inst2, inst3, inst4, inst5, inst6, inst7, inst8];
    }
    
-   // const technoSamples = {
-   //    kick: blobify("./src/samples/hiphop/hip_hop_kick.wav"),
-   //    snare: blobify("./src/samples/hiphop/hip_hop_snare.wav"),
-   //    open_hihat: blobify("./src/samples/hiphop/hip_hop_hihat_open.wav"),
-   //    closed_hihat: blobify("./src/samples/hiphop/hip_hop_hihat_closed.wav"),
-   //    sub_bass: blobify("./src/samples/hiphop/hip_hop_sub.wav"),
-   //    fx_hit: blobify("./src/samples/hiphop/hip_hop_orch_hit.wav"),
-   //    lead: blobify("./src/samples/hiphop/hip_hop_lead.wav"),
-   //    vox: blobify("./src/samples/hiphop/hip_hop_vox.wav")
-   // };
+   const pianoSamples = function() {
+      let inst1 = blobify("./src/samples/hiphop/hip_hop_kick.wav");               //need to make required from sample_list
+      let inst2 = blobify("./src/samples/hiphop/hip_hop_snare.wav");
+      let inst3 = blobify("./src/samples/hiphop/hip_hop_hihat_open.wav");
+      let inst4 = blobify("./src/samples/hiphop/hip_hop_hihat_closed.wav");
+      let inst5 = blobify("./src/samples/hiphop/hip_hop_sub.wav");
+      let inst6 = blobify("./src/samples/hiphop/hip_hop_orch_hit.wav");
+      let inst7 = blobify("./src/samples/hiphop/hip_hop_lead.wav");
+      let inst8 = blobify("./src/samples/hiphop/hip_hop_vox.wav");
    
-   // const pianoSamples = {
-   //    kick: blobify("./src/samples/hiphop/hip_hop_kick.wav"),
-   //    snare: blobify("./src/samples/hiphop/hip_hop_snare.wav"),
-   //    open_hihat: blobify("./src/samples/hiphop/hip_hop_hihat_open.wav"),
-   //    closed_hihat: blobify("./src/samples/hiphop/hip_hop_hihat_closed.wav"),
-   //    sub_bass: blobify("./src/samples/hiphop/hip_hop_sub.wav"),
-   //    fx_hit: blobify("./src/samples/hiphop/hip_hop_orch_hit.wav"),
-   //    lead: blobify("./src/samples/hiphop/hip_hop_lead.wav"),
-   //    vox: blobify("./src/samples/hiphop/hip_hop_vox.wav")
-   // };
+      return [inst1, inst2, inst3, inst4, inst5, inst6, inst7, inst8];
+   }
    
-   // const sillySamples = {
-   //    kick: blobify("./src/samples/hiphop/hip_hop_kick.wav"),
-   //    snare: blobify("./src/samples/hiphop/hip_hop_snare.wav"),
-   //    open_hihat: blobify("./src/samples/hiphop/hip_hop_hihat_open.wav"),
-   //    closed_hihat: blobify("./src/samples/hiphop/hip_hop_hihat_closed.wav"),
-   //    sub_bass: blobify("./src/samples/hiphop/hip_hop_sub.wav"),
-   //    fx_hit: blobify("./src/samples/hiphop/hip_hop_orch_hit.wav"),
-   //    lead: blobify("./src/samples/hiphop/hip_hop_lead.wav"),
-   //    vox: blobify("./src/samples/hiphop/hip_hop_vox.wav")
-   // };
+   const sillySamples = function() {
+      let inst1 = blobify("./src/samples/hiphop/hip_hop_kick.wav");               //need to make required from sample_list
+      let inst2 = blobify("./src/samples/hiphop/hip_hop_snare.wav");
+      let inst3 = blobify("./src/samples/hiphop/hip_hop_hihat_open.wav");
+      let inst4 = blobify("./src/samples/hiphop/hip_hop_hihat_closed.wav");
+      let inst5 = blobify("./src/samples/hiphop/hip_hop_sub.wav");
+      let inst6 = blobify("./src/samples/hiphop/hip_hop_orch_hit.wav");
+      let inst7 = blobify("./src/samples/hiphop/hip_hop_lead.wav");
+      let inst8 = blobify("./src/samples/hiphop/hip_hop_vox.wav");
+   
+      return [inst1, inst2, inst3, inst4, inst5, inst6, inst7, inst8];
+   }
+
+   const cohortSamples = function() {
+      let inst1 = blobify("./src/samples/hiphop/hip_hop_kick.wav");               //need to make required from sample_list
+      let inst2 = blobify("./src/samples/hiphop/hip_hop_snare.wav");
+      let inst3 = blobify("./src/samples/hiphop/hip_hop_hihat_open.wav");
+      let inst4 = blobify("./src/samples/hiphop/hip_hop_hihat_closed.wav");
+      let inst5 = blobify("./src/samples/hiphop/hip_hop_sub.wav");
+      let inst6 = blobify("./src/samples/hiphop/hip_hop_orch_hit.wav");
+      let inst7 = blobify("./src/samples/hiphop/hip_hop_lead.wav");
+      let inst8 = blobify("./src/samples/hiphop/hip_hop_vox.wav");
+   
+      return [inst1, inst2, inst3, inst4, inst5, inst6, inst7, inst8];
+   }
    
    // SAMPLE BANKS OF BLOB PLAYERS
    
@@ -318,11 +337,6 @@ document.addEventListener("DOMContentLoaded", () => {
       Tone.Transport.bpm.value = 120;
       Tone.Transport.scheduleRepeat(loop, "32n");
       
-      
-      
-      
-      // testSequence.start();
-      // testSequence2.start();
       console.log(Tone.Transport.bpm.value)
    })
 
