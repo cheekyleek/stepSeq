@@ -9,15 +9,18 @@ body {
 }
 
 .unit {
-   // align-self: center;
+   align-self: center;
    background-color: rgb(52, 36, 23);
+   // background-image: url("../src/styles/seamless-wood-texture-1.jpg");
    position: absolute;
    padding: 20px;
    width: 1400px;
    height: 350px;
    top: 45%;
-   left: 8%;
+   left: 1%;
    display: flex;
+   border-color: black;
+   border-width: 2px;
    border-radius: 5px;
    flex-direction: column;
    align-items: center;
@@ -29,10 +32,10 @@ body {
    justify-content: space-around;
    order: 1;
    height: 40px;
-   width: 1200px;
+   width: 1198px;
    border-color: black;
-   border-style: double;
-   border-width: 1px;
+   border-style: solid;
+   border-width: 2px;
    margin: 4px;
    background-color: grey;
 }
@@ -54,10 +57,11 @@ div > button {
    width: 50px;
    border-style: solid;
    border-width: 1px;
-   border-color: black;
+   border-color: rgb(85, 81, 81);
    margin: 3px;
    outline: none;
    background-color: lightgrey;
+   transition: all 0.2s ease-in-out;
 }
 
 .sequencer {
@@ -81,11 +85,13 @@ div > button {
    border-color: black;
    
    // flex-direction: row;
-   // align-content: space-around;
+   align-content: space-around;
    // border-style: dotted;
    // border-width: 1px;
    // border-color: red;
 }
+
+
 
 .step {
    border-radius: 5px;
@@ -93,7 +99,7 @@ div > button {
    width: 40px;
    border-style: solid;
    border-width: 1px;
-   border-color: black;
+   border-color: rgb(85, 81, 81);
    margin: 3px;
    outline: none;
    background-color: lightgrey;
@@ -110,12 +116,12 @@ div > button {
 }
 
 .step:hover {
-   border-color: red;
+   border-color: lightblue;
 }
 
 div > button:hover {
    background-color: white;
-   border-color: red;
+   border-color: lightblue;
    cursor: pointer;
 }
 
@@ -123,16 +129,22 @@ div > button:hover {
    align-self: flex-start;
 }
 
-.playback-controls:nth-child(1) {
-   background-color: green;
+.spacer {
+   flex-direction: column;
+   width: 3px;
+   background-color: black;
 }
+
+// .playback-controls #0.active {
+//    background-color: rgb(90, 240, 100);            FIX THIS!!!!!!
+// }
 
 // .step[data-is-playing="true"] {
 //    background-color: lime;
 // }
 
 .highlighted {
-   background-color: lime;
+   background-color: rgb(90, 240, 100);
 }
 
 .highlighted-selected {

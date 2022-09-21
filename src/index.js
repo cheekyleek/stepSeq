@@ -106,11 +106,19 @@ document.addEventListener("DOMContentLoaded", () => {
          track.setAttribute('id', i);
    
          for (let j = 0; j < 32; j++) {
+            // if (j % 4 === 0 && j !== 0) {
+            //    let lineBreak = document.createElement("div");
+            //    lineBreak.classList.add("spacer");
+            //    track.appendChild(lineBreak);
+            // }
+
             const step = document.createElement("button");
             step.classList.add('step');
             step.setAttribute('id', j);
             step.setAttribute('data-is-active', false);
-   
+
+            
+
             track.appendChild(step);
          }
    
@@ -171,8 +179,8 @@ document.addEventListener("DOMContentLoaded", () => {
    
    // SET UP FX-RACK
    
-   function setupFX() {
-   
+   const FXRack = function() {
+      
    };
    
    // SET UP RECORDER
@@ -183,8 +191,8 @@ document.addEventListener("DOMContentLoaded", () => {
    
    // SET UP VISUALIZER
    
-   function setupVis() {
-   
+   const visualizer = function() {
+      
    };
    
    // CREATE ALL ELEMENTS AND ATTACH TO UNIT
@@ -231,7 +239,7 @@ document.addEventListener("DOMContentLoaded", () => {
                   masterGrid[i][j].isActive = false;
                   console.log(selectedStep);
                   console.log(masterGrid[i][j]);
-               }       
+               }
             })
          }
       }
@@ -277,6 +285,11 @@ document.addEventListener("DOMContentLoaded", () => {
    const stopButton = playback[0].children[1];
    stopButton.innerHTML = "Stop";
    playButton.innerHTML = "Play";
+
+   playButton.addEventListener("click", (e) => {
+      const play = e.target;
+      play.classList.add("active");
+   })
 
    let currentPlayMark = 0;
 
