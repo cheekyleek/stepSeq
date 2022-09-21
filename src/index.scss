@@ -3,9 +3,48 @@ body {
    // display: flex;
    background-image: url("../src/styles/natural-wooden-background.jpg");
    background-size: cover;
+   height: 100%;
+   // align-self: stretch;
+   // align-content: stretch;
    
    background-repeat:repeat-y;
+   z-index: 0;
 
+}
+
+.main-container {
+   display: flex;
+   width: 100%;
+   z-index: 1;
+}
+
+.visualizer {
+   display: flex;
+   position: fixed;
+   justify-content: center;
+   align-items: center;
+   border-color: black;
+   border-width: 2px;
+   border-style: solid;
+   left: 32.95%;
+   top: 15%;
+   width: 500px;
+   height: 250px;
+   z-index: 2;
+   background-color: rgb(52, 36, 23);
+   border-top-left-radius: 20px;
+   border-top-right-radius: 20px;
+}
+
+.screen {
+   background-color: black;
+   position: fixed;
+   width: 450px;
+   height: 200px;
+   z-index: 3;
+   border-radius: 10px;
+   // border-top-left-radius: 10px;
+   // border-top-right-radius: 10px;
 }
 
 .unit {
@@ -20,11 +59,12 @@ body {
    left: 1%;
    display: flex;
    border-color: black;
+   border-style: solid;
    border-width: 2px;
    border-radius: 5px;
    flex-direction: column;
    align-items: center;
-   justify-items: space-between;
+   z-index: 3;
 }
 
 .control-bar {
@@ -150,3 +190,50 @@ div > button:hover {
 .highlighted-selected {
    background-color: red !important;
 }
+
+.fx-rack {
+   display:inline-grid;
+   grid-template-columns: 1fr 1fr 1fr;
+   position:fixed;
+   grid-template-rows: 3fr 1fr 2fr;
+   // flex-direction: column;
+   // flex-wrap: wrap;
+   justify-content: space-around;
+   align-items: center;
+   // align-content: center;
+   // align-content: space-around;
+   border-color: black;
+   border-width: 2px;
+   border-style: solid;
+   left: 3%;
+   top: 25%;
+   width: 400px;
+   height: 200px;
+   z-index: 2;
+   background-color: rgb(52, 36, 23);
+   border-top-left-radius: 10px;
+   border-top-right-radius: 10px;
+}
+
+.fx-rack > div > label {
+   color: red;
+}
+
+.slider::-webkit-slider-thumb {
+   -webkit-appearance: none;
+   appearance: none;
+   width: 23px;
+   height: 24px;
+   border: 0;
+   background: url('contrasticon.png');
+   cursor: pointer;
+ }
+ 
+ .slider::-moz-range-thumb {
+   width: 23px;
+   height: 25px;
+   border: 0;
+   background: url('contrasticon.png');
+   cursor: pointer;
+ }
+

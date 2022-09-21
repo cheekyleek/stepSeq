@@ -1,4 +1,5 @@
 import * as Tone from 'tone';
+// import { Analyser, PitchShift } from 'tone';
 // import { Big_File } from './scripts/one_big_long_file.js';
 // import { Samples } from './samples/sample_list.js';
 // import { View } from './scripts/view.js';
@@ -180,24 +181,75 @@ document.addEventListener("DOMContentLoaded", () => {
    // SET UP FX-RACK
    
    const FXRack = function() {
-      
+      const controlNames = ["pitchShift", "phaser", "delay", "distortion", "reverb", "gain"]
+      const rack = document.createElement("div");
+      rack.classList.add('fx-rack');
+
+      for (let i = 0; i < 6; i++) {
+         const controlContainer = document.createElement("div");
+         const control = document.createElement("input");
+         const label = document.createElement("label");
+
+         controlContainer.classList.add(`${controlNames[i]}-container`);
+         control.setAttribute("type", "range");
+
+         if (i === 0) {       // pitch gets octave values of 12
+            control.setAttribute("min", "-24");
+            control.setAttribute("max", "24");
+         } else {
+            control.setAttribute("min", "0");
+            control.setAttribute("max", "100");
+         }
+         
+         if (i !== 5) {       // only volume defaults to half open
+            control.setAttribute("value", "0");
+         } else {
+            control.setAttribute("value", "50");
+         }
+
+         label.innerHTML = `${controlNames[i].toLowerCase()}: ${control.value}`;
+
+         control.setAttribute("class", "slider");
+         control.setAttribute("id", `${controlNames[i]}`);
+         label.appendChild(control)
+         controlContainer.appendChild(label);
+         rack.appendChild(controlContainer);
+      }
+
+      return rack
    };
    
    // SET UP RECORDER
    
-   function setupRec() {
+   const recorder = function() {
    
    };
    
    // SET UP VISUALIZER
    
    const visualizer = function() {
-      
+      const vis = document.createElement("div");
+      const screen = document.createElement("div"); 
+
+      vis.classList.add('visualizer');      
+      screen.classList.add('screen');
+      vis.appendChild(screen);
+
+      return vis
    };
+
+   
+   // const audioCtx = new Analyser
+
+
    
    // CREATE ALL ELEMENTS AND ATTACH TO UNIT
    
    const unit = document.querySelector(".unit");
+
+   const mainContainer = document.querySelector(".main-container");           // ADD VISUALIZER TO THE MAIN CONTAINER
+   mainContainer.appendChild(visualizer());
+   mainContainer.appendChild(FXRack());
    // const sequencer = setupSeq();
    // const controlBar = setupControlBar();
    // const FXRack = setupFX();
@@ -293,6 +345,41 @@ document.addEventListener("DOMContentLoaded", () => {
 
    let currentPlayMark = 0;
 
+   // pitchshifting
+   const pitchControl = document.getElementById("pitchShift");
+   console.log(pitchControl);
+   pitchControl.addEventListener("mousedown", (e) => {
+      const slider = e.target;
+                                                      //THIS WORKS FOR ALL SLIDERS!!!!!!
+      function mouseMover(e) {
+         console.log(e.target.value);
+         console.log(e.target);
+         
+         // pitchControl.value = e.target.value;
+         slider.parentNode.innerHTML = `pitchshift: ${e.target.value}`;
+         slider.setAttribute("value", `${e.target.value}`);
+         console.log(slider.parentNode);
+      }
+
+      slider.addEventListener("mousemove", mouseMover)
+
+      slider.addEventListener("mouseup", () => {
+         slider.removeEventListener("mousemove", mouseMover);
+      })
+         // pitchControl.value = 
+         // pitchControl.innerHTML = `pitchshift : ${pitchControl.value}`;
+   })
+
+   
+   
+      
+
+
+
+   // const signalPath = [pitchShift, phaser, delay, distortion, reverb, gain];
+
+
+
    const loop = function(time) {
       let nextStep = currentPlayMark % 32;
       const allTracks = seq.getElementsByClassName('track');
@@ -326,13 +413,9 @@ document.addEventListener("DOMContentLoaded", () => {
          console.log(nextStep);
          
          if (columnStep.isActive === true) {
-            columnStep.sample.toDestination().start(time);
+            columnStep.sample.toDestination().start(time);     //chain here!!??
             console.log(columnStep);
          }
-
-         // for (i = 0; i < currentSteps.length; i++) {
-         //    if ()
-         // }
       }
 
       currentPlayMark++;
