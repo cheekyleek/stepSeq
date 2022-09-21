@@ -264,21 +264,24 @@ document.addEventListener("DOMContentLoaded", () => {
 
    const loop = function(time) {
       let nextStep = currentPlayMark % 32;
-      let currentSteps = seq.getElementsByClassName('step');
+      const currentSteps = seq.getElementsByClassName('step');
+      console.log(currentSteps);
 
       let masterGrid = MG;
    
       for (let i = 0; i < masterGrid.length; i++) {
-         let columnStep = masterGrid[i][nextStep];
+         const columnStep = masterGrid[i][nextStep];
          console.log(nextStep);
          
          if (columnStep.isActive === true) {
             columnStep.sample.toDestination().start(time);
             console.log(columnStep);
          }
-      }
 
-      // console.log(seq.querySelectorAll("data-track-id"));
+         // for (i = 0; i < currentSteps.length; i++) {
+         //    if ()
+         // }
+      }
 
       currentPlayMark++;
    }
@@ -293,7 +296,7 @@ document.addEventListener("DOMContentLoaded", () => {
       Tone.Transport.start();
       Tone.Transport.loopEnd = "1m"
       Tone.Transport.bpm.value = 120;
-      Tone.Transport.scheduleRepeat(loop, "8n");
+      Tone.Transport.scheduleRepeat(loop, "16n");
       
       
       

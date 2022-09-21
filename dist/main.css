@@ -12,10 +12,10 @@ body {
   background-color: rgb(52, 36, 23);
   position: absolute;
   padding: 20px;
-  width: 1500px;
+  width: 1400px;
   height: 350px;
   top: 45%;
-  left: 5%;
+  left: 8%;
   display: flex;
   border-radius: 5px;
   flex-direction: column;
@@ -115,4 +115,8 @@ div > button:hover {
 
 .highlighted {
   background-color: lime;
+}
+
+.highlighted-selected {
+  background-color: red;
 }
