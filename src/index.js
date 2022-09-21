@@ -84,12 +84,12 @@ document.addEventListener("DOMContentLoaded", () => {
       for (let i = 0; i < 8; i++) {
          const track = document.createElement("div");          //DONE EXCEPT CUSTOM TRACK INPUT
          track.classList.add('track');
-         track.setAttribute('data-track-id', i);
+         track.setAttribute('id', i);
    
          for (let j = 0; j < 32; j++) {
             const step = document.createElement("button");
             step.classList.add('step');
-            step.setAttribute('data-step-id', j);
+            step.setAttribute('id', j);
             step.setAttribute('data-is-active', false);
    
             track.appendChild(step);
@@ -255,7 +255,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
    const playback = document.getElementsByClassName("playback-controls");
    const playButton = playback[0].firstChild;
-   console.log(playback);
    const stopButton = playback[0].children[1];
    stopButton.innerHTML = "Stop";
    playButton.innerHTML = "Play";
@@ -264,8 +263,29 @@ document.addEventListener("DOMContentLoaded", () => {
 
    const loop = function(time) {
       let nextStep = currentPlayMark % 32;
-      const currentSteps = seq.getElementsByClassName('step');
-      console.log(currentSteps);
+      const allTracks = seq.getElementsByClassName('track');
+      
+      for (let i = 0; i < 8; i++) {
+         const activeColumn = [allTracks[i].children[nextStep]]
+         console.log(activeColumn);
+
+
+         activeColumn.forEach((step) => {
+            if (step.getAttribute("data-is-active") === "true") {
+               
+               step.classList.toggle('highlighted-selected');
+            } else {
+               step.classList.toggle('highlighted');
+            }
+         })
+
+            
+         
+         // activeColumn.classList.remove('highlighted')
+         
+      }
+      console.log(allTracks);
+      // console.log(currentSteps);
 
       let masterGrid = MG;
    
@@ -296,7 +316,7 @@ document.addEventListener("DOMContentLoaded", () => {
       Tone.Transport.start();
       Tone.Transport.loopEnd = "1m"
       Tone.Transport.bpm.value = 120;
-      Tone.Transport.scheduleRepeat(loop, "16n");
+      Tone.Transport.scheduleRepeat(loop, "32n");
       
       
       
