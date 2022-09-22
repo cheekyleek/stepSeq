@@ -289,7 +289,7 @@ document.addEventListener("DOMContentLoaded", () => {
          for (let j = 0; j < 32; j++) {
             
             const player = {
-               sample: sampleList[i].connect(pitchShifter),
+               sample: sampleList[i],     //.connect(pitchShifter)
                isActive: false,
                pitch: 12
             }
