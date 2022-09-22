@@ -10,8 +10,124 @@ body {
   z-index: 0;
 }
 
+@font-face {
+  font-family: bastard;
+  src: url("../src/styles/Bastard-jWA0.ttf");
+}
+@font-face {
+  font-family: batteredcooperfont;
+  src: url("../src/styles/BatteredCooper-ZEEB.ttf");
+}
+.title {
+  position: fixed;
+  height: 50px;
+  width: 300px;
+  top: 14%;
+  left: 41.35%;
+  font-family: batteredcooperfont;
+  font-size: 65px;
+  color: rgb(54, 40, 27);
+}
+
+.github:hover {
+  cursor: pointer;
+}
+
+.github {
+  width: 64px;
+  position: absolute;
+  right: 1%;
+  height: 64px;
+  background-image: url("../src/styles/GitHub-Mark-64px.png");
+}
+
+.link-delay {
+  animation: fadeDelay 3s;
+}
+
+.links {
+  animation: fadeIn 5s;
+  animation-delay: 3s;
+}
+
+.title {
+  animation: fadeIn 5s;
+}
+
+@keyframes fadeDelay {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+@keyframes slowZoom {
+  0% {
+    text-size-adjust: 40px;
+  }
+  100% {
+    text-size: 65px;
+  }
+}
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+@keyframes visSlideUp {
+  0% {
+    top: 51%;
+  }
+  100% {
+    top: 31%;
+  }
+}
+@keyframes screenSlideUp {
+  0% {
+    top: 52.75%;
+  }
+  100% {
+    top: 32.75%;
+  }
+}
+@keyframes visDelay {
+  0% {
+    top: 51%;
+  }
+  100% {
+    top: 51%;
+  }
+}
+@keyframes screenDelay {
+  0% {
+    top: 52.75%;
+  }
+  100% {
+    top: 52.75%;
+  }
+}
+.visualizer {
+  animation-name: visDelay, visSlideUp;
+  animation-duration: 4s, 2s;
+  animation-delay: 0s, 4s;
+}
+
+.screen {
+  animation-name: screenDelay, screenSlideUp;
+  animation-duration: 4s, 2s;
+  animation-delay: 0s, 4s;
+}
+
 .main-container {
   display: flex;
+  height: 100%;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
   width: 100%;
   z-index: 1;
 }
@@ -21,45 +137,45 @@ body {
   position: fixed;
   justify-content: center;
   align-items: center;
-  border-color: black;
-  border-width: 2px;
+  border-color: rgb(114, 112, 112);
+  border-width: 1px;
   border-style: solid;
-  left: 32.95%;
-  top: 15%;
-  width: 500px;
-  height: 250px;
+  top: 31%;
+  width: 440px;
+  height: 190px;
   z-index: 2;
-  background-color: rgb(52, 36, 23);
-  border-top-left-radius: 20px;
-  border-top-right-radius: 20px;
+  background-color: rgb(45, 49, 50);
+  border-top-left-radius: 12px;
+  border-top-right-radius: 12px;
 }
 
 .screen {
-  background-color: black;
+  background-color: white;
   position: fixed;
-  width: 450px;
-  height: 200px;
+  width: 408px;
+  height: 100px;
   z-index: 3;
-  border-radius: 10px;
+  top: 32.75%;
+  border-top-left-radius: 7px;
+  border-top-right-radius: 7px;
 }
 
 .unit {
   align-self: center;
-  background-color: rgb(52, 36, 23);
+  background-color: rgb(45, 49, 50);
   position: absolute;
   padding: 20px;
-  width: 1400px;
-  height: 350px;
+  max-width: 100%;
   top: 45%;
-  left: 1%;
   display: flex;
-  border-color: black;
+  border-color: rgb(67, 66, 66);
   border-style: solid;
-  border-width: 2px;
-  border-radius: 5px;
+  border-width: 1px;
+  border-radius: 8px;
   flex-direction: column;
   align-items: center;
   z-index: 3;
+  box-shadow: 10px 15px 20px 2px rgba(0, 0, 0, 0.8);
 }
 
 .control-bar {
@@ -69,7 +185,7 @@ body {
   height: 40px;
   width: 1198px;
   border-color: black;
-  border-style: solid;
+  border-radius: 2px;
   border-width: 2px;
   margin: 4px;
   background-color: grey;
@@ -108,7 +224,7 @@ div > button {
   border-radius: 1px;
   border-width: 1px;
   border-style: solid;
-  border-color: black;
+  border-color: rgb(45, 49, 50);
 }
 
 .track {
@@ -116,7 +232,8 @@ div > button {
   border-style: double;
   background-color: grey;
   border-width: 1px;
-  border-color: black;
+  border-radius: 3px;
+  border-color: rgb(45, 49, 50);
   align-content: space-around;
 }
 
@@ -161,27 +278,27 @@ div > button:hover {
 }
 
 .highlighted-selected {
-  background-color: red !important;
+  background-color: rgb(247, 45, 45) !important;
 }
 
 .fx-rack {
-  display: inline-grid;
+  display: flex;
   grid-template-columns: 1fr 1fr 1fr;
   position: fixed;
   grid-template-rows: 3fr 1fr 2fr;
   justify-content: space-around;
   align-items: center;
-  border-color: black;
-  border-width: 2px;
+  border-color: rgb(114, 112, 112);
+  border-width: 1px;
   border-style: solid;
-  left: 3%;
-  top: 25%;
-  width: 400px;
-  height: 200px;
+  left: 15%;
+  top: 30%;
+  width: 350px;
+  height: 190px;
   z-index: 2;
-  background-color: rgb(52, 36, 23);
-  border-top-left-radius: 10px;
-  border-top-right-radius: 10px;
+  background-color: rgb(45, 49, 50);
+  border-top-left-radius: 30px;
+  border-top-right-radius: 12px;
 }
 
 .fx-rack > div > label {

@@ -349,8 +349,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
    // pitchshifting
    let shiftValue = 0;
-
-   const pitchShift = new Tone.PitchShift();
+   const pitchShift = new Tone.PitchShift(shiftValue);
+   // const signalPath = [pitchShift];
+   
 
    const pitchControl = document.getElementById("pitchShift");
    console.log(pitchControl);
@@ -366,6 +367,10 @@ document.addEventListener("DOMContentLoaded", () => {
          // slider.parentNode.innerHTML = `pitchshift: ${e.target.value}`;
          slider.setAttribute("value", `${e.target.value}`);
          shiftValue = e.target.value;
+         // pitchShift.pitch = shiftValue;
+         console.log(shiftValue);
+         console.log(pitchShift.pitch);
+         // console.log(signalPath[0].pitch);
       }
 
       slider.addEventListener("mousemove", mouseMover)
@@ -378,12 +383,16 @@ document.addEventListener("DOMContentLoaded", () => {
    })
 
    
+
+   // pitchShift(pitchControl.value);
+
+   
    
       
 
 
 
-   const signalPath = [pitchShift];  //, phaser, delay, distortion, reverb, gain
+     //, phaser, delay, distortion, reverb, gain
 
 
 
@@ -418,10 +427,11 @@ document.addEventListener("DOMContentLoaded", () => {
          const columnStep = masterGrid[i][nextStep];
          
          if (columnStep.isActive === true) {
-            columnStep.sample.connect(signalPath[0].toDestination()).start(time);     //chain here!!??
+            columnStep.sample.start(time).chain(pitchShift).toDestination();    //chain here!!??
          }
       }
-
+      // console.log(signalPath[0]);
+      
       currentPlayMark++;
    }
 
@@ -429,7 +439,13 @@ document.addEventListener("DOMContentLoaded", () => {
       Tone.Transport.stop();
    })
 
-   Tone.Transport.scheduleRepeat(loop, "32n");           // give the scheduled loop
+   // const looper = function() {
+   //    return 
+   // }
+
+   Tone.Transport.scheduleRepeat(loop, "32n");
+   // Tone.Destination.chain(looper, pitchShift);
+   // looper.chain(pitchShift(shiftValue)).toDestination();         // give the scheduled loop
 
    playButton.addEventListener("click", () => {
       
