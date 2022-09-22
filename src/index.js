@@ -186,9 +186,12 @@ document.addEventListener("DOMContentLoaded", () => {
       }
 
       rack.appendChild(innerRack);
+      rack.setAttribute("folded", true);
 
       return rack
    };
+
+   
 
    const visualizer = function() {
       const vis = document.createElement("div");
@@ -208,10 +211,10 @@ document.addEventListener("DOMContentLoaded", () => {
    mainContainer.appendChild(FXRack());
 
 // pitchshifting
-   let pitchShiftValue = 24;
+   let pitchShiftValue = 0;
    let phaserShiftValue = 0;
 
-   const pitchShifter = new Tone.PitchShift(12).toDestination();
+   const pitchShifter = new Tone.PitchShift(pitchShiftValue).toDestination();
    // const testAnalyser = new Tone.Analyser();
    const phaser = new Tone.Phaser(phaserShiftValue);
    const delay = new Tone.Delay();
@@ -318,6 +321,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
          for (let j = 0; j < 4; j++) {
             const button = document.createElement("button");
+            if (i === 0 && j === 3) {
+               button.classList.add("fx-folder");
+               button.innerHTML = "FX"
+            }
             button.setAttribute('id', j)
             controlArea.appendChild(button);
          }
@@ -326,6 +333,16 @@ document.addEventListener("DOMContentLoaded", () => {
    
       return bar;
    };
+
+   
+   // console.log(FXArray);
+   // const FXFolderButton = allFXButtons[0][0];
+   // console.log(FXFolderButton);
+   // console.log(FXFolderButton);
+
+   // FXFolderButton.addEventListener("click", () => {
+   //    // const rack = document.getElementsByClassName("")
+   // })
    
    
    
@@ -506,6 +523,19 @@ document.addEventListener("DOMContentLoaded", () => {
 
       
    }
+
+   const FXFolderButton = document.querySelector(".fx-folder");
+   
+   FXFolderButton.addEventListener("click", () => {
+      const rack = document.querySelector(".fx-rack");
+      console.log(rack);
+      if (rack.getAttribute("folded") === "true") {
+         rack.setAttribute("folded", false);
+      } else {
+         rack.setAttribute("folded", true);
+      }
+      
+   })
 
    stopButton.addEventListener("click", () => {
       Tone.Transport.stop();

@@ -39,6 +39,7 @@ body {
   width: 64px;
   position: absolute;
   right: 1%;
+  top: 1%;
   height: 64px;
   background-image: url("../src/styles/GitHub-Mark-64px.png");
 }
@@ -112,6 +113,22 @@ body {
     top: 52.75%;
   }
 }
+@keyframes screenGlow {
+  0% {
+    background-color: rgb(9, 35, 6);
+  }
+  100% {
+    background-color: rgb(43, 131, 33);
+  }
+}
+@keyframes screenGlowDelay {
+  0% {
+    background-color: rgb(9, 35, 6);
+  }
+  100% {
+    background-color: rgb(9, 35, 6);
+  }
+}
 .visualizer {
   animation-name: visDelay, visSlideUp;
   animation-duration: 4s, 2s;
@@ -119,9 +136,9 @@ body {
 }
 
 .screen {
-  animation-name: screenDelay, screenSlideUp;
-  animation-duration: 4s, 2s;
-  animation-delay: 0s, 4s;
+  animation-name: screenDelay, screenSlideUp, screenGlowDelay, screenGlow;
+  animation-duration: 4s, 2s, 2s, 2s;
+  animation-delay: 0s, 4s, 4s, 6s;
 }
 
 .main-container {
@@ -151,10 +168,11 @@ body {
   background-color: rgb(45, 49, 50);
   border-top-left-radius: 12px;
   border-top-right-radius: 12px;
+  box-shadow: 10px 15px 20px 2px rgba(0, 0, 0, 0.8);
 }
 
 .screen {
-  background-color: white;
+  background-color: rgb(43, 131, 33);
   position: fixed;
   width: 408px;
   height: 100px;
@@ -285,7 +303,7 @@ div > button:hover {
   background-color: rgb(247, 45, 45) !important;
 }
 
-.fx-rack {
+.fx-rack[folded=false] {
   display: flex;
   position: fixed;
   flex-direction: row;
@@ -294,7 +312,7 @@ div > button:hover {
   border-color: rgb(114, 112, 112);
   border-width: 1px;
   border-style: solid;
-  left: 5%;
+  left: 19.5%;
   top: 30%;
   width: 350px;
   height: 190px;
@@ -303,6 +321,7 @@ div > button:hover {
   border-top-left-radius: 30px;
   border-top-right-radius: 12px;
   box-sizing: border-box;
+  box-shadow: 10px 15px 20px 2px rgba(0, 0, 0, 0.8);
 }
 
 .inner-rack {
@@ -319,7 +338,7 @@ div > button:hover {
   box-sizing: border-box;
   position: relative;
   transform: rotate(-90deg);
-  width: 50px;
+  width: 55px;
   height: 58px;
   margin-bottom: -30px;
 }
@@ -329,13 +348,34 @@ div > button:hover {
   transform: rotate(-90deg);
 }
 
+.fx-rack[folded=true] {
+  display: flex;
+  position: fixed;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  border-color: rgb(114, 112, 112);
+  border-width: 1px;
+  border-style: solid;
+  left: 19.5%;
+  top: 50%;
+  width: 350px;
+  height: 190px;
+  z-index: 2;
+  background-color: rgb(45, 49, 50);
+  border-top-left-radius: 30px;
+  border-top-right-radius: 12px;
+  box-sizing: border-box;
+  box-shadow: 10px 15px 20px 2px rgba(0, 0, 0, 0.8);
+}
+
 .slider::-webkit-slider-thumb {
   -webkit-appearance: none;
   appearance: none;
   width: 23px;
   height: 24px;
   border: 0;
-  background: url("contrasticon.png");
+  background: url("./src/styles/fader_transparent_one_fader.png");
   cursor: pointer;
 }
 
@@ -343,6 +383,6 @@ div > button:hover {
   width: 23px;
   height: 25px;
   border: 0;
-  background: url("contrasticon.png");
+  background: url("./src/styles/fader_transparent_one_fader.png");
   cursor: pointer;
 }
