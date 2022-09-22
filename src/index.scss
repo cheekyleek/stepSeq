@@ -1,13 +1,20 @@
 body {
    // background-image: url("./src/styles/natural-wooden-background.jpg");
    // display: flex;
-   background-image: url("../src/styles/natural-wooden-background.jpg");
-   background-size: cover;
-   height: 100%;
-   // align-self: stretch;
-   // align-content: stretch;
+   // background-image: url("../src/styles/natural-wooden-background.jpg");
+   // background-size: cover;
+   // height: 100%;
+   // // align-self: stretch;
+   // // align-content: stretch;
+
+   background: url("../src/styles/natural-wooden-background.jpg") no-repeat center center fixed;
+
+   -webkit-background-size: cover;
+   -moz-background-size: cover;
+   -o-background-size: cover;
+   background-size: cover; 
    
-   background-repeat:repeat-y;
+   // background-repeat:repeat-y;
    z-index: 0;
 
 }

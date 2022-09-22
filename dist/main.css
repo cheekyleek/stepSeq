@@ -2,10 +2,11 @@
   !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].use[1]!./node_modules/sass-loader/dist/cjs.js!./src/index.scss ***!
   \*************************************************************************************************************************************/
 body {
-  background-image: url("../src/styles/natural-wooden-background.jpg");
+  background: url("../src/styles/natural-wooden-background.jpg") no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
   background-size: cover;
-  height: 100%;
-  background-repeat: repeat-y;
   z-index: 0;
 }
 

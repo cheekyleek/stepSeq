@@ -1,4 +1,5 @@
 import * as Tone from 'tone';
+import { PitchShift } from 'tone';
 // import { Analyser, PitchShift } from 'tone';
 // import { Big_File } from './scripts/one_big_long_file.js';
 // import { Samples } from './samples/sample_list.js';
@@ -189,6 +190,7 @@ document.addEventListener("DOMContentLoaded", () => {
          const controlContainer = document.createElement("div");
          const control = document.createElement("input");
          const label = document.createElement("label");
+         const value = document.createElement("p");
 
          controlContainer.classList.add(`${controlNames[i]}-container`);
          control.setAttribute("type", "range");
@@ -346,19 +348,24 @@ document.addEventListener("DOMContentLoaded", () => {
    let currentPlayMark = 0;
 
    // pitchshifting
+   let shiftValue = 0;
+
+   const pitchShift = new Tone.PitchShift();
+
    const pitchControl = document.getElementById("pitchShift");
    console.log(pitchControl);
-   pitchControl.addEventListener("mousedown", (e) => {
+   pitchControl.addEventListener("mousedown", (e) => {   //THIS WORKS FOR ALL SLIDERS!!!!!!
       const slider = e.target;
-                                                      //THIS WORKS FOR ALL SLIDERS!!!!!!
+
+                
+
       function mouseMover(e) {
          console.log(e.target.value);
-         console.log(e.target);
-         
+ 
          // pitchControl.value = e.target.value;
-         slider.parentNode.innerHTML = `pitchshift: ${e.target.value}`;
+         // slider.parentNode.innerHTML = `pitchshift: ${e.target.value}`;
          slider.setAttribute("value", `${e.target.value}`);
-         console.log(slider.parentNode);
+         shiftValue = e.target.value;
       }
 
       slider.addEventListener("mousemove", mouseMover)
@@ -376,17 +383,17 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
 
-   // const signalPath = [pitchShift, phaser, delay, distortion, reverb, gain];
+   const signalPath = [pitchShift];  //, phaser, delay, distortion, reverb, gain
+
 
 
 
    const loop = function(time) {
       let nextStep = currentPlayMark % 32;
       const allTracks = seq.getElementsByClassName('track');
-      
+      console.log(time);
       for (let i = 0; i < 8; i++) {
          const activeColumn = [allTracks[i].children[nextStep]]
-         console.log(activeColumn);
 
 
          activeColumn.forEach((step) => {
@@ -403,18 +410,15 @@ document.addEventListener("DOMContentLoaded", () => {
          // activeColumn.classList.remove('highlighted')
          
       }
-      console.log(allTracks);
       // console.log(currentSteps);
 
       let masterGrid = MG;
    
       for (let i = 0; i < masterGrid.length; i++) {
          const columnStep = masterGrid[i][nextStep];
-         console.log(nextStep);
          
          if (columnStep.isActive === true) {
-            columnStep.sample.toDestination().start(time);     //chain here!!??
-            console.log(columnStep);
+            columnStep.sample.connect(signalPath[0].toDestination()).start(time);     //chain here!!??
          }
       }
 
@@ -425,13 +429,15 @@ document.addEventListener("DOMContentLoaded", () => {
       Tone.Transport.stop();
    })
 
+   Tone.Transport.scheduleRepeat(loop, "32n");           // give the scheduled loop
+
    playButton.addEventListener("click", () => {
       
       Tone.start();
       Tone.Transport.start();
       Tone.Transport.loopEnd = "1m"
       Tone.Transport.bpm.value = 120;
-      Tone.Transport.scheduleRepeat(loop, "32n");
+      
       
       console.log(Tone.Transport.bpm.value)
    })
