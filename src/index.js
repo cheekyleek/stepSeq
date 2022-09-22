@@ -1,5 +1,5 @@
 import * as Tone from 'tone';
-import { PitchShift } from 'tone';
+// import { PitchShift, Synth } from 'tone';
 // import { Analyser, PitchShift } from 'tone';
 // import { Big_File } from './scripts/one_big_long_file.js';
 // import { Samples } from './samples/sample_list.js';
@@ -27,6 +27,19 @@ document.addEventListener("DOMContentLoaded", () => {
       return player;
    }
    
+   // const phaser1 = new Tone.Phaser({
+   //    frequency: 15,
+   //    octaves: 5,
+   //    baseFrequency: 1000
+   // }).toDestination();
+   // const synth = new Tone.FMSynth().connect(phaser1);
+   // synth.triggerAttackRelease("E3", "2n");
+  
+   
+   // // test.connect(shifter).toDestination();
+   // test.triggerAttackRelease(220, "8n");
+
+
    // FUNCTION THAT TURNS AUDIO INTO BLOBS (THEY ARE LITTLE PLAYER OBJECTS)
    
    const hiphopSamples = function() {
@@ -41,6 +54,8 @@ document.addEventListener("DOMContentLoaded", () => {
    
       return [inst1, inst2, inst3, inst4, inst5, inst6, inst7, inst8];
    }
+
+   
 
    const technoSamples = function() {
       let inst1 = blobify("./src/samples/techno/techno_kick.wav");               //need to make required from sample_list
@@ -130,6 +145,137 @@ document.addEventListener("DOMContentLoaded", () => {
       return seq;
    };
 
+   // SET UP FX-RACK
+      
+   const FXRack = function() {
+      const controlNames = ["pitchShift", "phaser", "delay", "distortion", "reverb", "gain"]
+      const rack = document.createElement("div");
+      rack.classList.add('fx-rack');
+      const innerRack = document.createElement("div");
+      innerRack.classList.add('inner-rack');
+
+      for (let i = 0; i < 6; i++) {
+         const controlContainer = document.createElement("div");
+         const control = document.createElement("input");
+         const label = document.createElement("label");
+
+         controlContainer.classList.add(`${controlNames[i]}-container`);
+         control.setAttribute("type", "range");
+
+         if (i === 0) {       // pitch gets octave values of 12
+            control.setAttribute("min", "-24");
+            control.setAttribute("max", "24");
+         } else {
+            control.setAttribute("min", "0");
+            control.setAttribute("max", "100");
+         }
+         
+         if (i !== 5) {       // only volume defaults to half open
+            control.setAttribute("value", "0");
+         } else {
+            control.setAttribute("value", "50");
+         }
+
+         label.innerHTML = `${controlNames[i].toLowerCase()}: ${control.value}`;
+
+         control.setAttribute("class", "slider");
+         control.setAttribute("id", `${controlNames[i]}`);
+         label.appendChild(control)
+         controlContainer.appendChild(label);
+         innerRack.appendChild(controlContainer);
+      }
+
+      rack.appendChild(innerRack);
+
+      return rack
+   };
+
+   const visualizer = function() {
+      const vis = document.createElement("div");
+      const screen = document.createElement("div"); 
+
+      vis.classList.add('visualizer');      
+      screen.classList.add('screen');
+      vis.appendChild(screen);
+
+      return vis
+   };
+
+   const unit = document.querySelector(".unit");
+
+   const mainContainer = document.querySelector(".main-container");           // ADD VISUALIZER TO THE MAIN CONTAINER
+   mainContainer.appendChild(visualizer());
+   mainContainer.appendChild(FXRack());
+
+// pitchshifting
+   let pitchShiftValue = 24;
+   let phaserShiftValue = 0;
+
+   const pitchShifter = new Tone.PitchShift(12).toDestination();
+   // const testAnalyser = new Tone.Analyser();
+   const phaser = new Tone.Phaser(phaserShiftValue);
+   const delay = new Tone.Delay();
+   const distortion = new Tone.Distortion();
+   const reverb = new Tone.Reverb();
+   // const signalPath = [pitchShift];
+
+   const phaserControl = document.getElementById("phaser");
+   console.log(phaserControl);
+   phaserControl.addEventListener("mousedown", (e) => {   //THIS WORKS FOR ALL SLIDERS!!!!!!
+      const slider = e.target;
+
+               
+
+      function mouseMover(e) {
+         console.log(e.target.value);
+
+         // pitchControl.value = e.target.value;
+         // slider.parentNode.innerHTML = `pitchshift: ${e.target.value}`;
+         slider.setAttribute("value", `${e.target.value}`);
+         phaserShiftValue = e.target.value;
+         console.log(phaserShiftValue);
+         // console.log(signalPath[0].pitch);
+      }
+
+      slider.addEventListener("mousemove", mouseMover)
+
+      slider.addEventListener("mouseup", () => {
+         slider.removeEventListener("mousemove", mouseMover);
+      })
+         // pitchControl.value = 
+         // pitchControl.innerHTML = `pitchshift : ${pitchControl.value}`;
+   })
+
+   const pitchControl = document.getElementById("pitchShift");
+   console.log(pitchControl);
+   pitchControl.addEventListener("mousedown", (e) => {   //THIS WORKS FOR ALL SLIDERS!!!!!!
+      const slider = e.target;
+
+               
+
+      function mouseMover(e) {
+         console.log(e.target.value);
+
+         // pitchControl.value = e.target.value;
+         // slider.parentNode.innerHTML = `pitchshift: ${e.target.value}`;
+         slider.setAttribute("value", `${e.target.value}`);
+         pitchShiftValue = e.target.value;
+         console.log(pitchShiftValue);
+         // console.log(pitchShifter.pitch);
+         // console.log(signalPath[0].pitch);
+      }
+
+      slider.addEventListener("mousemove", mouseMover)
+
+      slider.addEventListener("mouseup", () => {
+         slider.removeEventListener("mousemove", mouseMover);
+      })
+         // pitchControl.value = 
+         // pitchControl.innerHTML = `pitchshift : ${pitchControl.value}`;
+   })
+
+
+   
 // PUSH SAMPLE PLAYER OBJECTS INTO GRID
 
    function masterGrid(sampleList) {
@@ -138,9 +284,11 @@ document.addEventListener("DOMContentLoaded", () => {
       for (let i = 0; i < 8; i++) {
          const track = [];
          for (let j = 0; j < 32; j++) {
+            
             const player = {
-               sample: sampleList[i],
-               isActive: false
+               sample: sampleList[i].connect(pitchShifter),
+               isActive: false,
+               pitch: 12
             }
            
             track.push(player);
@@ -150,7 +298,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
       return grid;
    }
-   
+   // .chain(pitchShifter, phaser, distortion, delay, reverb, testAnalyser)
    const MG = masterGrid(hiphopSamples());
    // SET UP CONTROL BAR
    
@@ -179,47 +327,7 @@ document.addEventListener("DOMContentLoaded", () => {
       return bar;
    };
    
-   // SET UP FX-RACK
    
-   const FXRack = function() {
-      const controlNames = ["pitchShift", "phaser", "delay", "distortion", "reverb", "gain"]
-      const rack = document.createElement("div");
-      rack.classList.add('fx-rack');
-
-      for (let i = 0; i < 6; i++) {
-         const controlContainer = document.createElement("div");
-         const control = document.createElement("input");
-         const label = document.createElement("label");
-         const value = document.createElement("p");
-
-         controlContainer.classList.add(`${controlNames[i]}-container`);
-         control.setAttribute("type", "range");
-
-         if (i === 0) {       // pitch gets octave values of 12
-            control.setAttribute("min", "-24");
-            control.setAttribute("max", "24");
-         } else {
-            control.setAttribute("min", "0");
-            control.setAttribute("max", "100");
-         }
-         
-         if (i !== 5) {       // only volume defaults to half open
-            control.setAttribute("value", "0");
-         } else {
-            control.setAttribute("value", "50");
-         }
-
-         label.innerHTML = `${controlNames[i].toLowerCase()}: ${control.value}`;
-
-         control.setAttribute("class", "slider");
-         control.setAttribute("id", `${controlNames[i]}`);
-         label.appendChild(control)
-         controlContainer.appendChild(label);
-         rack.appendChild(controlContainer);
-      }
-
-      return rack
-   };
    
    // SET UP RECORDER
    
@@ -229,16 +337,7 @@ document.addEventListener("DOMContentLoaded", () => {
    
    // SET UP VISUALIZER
    
-   const visualizer = function() {
-      const vis = document.createElement("div");
-      const screen = document.createElement("div"); 
-
-      vis.classList.add('visualizer');      
-      screen.classList.add('screen');
-      vis.appendChild(screen);
-
-      return vis
-   };
+   
 
    
    // const audioCtx = new Analyser
@@ -247,11 +346,7 @@ document.addEventListener("DOMContentLoaded", () => {
    
    // CREATE ALL ELEMENTS AND ATTACH TO UNIT
    
-   const unit = document.querySelector(".unit");
-
-   const mainContainer = document.querySelector(".main-container");           // ADD VISUALIZER TO THE MAIN CONTAINER
-   mainContainer.appendChild(visualizer());
-   mainContainer.appendChild(FXRack());
+  
    // const sequencer = setupSeq();
    // const controlBar = setupControlBar();
    // const FXRack = setupFX();
@@ -347,40 +442,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
    let currentPlayMark = 0;
 
-   // pitchshifting
-   let shiftValue = 0;
-   const pitchShift = new Tone.PitchShift(shiftValue);
-   // const signalPath = [pitchShift];
    
-
-   const pitchControl = document.getElementById("pitchShift");
-   console.log(pitchControl);
-   pitchControl.addEventListener("mousedown", (e) => {   //THIS WORKS FOR ALL SLIDERS!!!!!!
-      const slider = e.target;
-
-                
-
-      function mouseMover(e) {
-         console.log(e.target.value);
- 
-         // pitchControl.value = e.target.value;
-         // slider.parentNode.innerHTML = `pitchshift: ${e.target.value}`;
-         slider.setAttribute("value", `${e.target.value}`);
-         shiftValue = e.target.value;
-         // pitchShift.pitch = shiftValue;
-         console.log(shiftValue);
-         console.log(pitchShift.pitch);
-         // console.log(signalPath[0].pitch);
-      }
-
-      slider.addEventListener("mousemove", mouseMover)
-
-      slider.addEventListener("mouseup", () => {
-         slider.removeEventListener("mousemove", mouseMover);
-      })
-         // pitchControl.value = 
-         // pitchControl.innerHTML = `pitchshift : ${pitchControl.value}`;
-   })
 
    
 
@@ -394,7 +456,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
      //, phaser, delay, distortion, reverb, gain
 
-
+   // const testContext = new Tone.Context();
+  
+   // console.log(testContext);
 
 
    const loop = function(time) {
@@ -427,12 +491,20 @@ document.addEventListener("DOMContentLoaded", () => {
          const columnStep = masterGrid[i][nextStep];
          
          if (columnStep.isActive === true) {
-            columnStep.sample.start(time).chain(pitchShift).toDestination();    //chain here!!??
+            columnStep.sample.start(time).toDestination();    //chain here!!??
+            
+            console.log(columnStep.pitch)
          }
       }
       // console.log(signalPath[0]);
+      // connect(testContext)
+      // console.log(testAnalyser);
+      // console.log(pitchShifter.numberOfInputs);
+      // console.log(pitchShifter);
       
       currentPlayMark++;
+
+      
    }
 
    stopButton.addEventListener("click", () => {
@@ -442,6 +514,9 @@ document.addEventListener("DOMContentLoaded", () => {
    // const looper = function() {
    //    return 
    // }
+   
+   
+   
 
    Tone.Transport.scheduleRepeat(loop, "32n");
    // Tone.Destination.chain(looper, pitchShift);
