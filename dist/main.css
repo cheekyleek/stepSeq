@@ -322,11 +322,11 @@ div > button:hover {
   flex-direction: row;
   justify-content: space-around;
   align-items: center;
-  border-color: rgb(114, 112, 112);
+  border-color: rgb(67, 66, 66);
   border-width: 1px;
   border-style: solid;
   left: 19.5%;
-  top: 30%;
+  top: 31%;
   width: 350px;
   height: 190px;
   z-index: 2;
@@ -367,7 +367,7 @@ div > button:hover {
   flex-direction: row;
   justify-content: space-around;
   align-items: center;
-  border-color: rgb(114, 112, 112);
+  border-color: rgb(67, 66, 66);
   border-width: 1px;
   border-style: solid;
   left: 19.5%;
