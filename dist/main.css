@@ -35,6 +35,10 @@ body {
   cursor: pointer;
 }
 
+.linked-in:hover {
+  cursor: pointer;
+}
+
 .github {
   width: 64px;
   position: absolute;
@@ -42,6 +46,15 @@ body {
   top: 1%;
   height: 64px;
   background-image: url("../src/styles/GitHub-Mark-64px.png");
+}
+
+.linked-in {
+  width: 64px;
+  position: absolute;
+  right: 6%;
+  top: 1%;
+  height: 64px;
+  background-image: url("../src/styles/stepSeq_linkedin_bug.png");
 }
 
 .link-delay {
