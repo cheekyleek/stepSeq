@@ -223,20 +223,20 @@ document.addEventListener("DOMContentLoaded", () => {
    // const signalPath = [pitchShift];
 
    const phaserControl = document.getElementById("phaser");
-   console.log(phaserControl);
+   // console.log(phaserControl);
    phaserControl.addEventListener("mousedown", (e) => {   //THIS WORKS FOR ALL SLIDERS!!!!!!
       const slider = e.target;
 
                
 
       function mouseMover(e) {
-         console.log(e.target.value);
+         // console.log(e.target.value);
 
          // pitchControl.value = e.target.value;
          // slider.parentNode.innerHTML = `pitchshift: ${e.target.value}`;
          slider.setAttribute("value", `${e.target.value}`);
          phaserShiftValue = e.target.value;
-         console.log(phaserShiftValue);
+         // console.log(phaserShiftValue);
          // console.log(signalPath[0].pitch);
       }
 
@@ -250,20 +250,20 @@ document.addEventListener("DOMContentLoaded", () => {
    })
 
    const pitchControl = document.getElementById("pitchShift");
-   console.log(pitchControl);
+   // console.log(pitchControl);
    pitchControl.addEventListener("mousedown", (e) => {   //THIS WORKS FOR ALL SLIDERS!!!!!!
       const slider = e.target;
 
                
 
       function mouseMover(e) {
-         console.log(e.target.value);
+         // console.log(e.target.value);
 
          // pitchControl.value = e.target.value;
          // slider.parentNode.innerHTML = `pitchshift: ${e.target.value}`;
          slider.setAttribute("value", `${e.target.value}`);
          pitchShiftValue = e.target.value;
-         console.log(pitchShiftValue);
+         // console.log(pitchShiftValue);
          // console.log(pitchShifter.pitch);
          // console.log(signalPath[0].pitch);
       }
@@ -398,13 +398,13 @@ document.addEventListener("DOMContentLoaded", () => {
                if (selectedStep.getAttribute('data-is-active') === 'false') {
                   selectedStep.setAttribute('data-is-active', true);
                   masterGrid[i][j].isActive = true;
-                  console.log(selectedStep);
-                  console.log(masterGrid[i][j]);
+                  // console.log(selectedStep);
+                  // console.log(masterGrid[i][j]);
                } else {
                   selectedStep.setAttribute('data-is-active', false);
                   masterGrid[i][j].isActive = false;
-                  console.log(selectedStep);
-                  console.log(masterGrid[i][j]);
+                  // console.log(selectedStep);
+                  // console.log(masterGrid[i][j]);
                }
             })
          }
@@ -481,7 +481,7 @@ document.addEventListener("DOMContentLoaded", () => {
    const loop = function(time) {
       let nextStep = currentPlayMark % 32;
       const allTracks = seq.getElementsByClassName('track');
-      console.log(time);
+      // console.log(time);
       for (let i = 0; i < 8; i++) {
          const activeColumn = [allTracks[i].children[nextStep]]
 
@@ -510,7 +510,7 @@ document.addEventListener("DOMContentLoaded", () => {
          if (columnStep.isActive === true) {
             columnStep.sample.start(time).toDestination();    //chain here!!??
             
-            console.log(columnStep.pitch)
+            // console.log(columnStep.pitch)
          }
       }
       // console.log(signalPath[0]);
@@ -528,7 +528,7 @@ document.addEventListener("DOMContentLoaded", () => {
    
    FXFolderButton.addEventListener("click", () => {
       const rack = document.querySelector(".fx-rack");
-      console.log(rack);
+      // console.log(rack);
       if (rack.getAttribute("folded") === "true") {
          rack.setAttribute("folded", false);
       } else {
@@ -560,7 +560,7 @@ document.addEventListener("DOMContentLoaded", () => {
       Tone.Transport.bpm.value = 120;
       
       
-      console.log(Tone.Transport.bpm.value)
+      // console.log(Tone.Transport.bpm.value)
    })
 
 });
