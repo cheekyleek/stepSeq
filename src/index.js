@@ -1,8 +1,11 @@
 import * as Tone from 'tone';
-import { FXRack } from './scripts/fxRack.js';
-import { Sampler } from './scripts/sampler.js';
+import { FXRack } from './scripts/components/fxRack.js';
+import { Sampler } from './scripts/components/sampler.js';
 
 import { FXRackView } from './scripts/views/fxRackView.js';
+import { visualizerView } from './scripts/views/visualizerView.js';
+import { sequencerView } from './scripts/views/sequencerView.js';
+import { controlBarView } from './scripts/views/controlBarView.js';
 
 document.addEventListener("DOMContentLoaded", () => {
    console.log("Welcome to stepSeq");
@@ -11,176 +14,61 @@ document.addEventListener("DOMContentLoaded", () => {
    const fxRack = new FXRack();
    const sampler = new Sampler(fxRack);
 
-   
+   mainContainer.appendChild(sequencerView());
+   mainContainer.appendChild(FXRackView());
+   //    mainContainer.appendChild(visualizer());
 
 
-   // SET UP SEQUENCER VIEW
-   
-   // const sequencer = function() {
-   //    const seq = document.createElement("div");
-   //    seq.classList.add('sequencer');
-      
-   //    for (let i = 0; i < 8; i++) {
-   //       const track = document.createElement("div");          //DONE EXCEPT CUSTOM TRACK INPUT
-   //       track.classList.add('track');
-   //       track.setAttribute('id', i);
-   
-   //       for (let j = 0; j < 32; j++) {
-   //          // if (j % 4 === 0 && j !== 0) {
-   //          //    let lineBreak = document.createElement("div");
-   //          //    lineBreak.classList.add("spacer");
-   //          //    track.appendChild(lineBreak);
-   //          // }
-
-   //          const step = document.createElement("button");
-   //          step.classList.add('step');
-   //          step.setAttribute('id', j);
-   //          step.setAttribute('data-is-active', false);
-
-            
-
-   //          track.appendChild(step);
-   //       }
-   
-   //       seq.appendChild(track);
-   //    }
-   
-   //    return seq;
-   // };
-
-//    // SET UP FX-RACK
-
-   
-      
-   
-
-   
-
-//    const visualizer = function() {
-//       const vis = document.createElement("div");
-//       const screen = document.createElement("div"); 
-
-//       vis.classList.add('visualizer');      
-//       screen.classList.add('screen');
-//       vis.appendChild(screen);
-
-//       return vis
-//    };
-
-//    const unit = document.querySelector(".unit");
-
-
+   //general slider handler
 
    const handleSlider = (element, effect) => {
       const val = element.value;
       const readOutId = `${element.id}-readout`;
       const readOut = document.getElementById(readOutId);
-      effect(val, "8n");
-      readOut.innerHTML = Math.floor(val) ;
-      console.log(val);
+      effect(val);
+      if (val <= -50) {
+         readOut.innerHTML = "-inf";
+      } else {
+         readOut.innerHTML = Math.floor(val);
+      }
+      
    }
 
-             // ADD VISUALIZER TO THE MAIN CONTAINER
-//    mainContainer.appendChild(visualizer());
-   mainContainer.appendChild(FXRackView());
+
+   //slider actions
 
    const pitchSlider = document.getElementById("pitch");
    pitchSlider.oninput = () => {
       handleSlider(pitchSlider, fxRack.changePitch);
    };
 
+   const distortSlider = document.getElementById("distort");
+   distortSlider.oninput = () => {
+      handleSlider(distortSlider, fxRack.changeDistort);
+   };
+
+   const phaserSlider = document.getElementById("phaser");
+   phaserSlider.oninput = () => {
+      handleSlider(phaserSlider, fxRack.changePhaser);
+   };
+
    const delaySlider = document.getElementById("delay");
-   console.log(delaySlider)
    delaySlider.oninput = () => {
       handleSlider(delaySlider, fxRack.changeDelay);
    };
 
    const reverbSlider = document.getElementById("reverb");
-   console.log(reverbSlider)
    reverbSlider.oninput = () => {
       handleSlider(reverbSlider, fxRack.changeReverb);
    };
 
-
-
-
-//    const pitchShifter = new Tone.PitchShift(pitchShiftValue).toDestination();
-//    // const testAnalyser = new Tone.Analyser();
-//    const phaser = new Tone.Phaser(phaserShiftValue);
-//    const delay = new Tone.Delay();
-//    const distortion = new Tone.Distortion();
-//    const reverb = new Tone.Reverb();
-//    // const signalPath = [pitchShift];
-
-//    const phaserControl = document.getElementById("phaser");
-//    // console.log(phaserControl);
-//    phaserControl.addEventListener("mousedown", (e) => {   //THIS WORKS FOR ALL SLIDERS!!!!!!
-
-   // function mouseMover(e) {
-   //    console.log(e.target.value);
-
-   //    // pitchControl.value = e.target.value;
-   //    // slider.parentNode.innerHTML = `pitchshift: ${e.target.value}`;
-   //    // slider.setAttribute("value", `${e.target.value}`);
-   //    fxRack.changePitch(e.target.value);
-   //    console.log(e.target.value);
-   //    // console.log(phaserShiftValue);
-   //    // console.log(signalPath[0].pitch);
-   // }
-
-   // console.log(pitchSlider)
-
-   // pitchSlider.addEventListener("mousedown", e => {
-   //    pitchSlider.addEventListener("mousemove", mouseMover(e))
-   //    // slider.addEventListener("mousemove", mouseMover(e))
-
-   //    pitchSlider.addEventListener("mouseup", () => {
-   //       pitchSlider.removeEventListener("mousemove", mouseMover);
-   //    })
-   // })
-      
-
-
-               
-
-      
-
-      
-//          // pitchControl.value = 
-//          // pitchControl.innerHTML = `pitchshift : ${pitchControl.value}`;
-//    })
-
-//    const pitchControl = document.getElementById("pitchShift");
-//    // console.log(pitchControl);
-//    pitchControl.addEventListener("mousedown", (e) => {   //THIS WORKS FOR ALL SLIDERS!!!!!!
-//       const slider = e.target;
-
-               
-
-//       function mouseMover(e) {
-//          // console.log(e.target.value);
-
-//          // pitchControl.value = e.target.value;
-//          // slider.parentNode.innerHTML = `pitchshift: ${e.target.value}`;
-//          slider.setAttribute("value", `${e.target.value}`);
-//          pitchShiftValue = e.target.value;
-//          // console.log(pitchShiftValue);
-//          // console.log(pitchShifter.pitch);
-//          // console.log(signalPath[0].pitch);
-//       }
-
-//       slider.addEventListener("mousemove", mouseMover)
-
-//       slider.addEventListener("mouseup", () => {
-//          slider.removeEventListener("mousemove", mouseMover);
-//       })
-//          // pitchControl.value = 
-//          // pitchControl.innerHTML = `pitchshift : ${pitchControl.value}`;
-//    })
-
+   const gainSlider = document.getElementById("gain");
+   gainSlider.oninput = () => {
+      handleSlider(gainSlider, fxRack.changeGain);
+   };
 
    
-// // PUSH SAMPLE PLAYER OBJECTS INTO GRID
+// PUSH SAMPLE PLAYER OBJECTS INTO GRID
 
 //    function masterGrid(sampleList) {
 //       const grid = [];
@@ -202,38 +90,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
 //       return grid;
 //    }
-//    // .chain(pitchShifter, phaser, distortion, delay, reverb, testAnalyser)
+//    
 //    const MG = masterGrid(technoSamples());
 //    // SET UP CONTROL BAR
    
-//    const controlBar = function() {
-//       const bar = document.createElement("div");
-//       bar.classList.add('control-bar')
-   
-//       for (let i = 0; i < 3; i++) {
-//          const controlArea = document.createElement("div");
-//          if (i === 0) {
-//             controlArea.classList.add("FX-controls");
-//          } else if (i === 1) {
-//             controlArea.classList.add("playback-controls");
-//          } else {
-//             controlArea.classList.add("rec-controls");
-//          }
 
-//          for (let j = 0; j < 4; j++) {
-//             const button = document.createElement("button");
-//             if (i === 0 && j === 3) {
-//                button.classList.add("fx-folder");
-//                button.innerHTML = "FX"
-//             }
-//             button.setAttribute('id', j)
-//             controlArea.appendChild(button);
-//          }
-//          bar.appendChild(controlArea);
-//       }
-   
-//       return bar;
-//    };
 
    
 //    // console.log(FXArray);
@@ -252,13 +113,6 @@ document.addEventListener("DOMContentLoaded", () => {
 //    const recorder = function() {
    
 //    };
-   
-//    // SET UP VISUALIZER
-   
-   
-
-   
-//    // const audioCtx = new Analyser
 
 
    
@@ -313,30 +167,30 @@ document.addEventListener("DOMContentLoaded", () => {
       
 //    };
 
-//    class View {
-//       constructor(unit, seq, bar) {  //, seq, fx, rec, vis
-//          this.unit = unit;
-//          this.seq = seq;
-//          this.controlBar = bar;
-//          // this.fx = fx;
-//          // this.rec = rec;
-//          // this.vis = vis;
+   class View {
+      constructor(unit, seq, bar) {  //, seq, fx, rec, vis
+         this.unit = unit;
+         this.seq = seq;
+         this.controlBar = bar;
+         // this.fx = fx;
+         // this.rec = rec;
+         // this.vis = vis;
 
-//          // const newFX = this.setupFX();
-//          // const newRec = this.setupRec();
-//          // const newVis = this.setupVis();
+         // const newFX = this.setupFX();
+         // const newRec = this.setupRec();
+         // const newVis = this.setupVis();
          
    
-//          unit.appendChild(this.controlBar);
-//          unit.appendChild(this.seq);
-//          // unit.appendChild(newFX);
-//          // unit.appendChild(newRec);
-//          // unit.appendChild(newVis);
-//          setupStepListeners(MG);
+         unit.appendChild(this.controlBar);
+         unit.appendChild(this.seq);
+         // unit.appendChild(newFX);
+         // unit.appendChild(newRec);
+         // unit.appendChild(newVis);
+         setupStepListeners(MG);
    
-//          return unit;
-//       }
-//    }
+         return unit;
+      }
+   }
    
    
 //    const seq = sequencer();
@@ -359,26 +213,7 @@ document.addEventListener("DOMContentLoaded", () => {
 //    })
 
 //    let currentPlayMark = 0;
-
    
-
-   
-
-//    // pitchShift(pitchControl.value);
-
-   
-   
-      
-
-
-
-//      //, phaser, delay, distortion, reverb, gain
-
-//    // const testContext = new Tone.Context();
-  
-//    // console.log(testContext);
-
-
 //    const loop = function(time) {
 //       let nextStep = currentPlayMark % 32;
 //       const allTracks = seq.getElementsByClassName('track');
@@ -414,11 +249,6 @@ document.addEventListener("DOMContentLoaded", () => {
 //             // console.log(columnStep.pitch)
 //          }
 //       }
-//       // console.log(signalPath[0]);
-//       // connect(testContext)
-//       // console.log(testAnalyser);
-//       // console.log(pitchShifter.numberOfInputs);
-//       // console.log(pitchShifter);
       
 //       currentPlayMark++;
 
@@ -441,10 +271,6 @@ document.addEventListener("DOMContentLoaded", () => {
 //    stopButton.addEventListener("click", () => {
 //       Tone.Transport.stop();
 //    })
-
-//    // const looper = function() {
-//    //    return 
-//    // }
    
    
    

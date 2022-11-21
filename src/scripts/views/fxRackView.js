@@ -28,6 +28,12 @@ export const FXRackView = () => {
       if (i === 0) {                            // pitch gets octave values of 12
          input.setAttribute("min", "-24");
          input.setAttribute("max", "24");
+      } else if (i === 2) {
+         input.setAttribute("min", "0");
+         input.setAttribute("max", "90"); // probably going to have to come down once loop is used
+      } else if (i === 5) {
+         input.setAttribute("min", "-50");
+         input.setAttribute("max", "0"); // probably going to have to come down once loop is used
       } else {
          input.setAttribute("min", "0");
          input.setAttribute("max", "100");
@@ -36,7 +42,7 @@ export const FXRackView = () => {
       if (i !== 5) {                            // only volume defaults to half open
          input.setAttribute("value", "0");
       } else {
-         input.setAttribute("value", "50");
+         input.setAttribute("value", "-6");
       }
 
       label.innerHTML = `${controlNames[i].toUpperCase()}`;

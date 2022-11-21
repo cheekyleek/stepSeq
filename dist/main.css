@@ -368,8 +368,7 @@ div > button:hover {
   writing-mode: vertical-lr;
   text-orientation: upright;
   position: relative;
-  color: rgb(239, 157, 25);
-  text-shadow: 0rem 0.05rem 0.05rem #545454, 0.05rem 0rem 0.05rem #545454, -0.05rem 0rem 0.05rem #545454, 0rem -0.05rem 0.05rem #545454;
+  color: rgb(0, 0, 0);
   font-size: 0.7rem;
   font-weight: 700;
 }
@@ -379,8 +378,9 @@ div > button:hover {
   height: 75%;
   line-height: 0.9rem;
   text-indent: 0.7rem;
-  background-color: rgb(144, 144, 144);
+  background-color: rgb(255, 255, 255);
   border-radius: 2px;
+  box-shadow: inset 1px 0px rgb(88, 88, 88), inset -1px 0px rgb(88, 88, 88), inset 0px -1px rgb(88, 88, 88), inset 0px 1px rgb(88, 88, 88);
 }
 
 .control-container-upper-right > .slider {
