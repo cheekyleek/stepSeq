@@ -1,20 +1,59 @@
 /*!*************************************************************************************************************************************!*\
   !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].use[1]!./node_modules/sass-loader/dist/cjs.js!./src/index.scss ***!
   \*************************************************************************************************************************************/
-* {
-  box-sizing: border-box;
+/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
   margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+  box-sizing: border-box;
+}
+
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+  display: block;
 }
 
 body {
-  height: 100vh;
-  overflow: hidden;
-  background: url("../src/styles/natural-wooden-background.jpg") no-repeat center center fixed;
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
-  background-size: cover;
-  z-index: 0;
+  line-height: 1;
+}
+
+ol, ul {
+  list-style: none;
+}
+
+blockquote, q {
+  quotes: none;
+}
+
+blockquote:before, blockquote:after,
+q:before, q:after {
+  content: "";
+  content: none;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
 }
 
 @font-face {
@@ -25,15 +64,217 @@ body {
   font-family: batteredcooperfont;
   src: url("../src/styles/BatteredCooper-ZEEB.ttf");
 }
-.title {
-  position: fixed;
-  height: 50px;
-  width: 300px;
-  top: 14%;
-  left: 41.35%;
+body {
+  height: 100vh;
+  width: 100vw;
+}
+
+.main-container {
+  background: url("../src/styles/natural-wooden-background.jpg") no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.top-container {
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  width: 100%;
+  height: 24%;
+  border: 1px solid blue;
+}
+
+.title-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 4rem;
+  width: 18.75rem;
   font-family: batteredcooperfont;
-  font-size: 65px;
+  font-size: calc(2.1rem + 2vw);
   color: #181516;
+  border: 1px solid green;
+}
+
+.bottom-container {
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  width: 100%;
+  height: 76%;
+  border: 1px solid red;
+  padding-bottom: 4rem;
+}
+
+.sequencer {
+  height: 70%;
+  height: 25rem;
+  width: 85%;
+  position: relative;
+  z-index: 1;
+  background-color: rgb(45, 49, 50);
+  padding: 20px;
+  max-width: 85%;
+  display: flex;
+  border-color: rgb(67, 66, 66);
+  border-style: solid;
+  border-width: 1px;
+  border-radius: 8px;
+  flex-direction: column;
+  align-items: center;
+  box-shadow: 10px 15px 20px 2px rgba(0, 0, 0, 0.8);
+}
+
+@keyframes visDelay {
+  0% {
+    height: 0;
+    top: 0;
+    visibility: hidden;
+  }
+  100% {
+    height: 0;
+    top: 0;
+    visibility: hidden;
+  }
+}
+@keyframes visSlideUp {
+  0% {
+    height: 0;
+    top: 0;
+    box-shadow: none;
+    width: 29%;
+    border-left-color: transparent;
+    border-right-color: transparent;
+    border-top-color: transparent;
+  }
+  100% {
+    height: 7.5rem;
+    top: -7.563rem;
+    box-shadow: none;
+    width: 29%;
+    border-left-color: transparent;
+    border-right-color: transparent;
+    border-top-color: transparent;
+  }
+}
+@keyframes visPushIn {
+  0% {
+    height: 7.5rem;
+    width: 29%;
+    top: -7.563rem;
+    box-shadow: none;
+    border-left-color: transparent;
+    border-right-color: transparent;
+    border-top-color: transparent;
+  }
+  100% {
+    height: 8rem;
+    width: 30%;
+    top: -8.063rem;
+    box-shadow: 0.625rem 0.625rem 1.25rem 0.125rem rgba(0, 0, 0, 0.8);
+    border-left: 0.063rem solid rgb(67, 66, 66);
+    border-right: 0.063rem solid rgb(67, 66, 66);
+    border-top: 0.063rem solid rgb(67, 66, 66);
+  }
+}
+.visualizer {
+  animation-name: visDelay, visSlideUp, visPushIn;
+  animation-duration: 2s, 2s, 1s;
+  animation-delay: 0s, 2s, 4s;
+  display: flex;
+  padding: 0.8rem;
+  position: absolute;
+  justify-content: center;
+  align-items: center;
+  border-left: 0.063rem solid rgb(67, 66, 66);
+  border-right: 0.063rem solid rgb(67, 66, 66);
+  border-top: 0.063rem solid rgb(67, 66, 66);
+  top: -8.063rem;
+  width: 30%;
+  height: 8rem;
+  z-index: 0;
+  background-color: rgb(45, 49, 50);
+  border-top-left-radius: 12px;
+  border-top-right-radius: 12px;
+  box-shadow: 0.625rem 0.625rem 1.25rem 0.125rem rgba(0, 0, 0, 0.8);
+}
+
+@keyframes screenDelay {
+  0% {
+    visibility: hidden;
+  }
+  100% {
+    visibility: hidden;
+  }
+}
+@keyframes screenSlideUp {
+  0% {
+    height: 0;
+  }
+  100% {
+    height: 100%;
+  }
+}
+@keyframes screenGlowDelay {
+  0% {
+    background-color: rgb(9, 35, 6);
+  }
+  100% {
+    background-color: rgb(9, 35, 6);
+  }
+}
+@keyframes screenGlow {
+  0% {
+    background-color: rgb(9, 35, 6);
+  }
+  100% {
+    background-color: rgb(43, 131, 33);
+  }
+}
+.screen {
+  background-color: rgb(43, 131, 33);
+  position: relative;
+  width: 100%;
+  height: 100%;
+  border-top-left-radius: 7px;
+  border-top-right-radius: 7px;
+  animation-name: screenDelay, screenSlideUp, screenGlowDelay, screenGlow;
+  animation-duration: 2s, 2s, 2s, 2s;
+  animation-delay: 0s, 1.2s, 2s, 4s;
+}
+
+.grid {
+  order: 2;
+  display: flex;
+  position: relative;
+  width: 1200px;
+  height: auto;
+  flex-direction: column;
+  border-radius: 1px;
+  border-width: 1px;
+  border-style: solid;
+  border-color: rgb(45, 49, 50);
+}
+
+.control-bar {
+  display: flex;
+  justify-content: space-around;
+  order: 1;
+  height: 40px;
+  width: 1198px;
+  border-color: black;
+  border-radius: 2px;
+  border-width: 2px;
+  margin: 4px;
+  background-color: grey;
 }
 
 .github:hover {
@@ -99,138 +340,6 @@ body {
     opacity: 1;
   }
 }
-@keyframes visSlideUp {
-  0% {
-    top: 51%;
-  }
-  100% {
-    top: 31%;
-  }
-}
-@keyframes screenSlideUp {
-  0% {
-    top: 52.75%;
-  }
-  100% {
-    top: 32.75%;
-  }
-}
-@keyframes visDelay {
-  0% {
-    top: 51%;
-  }
-  100% {
-    top: 51%;
-  }
-}
-@keyframes screenDelay {
-  0% {
-    top: 52.75%;
-  }
-  100% {
-    top: 52.75%;
-  }
-}
-@keyframes screenGlow {
-  0% {
-    background-color: rgb(9, 35, 6);
-  }
-  100% {
-    background-color: rgb(43, 131, 33);
-  }
-}
-@keyframes screenGlowDelay {
-  0% {
-    background-color: rgb(9, 35, 6);
-  }
-  100% {
-    background-color: rgb(9, 35, 6);
-  }
-}
-.visualizer {
-  animation-name: visDelay, visSlideUp;
-  animation-duration: 2s, 2s;
-  animation-delay: 0s, 2s;
-}
-
-.screen {
-  animation-name: screenDelay, screenSlideUp, screenGlowDelay, screenGlow;
-  animation-duration: 2s, 2s, 2s, 2s;
-  animation-delay: 0s, 2s, 2s, 4s;
-}
-
-.main-container {
-  display: flex;
-  height: 100%;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  width: 100%;
-  height: 100%;
-  z-index: 1;
-  overflow: hidden;
-}
-
-.visualizer {
-  display: flex;
-  position: fixed;
-  justify-content: center;
-  align-items: center;
-  border-color: rgb(67, 66, 66);
-  border-width: 1px;
-  border-style: solid;
-  top: 31%;
-  width: 440px;
-  height: 190px;
-  z-index: 2;
-  background-color: rgb(45, 49, 50);
-  border-top-left-radius: 12px;
-  border-top-right-radius: 12px;
-  box-shadow: 10px 15px 20px 2px rgba(0, 0, 0, 0.8);
-}
-
-.screen {
-  background-color: rgb(43, 131, 33);
-  position: fixed;
-  width: 408px;
-  height: 100px;
-  z-index: 3;
-  top: 32.75%;
-  border-top-left-radius: 7px;
-  border-top-right-radius: 7px;
-}
-
-.unit {
-  align-self: center;
-  background-color: rgb(45, 49, 50);
-  position: absolute;
-  padding: 20px;
-  max-width: 100%;
-  top: 45%;
-  display: flex;
-  border-color: rgb(67, 66, 66);
-  border-style: solid;
-  border-width: 1px;
-  border-radius: 8px;
-  flex-direction: column;
-  align-items: center;
-  z-index: 3;
-  box-shadow: 10px 15px 20px 2px rgba(0, 0, 0, 0.8);
-}
-
-.control-bar {
-  display: flex;
-  justify-content: space-around;
-  order: 1;
-  height: 40px;
-  width: 1198px;
-  border-color: black;
-  border-radius: 2px;
-  border-width: 2px;
-  margin: 4px;
-  background-color: grey;
-}
-
 .control-bar > div {
   display: flex;
   justify-content: space-around;
@@ -252,19 +361,6 @@ div > button {
   outline: none;
   background-color: lightgrey;
   transition: all 0.2s ease-in-out;
-}
-
-.sequencer {
-  order: 2;
-  display: flex;
-  position: relative;
-  width: 1200px;
-  height: auto;
-  flex-direction: column;
-  border-radius: 1px;
-  border-width: 1px;
-  border-style: solid;
-  border-color: rgb(45, 49, 50);
 }
 
 .track {

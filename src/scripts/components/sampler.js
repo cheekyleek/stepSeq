@@ -38,7 +38,7 @@ export class Sampler {
 
       this.source.sound1.volume.value = +6;
 
-      for (let i = 1; i < 24; i++) {
+      for (let i = 1; i <= 23; i++) {
          const sound = 'sound' + i;
          this.source[sound].chain(FXRack.pitchShift, FXRack.distort, FXRack.phaser, FXRack.delay, FXRack.reverb, FXRack.gain, Tone.Destination);
       }
@@ -47,6 +47,6 @@ export class Sampler {
    }
 
    playSample(soundKey) {
-      this.source[soundKey].start();
+      this.source[soundKey].start('+0.05');
    }
 };

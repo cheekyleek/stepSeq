@@ -2,22 +2,22 @@ import * as Tone from 'tone';
 import { FXRack } from './scripts/components/fxRack.js';
 import { Sampler } from './scripts/components/sampler.js';
 
-import { FXRackView } from './scripts/views/fxRackView.js';
-import { visualizerView } from './scripts/views/visualizerView.js';
-import { sequencerView } from './scripts/views/sequencerView.js';
-import { controlBarView } from './scripts/views/controlBarView.js';
+import { seqView } from  './scripts/views/seqView.js';
+import { fxView } from './scripts/views/fxView.js';
+import { visView } from './scripts/views/visView.js';
+
 
 document.addEventListener("DOMContentLoaded", () => {
    console.log("Welcome to stepSeq");
 
-   const mainContainer = document.querySelector(".main-container"); 
+   const mainContainer = document.querySelector(".main-container");
+   const bottomContainer = document.querySelector(".bottom-container")
+
    const fxRack = new FXRack();
    const sampler = new Sampler(fxRack);
 
-   mainContainer.appendChild(sequencerView());
-   mainContainer.appendChild(FXRackView());
-   //    mainContainer.appendChild(visualizer());
-
+   bottomContainer.appendChild(seqView());
+   
 
    //general slider handler
 
@@ -31,7 +31,6 @@ document.addEventListener("DOMContentLoaded", () => {
       } else {
          readOut.innerHTML = Math.floor(val);
       }
-      
    }
 
 
@@ -68,6 +67,8 @@ document.addEventListener("DOMContentLoaded", () => {
    };
 
    
+
+   // setupStepListeners(MG);
 // PUSH SAMPLE PLAYER OBJECTS INTO GRID
 
 //    function masterGrid(sampleList) {
@@ -293,7 +294,7 @@ document.addEventListener("DOMContentLoaded", () => {
    
 
 
-   const box = document.getElementsByClassName("unit")[0];
+   
    box.addEventListener("click", () => {
       sampler.playSample("sound2");
       console.log("playing");
