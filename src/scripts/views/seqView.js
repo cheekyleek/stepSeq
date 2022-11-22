@@ -6,10 +6,10 @@ import { visView } from "./visView.js";
 export const seqView = () => {
    const sequencer = document.createElement("div");
    sequencer.classList.add("sequencer");
-
-   // sequencer.appendChild(ctrlView());
+   
    // sequencer.appendChild(gridView());
-   // bottomContainer.appendChild(fxView());
+   sequencer.appendChild(fxView());
+   sequencer.appendChild(ctrlView());
    sequencer.appendChild(visView());
 
    return sequencer

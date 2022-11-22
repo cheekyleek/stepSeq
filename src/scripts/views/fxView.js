@@ -1,29 +1,25 @@
+export const CONTROLNAMES = ["pitch", "phaser", "delay", "distort", "reverb", "gain"];
+
 export const fxView = () => {
-   const controlNames = ["pitch", "phaser", "delay", "distort", "reverb", "gain"]
    const rack = document.createElement("div");
 
    rack.classList.add('fx-rack');
 
    for (let i = 0; i < 6; i++) {
-      const controlContainer = document.createElement("div");
-      const controlContainerUpper = document.createElement("div");
-      const controlContainerLower = document.createElement("div");
-      const controlContainerUpperLeft = document.createElement("div");
-      const controlContainerUpperRight = document.createElement("div");
+      const sliderContainer = document.createElement("div");
+      const sliderContainerLeft = document.createElement("div");
+      const sliderContainerRight = document.createElement("div");
       const input = document.createElement("input");
       const label = document.createElement("label");
-      const readOut = document.createElement("p");
-
-      controlContainer.classList.add(`control-container`);
-      controlContainerUpper.classList.add('control-container-upper');
-      controlContainerLower.classList.add('control-container-lower');
-      controlContainerUpperLeft.classList.add('control-container-upper-left');
-      controlContainerUpperRight.classList.add('control-container-upper-right');
+      
+      sliderContainer.classList.add(`slider-container`);
+      sliderContainerLeft.classList.add('slider-container-left');
+      sliderContainerRight.classList.add('slider-container-right');
 
       input.setAttribute("type", "range");
       input.setAttribute("class", "slider");
-      input.setAttribute("id", `${controlNames[i]}`);
-      readOut.setAttribute("id", `${controlNames[i]}-readout`);
+      input.setAttribute("id", `${CONTROLNAMES[i]}`);
+      
 
       if (i === 0) {                            // pitch gets octave values of 12
          input.setAttribute("min", "-24");
@@ -45,24 +41,30 @@ export const fxView = () => {
          input.setAttribute("value", "-6");
       }
 
-      label.innerHTML = `${controlNames[i].toUpperCase()}`;
-      label.setAttribute("for", `${controlNames[i]}`);
+      label.innerHTML = `${CONTROLNAMES[i].toUpperCase()}`;
+      label.setAttribute("for", `${CONTROLNAMES[i]}`);
 
-      readOut.innerHTML = `${input.value}`;
-
-      controlContainerUpperLeft.appendChild(label);
-      controlContainerUpperRight.appendChild(input);
-      controlContainerUpper.appendChild(controlContainerUpperLeft);
-      controlContainerUpper.appendChild(controlContainerUpperRight);
-      controlContainerLower.appendChild(readOut);
-
-      controlContainer.appendChild(controlContainerUpper);
-      controlContainer.appendChild(controlContainerLower);
+      sliderContainerLeft.appendChild(label);
+      sliderContainerRight.appendChild(input);
+      sliderContainer.appendChild(sliderContainerLeft);
+      sliderContainer.appendChild(sliderContainerRight);
    
-      rack.appendChild(controlContainer);
+      rack.appendChild(sliderContainer);
    }
 
    rack.setAttribute("folded", true);
 
    return rack
 };
+
+// const readOut = document.createElement("p");
+
+// controlContainerLower.classList.add('control-container-lower');
+
+// readOut.setAttribute("id", `${controlNames[i]}-readout`);
+
+// controlContainerLower.appendChild(readOut);
+
+// readOut.innerHTML = `${input.value}`;
+
+// controlContainer.appendChild(controlContainerLower);

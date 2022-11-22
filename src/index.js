@@ -10,8 +10,10 @@ import { visView } from './scripts/views/visView.js';
 document.addEventListener("DOMContentLoaded", () => {
    console.log("Welcome to stepSeq");
 
+   // console.log(document);
+
    const mainContainer = document.querySelector(".main-container");
-   const bottomContainer = document.querySelector(".bottom-container")
+   const bottomContainer = document.querySelector(".bottom-container");
 
    const fxRack = new FXRack();
    const sampler = new Sampler(fxRack);
@@ -295,10 +297,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
    
-   box.addEventListener("click", () => {
-      sampler.playSample("sound2");
-      console.log("playing");
-   })
+   // box.addEventListener("click", () => {
+   //    sampler.playSample("sound2");
+   //    console.log("playing");
+   // })
 
 
 });
