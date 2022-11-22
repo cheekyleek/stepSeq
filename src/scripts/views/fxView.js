@@ -12,7 +12,7 @@ export const fxView = () => {
       const input = document.createElement("input");
       const label = document.createElement("label");
       
-      sliderContainer.classList.add(`slider-container`);
+      sliderContainer.classList.add('slider-container');
       sliderContainerLeft.classList.add('slider-container-left');
       sliderContainerRight.classList.add('slider-container-right');
 
@@ -53,6 +53,11 @@ export const fxView = () => {
    }
 
    rack.setAttribute("folded", true);
+
+   console.log(document.getElementsByClassName("bottom-container")[0].childNodes)
+
+   console.log(document.getElementById("pitch"))
+   console.log(document.getElementsByClassName("slider-container"))
 
    return rack
 };

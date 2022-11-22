@@ -1,8 +1,30 @@
 import { CONTROLNAMES } from "./fxView.js";
 
 export const ctrlView = () => {
+   // console.log(CONTROLNAMES);
+   // console.log(document);
+   const bottomContainer = document.getElementsByClassName("bottom-container");
+   console.log(bottomContainer[0], "this is the one");
+   const seq = bottomContainer[0].childNodes;
+   console.log(seq);
+   const seqChildNodes = seq[0];
+   debugger
+   console.log(seqChildNodes)
+   const htmlCollection = document.getElementsByClassName('slider');
+
+   // console.log(htmlCollection[0])
+
+
+
+   // console.log(document.getElementById('pitch'));
+
+
    const controlBar = document.createElement("div");
-   controlBar.classList.add('control-bar')
+   controlBar.classList.add('control-bar');
+   controlBar.setAttribute("id", "control-bar");
+   console.log(document.getElementsByClassName("control-bar"));
+
+   console.log(document.getElementById("control-bar"));
 
    for (let i = 0; i < 3; i++) {
       const controlArea = document.createElement("div");
@@ -47,6 +69,7 @@ export const ctrlView = () => {
 
       controlBar.appendChild(controlArea);
    }
-
+   console.log(seq)
+   debugger
    return controlBar;
 };

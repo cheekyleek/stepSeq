@@ -19,6 +19,7 @@ document.addEventListener("DOMContentLoaded", () => {
    const sampler = new Sampler(fxRack);
 
    bottomContainer.appendChild(seqView());
+   console.log(document.getElementById("FX-readouts"));
    
 
    //general slider handler
