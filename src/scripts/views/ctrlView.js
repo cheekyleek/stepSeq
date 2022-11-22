@@ -1,30 +1,8 @@
 import { CONTROLNAMES } from "./fxView.js";
 
 export const ctrlView = () => {
-   // console.log(CONTROLNAMES);
-   // console.log(document);
-   const bottomContainer = document.getElementsByClassName("bottom-container");
-   console.log(bottomContainer[0], "this is the one");
-   const seq = bottomContainer[0].childNodes;
-   console.log(seq);
-   const seqChildNodes = seq[0];
-   debugger
-   console.log(seqChildNodes)
-   const htmlCollection = document.getElementsByClassName('slider');
-
-   // console.log(htmlCollection[0])
-
-
-
-   // console.log(document.getElementById('pitch'));
-
-
    const controlBar = document.createElement("div");
    controlBar.classList.add('control-bar');
-   controlBar.setAttribute("id", "control-bar");
-   console.log(document.getElementsByClassName("control-bar"));
-
-   console.log(document.getElementById("control-bar"));
 
    for (let i = 0; i < 3; i++) {
       const controlArea = document.createElement("div");
@@ -33,19 +11,14 @@ export const ctrlView = () => {
       if (i === 0) {
          controlArea.setAttribute('id', 'FX-readouts');
 
-         for (let i = 0; i < CONTROLNAMES.length; i++) {
+         for (let controlName of CONTROLNAMES) {
             const readOutContainer = document.createElement("div");
             const readOut = document.createElement("p");
-            let value;
+            const input = document.getElementById(controlName);
    
             readOutContainer.setAttribute('class', 'readout-container');
-            readOut.setAttribute('id', `${CONTROLNAMES[i]}-readout`);
-
-            if (i === 5) {
-               readOut.innerHTML = -6;
-            } else {
-               readOut.innerHTML = 0;
-            }
+            readOut.setAttribute('id', `${controlName}-readout`);
+            readOut.innerHTML = input.value;
 
             readOutContainer.appendChild(readOut);
             controlArea.appendChild(readOutContainer);
@@ -69,7 +42,6 @@ export const ctrlView = () => {
 
       controlBar.appendChild(controlArea);
    }
-   console.log(seq)
-   debugger
+
    return controlBar;
 };

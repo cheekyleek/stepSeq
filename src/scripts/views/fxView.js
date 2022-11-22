@@ -54,11 +54,6 @@ export const fxView = () => {
 
    rack.setAttribute("folded", true);
 
-   console.log(document.getElementsByClassName("bottom-container")[0].childNodes)
-
-   console.log(document.getElementById("pitch"))
-   console.log(document.getElementsByClassName("slider-container"))
-
    return rack
 };
 

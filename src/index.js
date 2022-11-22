@@ -2,24 +2,27 @@ import * as Tone from 'tone';
 import { FXRack } from './scripts/components/fxRack.js';
 import { Sampler } from './scripts/components/sampler.js';
 
-import { seqView } from  './scripts/views/seqView.js';
 import { fxView } from './scripts/views/fxView.js';
 import { visView } from './scripts/views/visView.js';
+import { ctrlView } from './scripts/views/ctrlView.js';
+import { gridView } from './scripts/views/gridView.js';
 
 
 document.addEventListener("DOMContentLoaded", () => {
    console.log("Welcome to stepSeq");
 
-   // console.log(document);
-
-   const mainContainer = document.querySelector(".main-container");
    const bottomContainer = document.querySelector(".bottom-container");
+   const sequencer = document.createElement("div");
+   sequencer.classList.add("sequencer");
+   bottomContainer.appendChild(sequencer);
+
+   sequencer.appendChild(fxView());
+   sequencer.appendChild(ctrlView());
+   sequencer.appendChild(visView());
+   sequencer.appendChild(gridView());
 
    const fxRack = new FXRack();
    const sampler = new Sampler(fxRack);
-
-   bottomContainer.appendChild(seqView());
-   console.log(document.getElementById("FX-readouts"));
    
 
    //general slider handler
