@@ -74,10 +74,10 @@ table {
    src: url("../src/styles/fonts/digital-7.ttf");
 }
 
-@font-face {
-   font-family: fontawesome;
-   src: url("../src/styles/fonts/fa-solid-900.ttf");
-}
+// @font-face {
+//    font-family: fontawesome;
+//    src: url("../src/styles/fonts/fa-solid-900.ttf");
+// }
 
 body {
    height: 100vh;
@@ -440,7 +440,6 @@ body {
 
 .control-area {
    height: 100%;
-   // position: relative;
    background-color: #666666;
    border-width: .0625rem;
    border-radius: .3125rem;
@@ -460,11 +459,19 @@ body {
    display: flex;
    justify-content: space-around;
    align-items: center;
-   // min-width: 
    color: red;
    position: absolute;
    left: 36.85%;
    right: 36.85%;
+}
+
+#right-controls {
+   display: flex;
+   justify-content: space-around;
+   align-items: center;
+   width: 28vw;
+   position: absolute;
+   right: 0;
 }
 
 .readout-container {
@@ -483,11 +490,26 @@ body {
    padding-top: .2rem;
 }
 
-.other-controls {
-   // right: 0;
-   width: 20vw;
-   // top: 0;
+.piano-icon {
+   background-image: url("../src/styles/assets/piano_icon.png");
+   background-size: contain;
+   background-repeat: no-repeat;
+   background-position: 0 .2rem;
+   width: 1rem;
+   height: 1rem;
 }
+
+.mic-icon {
+   background-image: url("../src/styles/assets/microphone_icon.png");
+   background-size: contain;
+   background-size: 100% 80%;
+   background-repeat: no-repeat;
+   background-position: 0 .13rem;
+   width: .9rem;
+   height: .9rem;
+}
+
+
 
 //-----------------------------------------------------
 
@@ -528,6 +550,9 @@ div > button {
    border-color: rgb(85, 81, 81);
    margin: 3px;
    outline: none;
+   display: flex;
+   justify-content: center;
+   align-items: center;
    background-color: lightgrey;
    transition: all 0.2s ease-in-out;
 }

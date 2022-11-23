@@ -68,10 +68,6 @@ table {
   font-family: digital7;
   src: url("../src/styles/fonts/digital-7.ttf");
 }
-@font-face {
-  font-family: fontawesome;
-  src: url("../src/styles/fonts/fa-solid-900.ttf");
-}
 body {
   height: 100vh;
   width: 100vw;
@@ -433,6 +429,15 @@ body {
   right: 36.85%;
 }
 
+#right-controls {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  width: 28vw;
+  position: absolute;
+  right: 0;
+}
+
 .readout-container {
   display: flex;
   justify-content: center;
@@ -449,8 +454,23 @@ body {
   padding-top: 0.2rem;
 }
 
-.other-controls {
-  width: 20vw;
+.piano-icon {
+  background-image: url("../src/styles/assets/piano_icon.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: 0 0.2rem;
+  width: 1rem;
+  height: 1rem;
+}
+
+.mic-icon {
+  background-image: url("../src/styles/assets/microphone_icon.png");
+  background-size: contain;
+  background-size: 100% 80%;
+  background-repeat: no-repeat;
+  background-position: 0 0.13rem;
+  width: 0.9rem;
+  height: 0.9rem;
 }
 
 .grid {
@@ -484,6 +504,9 @@ div > button {
   border-color: rgb(85, 81, 81);
   margin: 3px;
   outline: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   background-color: lightgrey;
   transition: all 0.2s ease-in-out;
 }

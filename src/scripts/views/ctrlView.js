@@ -2,6 +2,7 @@ import { CONTROLNAMES } from "./fxView.js";
 
 export const ctrlView = () => {
    const controlBar = document.createElement("div");
+   const rack = document.getElementsByClassName("fx-rack")[0];
    controlBar.classList.add('control-bar');
 
    for (let i = 0; i < 3; i++) {
@@ -32,7 +33,7 @@ export const ctrlView = () => {
             const button = document.createElement("button");
             const icon = document.createElement("i");
             const readOut = document.createElement("p");
-            const rack = document.getElementsByClassName("fx-rack")[0];
+            
             button.appendChild(icon);
             readOutContainer.setAttribute('class', 'readout-container');
 
@@ -79,10 +80,49 @@ export const ctrlView = () => {
             }
          } 
       } else {
-         controlArea.classList.add("right-controls");
-    
-         // button.setAttribute('id', j)
-         // controlArea.appendChild(button);
+         controlArea.setAttribute("id", "right-controls");
+
+         for (let j = 0; j < 4; j++) {
+            const button = document.createElement("button");
+            const icon = document.createElement("i");
+            const imgIcon = document.createElement("div");
+            
+
+            switch(j) {
+               case 0:
+                  button.setAttribute("id", "drums-selector");
+                  button.appendChild(icon);
+                  icon.setAttribute("class", "fa-solid fa-drum");
+                  // button.addEventListener("click", () => {
+                  //    if (rack.getAttribute("folded") === "true") {
+                  //       rack.setAttribute("folded", "false");
+                  //    } else {
+                  //       rack.setAttribute("folded", "true");
+                  //    }})
+                  break;
+               case 1:
+                  button.setAttribute("id", "synth-selector");
+                  button.appendChild(imgIcon);
+                  imgIcon.setAttribute("class", "piano-icon");
+                  break;
+               case 2:
+                  button.setAttribute("id", "sound-fx-selector");
+                  button.appendChild(icon);
+                  icon.setAttribute("class", "fa-solid fa-bullhorn");
+                  break;
+               case 3:
+                  button.setAttribute("id", "custom-samples-selector");
+                  // button.appendChild(icon);
+                  // icon.setAttribute("class", "fa-solid fa-microphone");
+                  button.appendChild(imgIcon);
+                  imgIcon.setAttribute("class", "mic-icon");
+                  break;
+               default:
+                  null;
+            }
+
+            controlArea.appendChild(button);
+         }
       }
 
       controlBar.appendChild(controlArea);

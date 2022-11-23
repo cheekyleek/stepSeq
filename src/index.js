@@ -24,23 +24,7 @@ document.addEventListener("DOMContentLoaded", () => {
    sequencer.appendChild(visView());
    // sequencer.appendChild(gridView(sampler));
 
-
-   //temp fx folder logic PUT IN CTRLVIEW
-
-   // const fxFolder = document.getElementById("fx-folder");
-   // const rack = document.getElementsByClassName("fx-rack")[0];
-
-   // fxFolder.addEventListener("click", () => {
-   //    if (rack.getAttribute("folded") === "true") {
-   //       rack.setAttribute("folded", "false");
-   //    } else {
-   //       rack.setAttribute("folded", "true");
-   //    }
-   // });
-
    
-   
-
    //general slider handler
 
    const handleSlider = (element, effect) => {
@@ -156,8 +140,6 @@ document.addEventListener("DOMContentLoaded", () => {
 //    const playback = document.getElementsByClassName("playback-controls");
 //    const playButton = playback[0].firstChild;
 //    const stopButton = playback[0].children[1];
-//    stopButton.innerHTML = "Stop";
-//    playButton.innerHTML = "Play";
 
 //    playButton.addEventListener("click", (e) => {
 //       const play = e.target;
