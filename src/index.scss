@@ -74,11 +74,6 @@ table {
    src: url("../src/styles/fonts/digital-7.ttf");
 }
 
-// @font-face {
-//    font-family: fontawesome;
-//    src: url("../src/styles/fonts/fa-solid-900.ttf");
-// }
-
 body {
    height: 100vh;
    width: 100vw;
@@ -121,6 +116,12 @@ body {
    animation: fadeIn 3s;
 }
 
+
+@keyframes slowZoom {
+   0% { text-size-adjust: 40px; }
+   100% { text-size: 65px; }
+}
+
 // .title {
 //    animation: slowZoom 4s;
 // }
@@ -147,6 +148,16 @@ body {
    top: 1%;
    height: 64px;
    background-image: url("../src/styles/assets/stepSeq_linkedin_bug.png");
+}
+
+@keyframes fadeDelay {
+   0% { opacity: 0;}
+   100% { opacity: 0;}
+}
+
+@keyframes fadeIn {
+   0% { opacity: 0; }
+   100% { opacity: 1; }
 }
 
 .links {
@@ -200,6 +211,27 @@ body {
    gap: .4rem;
 }
 
+button {
+   border-radius: 5px;
+   height: 80%;
+   border-style: solid;
+   border-width: 1px;
+   border-color: rgb(85, 81, 81);
+   margin: 3px;
+   height: 25px;
+   width: 10vw;
+   background-color: lightgrey;
+   transition: all 0.2s ease-in-out;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+}
+
+button:hover {
+   background-color: white;
+   border-color: lightblue;
+   cursor: pointer;
+}
 
 
 //-------------------------------------------------------
@@ -511,17 +543,6 @@ body {
    height: .9rem;
 }
 
-button {
-   border-radius: 5px;
-   height: 80%;
-   border-style: solid;
-   border-width: 1px;
-   border-color: rgb(85, 81, 81);
-   margin: 3px;
-   height: 25px;
-   width: 10vw;
-}
-
 #bpm-up-button, #bpm-down-button {
    width: 3vw;
 }
@@ -549,59 +570,32 @@ button {
 
 .track {
    display: flex;
-   border-style: double;
+   border: 1px double rgb(45, 49, 50);
    background-color: #666666;
    width: 100%;
-   border-width: 1px;
    border-radius: 3px;
-   border-color: rgb(45, 49, 50);
    align-content: space-around;
+   transition: all 1s ease;
 }
 
-div > button {
-   outline: none;
-   display: flex;
-   justify-content: center;
-   align-items: center;
-   background-color: lightgrey;
-   transition: all 0.2s ease-in-out;
+.track[id^="drums-"] {
+   transform: rotateX(360deg);
+}
+
+.track[id^="something-"] {
+   transform: rotateX(360deg);
 }
 
 .step {
    border-radius: 5px;
    height: 1.5rem;
    width: 4rem;
-   border-style: solid;
-   border-width: 1px;
-   border-color: rgb(85, 81, 81);
-   margin: 3px;
-   outline: none;
-   background-color: lightgrey;
+   border: 1px solid rgb(85, 81, 81);
 }
 
 .step[data-is-active="true"] {
    background-color: yellow;
 }
-
-.step:hover {
-   border-color: lightblue;
-}
-
-div > button:hover {
-   background-color: white;
-   border-color: lightblue;
-   cursor: pointer;
-}
-
-.track-action {
-   align-self: flex-start;
-}
-
-// .spacer {
-//    flex-direction: column;
-//    width: 3px;
-//    background-color: black;
-// }
 
 .highlighted {
    background-color: rgb(41, 240, 254);
@@ -621,7 +615,7 @@ div > button:hover {
 .spacer {
    width: 100%;
    height: .3rem;
-   background-color: #666666;
+   background-color: rgb(77, 77, 77);
    border-radius: 3px;
 }
 
@@ -635,40 +629,6 @@ div > button:hover {
 }
 
 //-----------------------------------------------------
-
-
-
-
-
-
-
-
-@keyframes fadeDelay {
-   0% { opacity: 0;}
-   100% { opacity: 0; }
-}
-
-@keyframes slowZoom {
-   0% { text-size-adjust: 40px; }
-   100% { text-size: 65px; }
-}
-
-@keyframes fadeIn {
-   0% { opacity: 0; }
-   100% { opacity: 1; }
-}
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

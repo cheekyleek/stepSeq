@@ -6,9 +6,9 @@ export const gridView = (sampler) => {
       const track = document.createElement("div");          //DONE EXCEPT CUSTOM TRACK INPUT
       track.classList.add('track');
 
-      if (i < 7) {
+      if (i < 8) {
          track.setAttribute('id', `drums-${i}`);
-      } else if (i >= 7 && i < 12) {
+      } else if (i >= 8 && i < 12) {
          track.setAttribute('id', `soundfx-${i}`)
       }
       
