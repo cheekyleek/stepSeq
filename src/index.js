@@ -13,6 +13,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
    const bottomContainer = document.querySelector(".bottom-container");
    const sequencer = document.createElement("div");
+   const spacer = document.createElement("div");
+   const palmRest = document.createElement("div");
+   palmRest.classList.add("palm-rest")
+   spacer.classList.add("spacer");
    sequencer.classList.add("sequencer");
    bottomContainer.appendChild(sequencer);
 
@@ -22,7 +26,9 @@ document.addEventListener("DOMContentLoaded", () => {
    sequencer.appendChild(fxView());
    sequencer.appendChild(ctrlView());
    sequencer.appendChild(visView());
-   // sequencer.appendChild(gridView(sampler));
+   sequencer.appendChild(spacer);
+   sequencer.appendChild(gridView(sampler));
+   sequencer.appendChild(palmRest);
 
    
    //general slider handler

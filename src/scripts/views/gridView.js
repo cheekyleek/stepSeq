@@ -2,7 +2,7 @@ export const gridView = (sampler) => {
    const grid = document.createElement("div");
    grid.classList.add('grid');
    
-   for (let i = 0; i < 23; i++) {
+   for (let i = 0; i < 8; i++) {
       const track = document.createElement("div");          //DONE EXCEPT CUSTOM TRACK INPUT
       track.classList.add('track');
 
