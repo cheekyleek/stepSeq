@@ -22,21 +22,21 @@ document.addEventListener("DOMContentLoaded", () => {
    sequencer.appendChild(fxView());
    sequencer.appendChild(ctrlView());
    sequencer.appendChild(visView());
-   sequencer.appendChild(gridView(sampler));
+   // sequencer.appendChild(gridView(sampler));
 
 
    //temp fx folder logic PUT IN CTRLVIEW
 
-   const fxFolder = document.getElementsByClassName("fx-folder")[0];
-   const rack = document.getElementsByClassName("fx-rack")[0];
+   // const fxFolder = document.getElementById("fx-folder");
+   // const rack = document.getElementsByClassName("fx-rack")[0];
 
-   fxFolder.addEventListener("click", () => {
-      if (rack.getAttribute("folded") === "true") {
-         rack.setAttribute("folded", "false");
-      } else {
-         rack.setAttribute("folded", "true");
-      }
-   });
+   // fxFolder.addEventListener("click", () => {
+   //    if (rack.getAttribute("folded") === "true") {
+   //       rack.setAttribute("folded", "false");
+   //    } else {
+   //       rack.setAttribute("folded", "true");
+   //    }
+   // });
 
    
    

@@ -61,17 +61,22 @@ table {
 
 @font-face {
    font-family: bastard;
-   src: url("../src/styles/Bastard-jWA0.ttf");
+   src: url("../src/styles/fonts/Bastard-jWA0.ttf");
 }
 
 @font-face {
    font-family: batteredcooperfont;
-   src: url("../src/styles/BatteredCooper-ZEEB.ttf");
+   src: url("../src/styles/fonts/BatteredCooper-ZEEB.ttf");
 }
 
 @font-face {
    font-family: digital7;
-   src: url("../src/styles/digital-7.ttf");
+   src: url("../src/styles/fonts/digital-7.ttf");
+}
+
+@font-face {
+   font-family: fontawesome;
+   src: url("../src/styles/fonts/fa-solid-900.ttf");
 }
 
 body {
@@ -80,7 +85,7 @@ body {
 }
 
 .main-container {
-   background: url("../src/styles/natural-wooden-background.jpg") no-repeat center center fixed;
+   background: url("../src/styles/assets/natural-wooden-background.jpg") no-repeat center center fixed;
    -webkit-background-size: cover;
    -moz-background-size: cover;
    -o-background-size: cover;
@@ -133,7 +138,7 @@ body {
    right: 1%;
    top: 1%;
    height: 64px;
-   background-image: url("../src/styles/GitHub-Mark-64px.png");
+   background-image: url("../src/styles/assets/GitHub-Mark-64px.png");
 }
 
 .linked-in {
@@ -141,7 +146,7 @@ body {
    right: 6%;
    top: 1%;
    height: 64px;
-   background-image: url("../src/styles/stepSeq_linkedin_bug.png");
+   background-image: url("../src/styles/assets/stepSeq_linkedin_bug.png");
 }
 
 .links {
@@ -407,7 +412,7 @@ body {
    height: 1.25rem;
    width: 2.5rem;
    border: 0;
-   background-image: url('../src/styles/fader_head.png');
+   background-image: url('../src/styles/assets/fader_head.png');
    cursor: pointer;
 }
 
@@ -416,7 +421,7 @@ body {
    border: 0;
    height: 1.25rem;
    width: 2.5rem;
-   background-image: url('../src/styles/fader_head.png');
+   background-image: url('../src/styles/assets/fader_head.png');
    cursor: pointer;
 }
 
@@ -449,6 +454,17 @@ body {
    justify-content: space-around;
    align-items: center;
    color: red;
+}
+
+#center-controls {
+   display: flex;
+   justify-content: space-around;
+   align-items: center;
+   // min-width: 
+   color: red;
+   position: absolute;
+   left: 36.85%;
+   right: 36.85%;
 }
 
 .readout-container {

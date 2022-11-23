@@ -24,20 +24,64 @@ export const ctrlView = () => {
             controlArea.appendChild(readOutContainer);
          }
 
-      // } else if (i === 1) {
-      //    controlArea.classList.add("center-controls");
+      } else if (i === 1) {
+         controlArea.setAttribute("id", "center-controls");
 
-      } else {
-         controlArea.classList.add("other-controls");
-         for (let j = 0; j < 4; j++) {
+         for (let j = 0; j < 6; j++) {
+            const readOutContainer = document.createElement("div");
             const button = document.createElement("button");
-            if (i === 1 && j === 0) {
-               button.classList.add("fx-folder");
-               button.innerHTML = "FX"
+            const icon = document.createElement("i");
+            const readOut = document.createElement("p");
+            button.appendChild(icon);
+            readOutContainer.setAttribute('class', 'readout-container');
+
+            switch(j) {
+               case 0:
+                  button.setAttribute("id", "fx-folder");
+                  button.innerHTML = "FX"
+                  button.addEventListener("click", () => {
+                     if (rack.getAttribute("folded") === "true") {
+                        rack.setAttribute("folded", "false");
+                     } else {
+                        rack.setAttribute("folded", "true");
+                     }})
+                  break;
+               case 1:
+                  button.setAttribute("id", "play-button");
+                  icon.setAttribute("class", "fa-solid fa-play");
+                  break;
+               case 2:
+                  button.setAttribute("id", "stop-button");
+                  icon.setAttribute("class", "fa-solid fa-stop");
+                  break;
+               case 3:
+                  button.setAttribute("id", "bpm-down-button");
+                  icon.setAttribute("class", "fa-solid fa-angle-left");
+                  break;
+               case 4:
+                  readOut.setAttribute("id", "bpm-readout");
+                  readOutContainer.appendChild(readOut)
+                  // readOut
+                  break;
+               case 5:
+                  button.setAttribute("id", "bpm-up-button");
+                  icon.setAttribute("class", "fa-solid fa-angle-right");
+                  break;
+               default:
+                  null;
             }
-            button.setAttribute('id', j)
-            controlArea.appendChild(button);
-         }
+
+            if (j === 4) {
+               controlArea.appendChild(readOutContainer);
+            } else {
+               controlArea.appendChild(button);
+            }
+         } 
+      } else {
+         controlArea.classList.add("right-controls");
+    
+         // button.setAttribute('id', j)
+         // controlArea.appendChild(button);
       }
 
       controlBar.appendChild(controlArea);
