@@ -25,7 +25,7 @@ document.addEventListener("DOMContentLoaded", () => {
    sequencer.appendChild(gridView(sampler));
 
 
-   //temp fx folder logic
+   //temp fx folder logic PUT IN CTRLVIEW
 
    const fxFolder = document.getElementsByClassName("fx-folder")[0];
    const rack = document.getElementsByClassName("fx-rack")[0];
@@ -36,7 +36,7 @@ document.addEventListener("DOMContentLoaded", () => {
       } else {
          rack.setAttribute("folded", "true");
       }
-   })
+   });
 
    
    
