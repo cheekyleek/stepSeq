@@ -341,7 +341,7 @@ body {
   height: 75%;
   position: absolute;
   left: 0.7rem;
-  line-height: 0.9rem;
+  line-height: 1.15vw;
   text-indent: 0.7rem;
   background-color: rgb(255, 255, 255);
   border-radius: 2px;
@@ -362,6 +362,29 @@ body {
   background: black;
   height: 0.2rem;
   width: 7rem;
+  cursor: pointer;
+}
+
+.slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  background-size: contain;
+  width: 1.25rem;
+  height: 2.5rem;
+  transform: rotate(-270deg);
+  border: 0;
+  background-image: url("../src/styles/fader_head.png");
+  cursor: pointer;
+}
+
+.slider::-moz-range-thumb {
+  background-size: contain;
+  border: 0;
+  width: 1.25rem;
+  height: 2.5rem;
+  transform: rotate(-270deg);
+  background-image: url("../src/styles/fader_head.png");
+  cursor: pointer;
 }
 
 .control-bar {
