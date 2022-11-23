@@ -31,7 +31,7 @@ export const ctrlView = () => {
          controlArea.classList.add("other-controls");
          for (let j = 0; j < 4; j++) {
             const button = document.createElement("button");
-            if (i === 0 && j === 3) {
+            if (i === 1 && j === 0) {
                button.classList.add("fx-folder");
                button.innerHTML = "FX"
             }

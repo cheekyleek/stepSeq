@@ -24,6 +24,20 @@ document.addEventListener("DOMContentLoaded", () => {
    sequencer.appendChild(visView());
    sequencer.appendChild(gridView(sampler));
 
+
+   //temp fx folder logic
+
+   const fxFolder = document.getElementsByClassName("fx-folder")[0];
+   const rack = document.getElementsByClassName("fx-rack")[0];
+
+   fxFolder.addEventListener("click", () => {
+      if (rack.getAttribute("folded") === "true") {
+         rack.setAttribute("folded", "false");
+      } else {
+         rack.setAttribute("folded", "true");
+      }
+   })
+
    
    
 
@@ -74,7 +88,7 @@ document.addEventListener("DOMContentLoaded", () => {
       handleSlider(gainSlider, fxRack.changeGain);
    };
 
-   
+});  
 
    // setupStepListeners(MG);
 // PUSH SAMPLE PLAYER OBJECTS INTO GRID
@@ -101,46 +115,9 @@ document.addEventListener("DOMContentLoaded", () => {
 //    }
 //    
 //    const MG = masterGrid(technoSamples());
-//    // SET UP CONTROL BAR
-   
 
 
-   
-//    // console.log(FXArray);
-//    // const FXFolderButton = allFXButtons[0][0];
-//    // console.log(FXFolderButton);
-//    // console.log(FXFolderButton);
 
-//    // FXFolderButton.addEventListener("click", () => {
-//    //    // const rack = document.getElementsByClassName("")
-//    // })
-   
-   
-   
-//    // SET UP RECORDER
-   
-//    const recorder = function() {
-   
-//    };
-
-
-   
-//    // CREATE ALL ELEMENTS AND ATTACH TO UNIT
-   
-  
-//    // const sequencer = setupSeq();
-//    // const controlBar = setupControlBar();
-//    // const FXRack = setupFX();
-//    // const recorder = setupRec();
-//    // const visualizer = setupVis();
-   
-   
-//    // unit.appendChild(controlBar);
-//    // unit.appendChild(sequencer);
-//    // unit.appendChild(FXRack);
-//    // unit.appendChild(recorder);
-//    // unit.appendChild(visualizer);
-   
 //    // ADD ALL LISTENERS
    
 
@@ -174,41 +151,7 @@ document.addEventListener("DOMContentLoaded", () => {
 //          }
 //       }
       
-//    };
-
-   class View {
-      constructor(unit, seq, bar) {  //, seq, fx, rec, vis
-         this.unit = unit;
-         this.seq = seq;
-         this.controlBar = bar;
-         // this.fx = fx;
-         // this.rec = rec;
-         // this.vis = vis;
-
-         // const newFX = this.setupFX();
-         // const newRec = this.setupRec();
-         // const newVis = this.setupVis();
-         
-   
-         unit.appendChild(this.controlBar);
-         unit.appendChild(this.seq);
-         // unit.appendChild(newFX);
-         // unit.appendChild(newRec);
-         // unit.appendChild(newVis);
-         setupStepListeners(MG);
-   
-         return unit;
-      }
-   }
-   
-   
-//    const seq = sequencer();
-//    const bar = controlBar();
-//    // const fx = new FXRack();
-//    // const rec = new Recorder();
-//    // const vis = new Visualizer();
-
-//    window.view = new View(unit, seq, bar);                   //sets up all views initially
+//    };        
 
 //    const playback = document.getElementsByClassName("playback-controls");
 //    const playButton = playback[0].firstChild;
@@ -264,19 +207,6 @@ document.addEventListener("DOMContentLoaded", () => {
       
 //    }
 
-//    const FXFolderButton = document.querySelector(".fx-folder");
-   
-//    FXFolderButton.addEventListener("click", () => {
-//       const rack = document.querySelector(".fx-rack");
-//       // console.log(rack);
-//       if (rack.getAttribute("folded") === "true") {
-//          rack.setAttribute("folded", false);
-//       } else {
-//          rack.setAttribute("folded", true);
-//       }
-      
-//    })
-
 //    stopButton.addEventListener("click", () => {
 //       Tone.Transport.stop();
 //    })
@@ -299,14 +229,4 @@ document.addEventListener("DOMContentLoaded", () => {
 //       // console.log(Tone.Transport.bpm.value)
 //    })
 
-   
 
-
-   
-   // box.addEventListener("click", () => {
-   //    sampler.playSample("sound2");
-   //    console.log("playing");
-   // })
-
-
-});

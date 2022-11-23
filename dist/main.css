@@ -311,6 +311,16 @@ body {
   border-top-left-radius: 30px;
   border-top-right-radius: 12px;
   box-shadow: 0.3rem 0.3rem 1.25rem 0.125rem rgba(0, 0, 0, 0.8);
+  transform-origin: bottom center;
+  transition: all 3s ease;
+}
+
+.fx-rack[folded=false] {
+  transform: rotateX(0deg);
+}
+
+.fx-rack[folded=true] {
+  transform: rotateX(-90deg);
 }
 
 .slider-container {

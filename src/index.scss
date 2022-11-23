@@ -335,15 +335,16 @@ body {
    border-top-left-radius: 30px;
    border-top-right-radius: 12px;
    box-shadow: .3rem .3rem 1.25rem .125rem rgba(0,0,0,.8);
+   transform-origin: bottom center;
+   transition: all 3s ease;
 }
 
 .fx-rack[folded="false"] {
-   
+   transform: rotateX(0deg)
 }
 
 .fx-rack[folded="true"] {
-   // left: 19.5%;
-   // top: 50%;
+   transform: rotateX(-90deg)
 }
 
 .slider-container {
