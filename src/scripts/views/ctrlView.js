@@ -32,6 +32,7 @@ export const ctrlView = () => {
             const button = document.createElement("button");
             const icon = document.createElement("i");
             const readOut = document.createElement("p");
+            const rack = document.getElementsByClassName("fx-rack")[0];
             button.appendChild(icon);
             readOutContainer.setAttribute('class', 'readout-container');
 
