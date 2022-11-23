@@ -16,13 +16,15 @@ document.addEventListener("DOMContentLoaded", () => {
    sequencer.classList.add("sequencer");
    bottomContainer.appendChild(sequencer);
 
+   const fxRack = new FXRack();
+   const sampler = new Sampler(fxRack);
+
    sequencer.appendChild(fxView());
    sequencer.appendChild(ctrlView());
    sequencer.appendChild(visView());
-   sequencer.appendChild(gridView());
+   sequencer.appendChild(gridView(sampler));
 
-   const fxRack = new FXRack();
-   const sampler = new Sampler(fxRack);
+   
    
 
    //general slider handler

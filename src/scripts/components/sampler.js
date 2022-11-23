@@ -21,7 +21,7 @@ export class Sampler {
          sound11: new Tone.Player({url: "./src/samples/fx/noiseSweepUp.wav"}),
          sound12: new Tone.Player({url: "./src/samples/fx/noiseSweepDown.wav"}),
 
-         //bass
+         //synthbass
 
          sound13: new Tone.Player({url: "./src/samples/bass/e2.wav"}),
          sound14: new Tone.Player({url: "./src/samples/bass/g2.wav"}),

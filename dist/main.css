@@ -108,6 +108,40 @@ body {
   border: 1px solid green;
 }
 
+.title {
+  animation: fadeIn 3s;
+}
+
+.github:hover {
+  cursor: pointer;
+}
+
+.linked-in:hover {
+  cursor: pointer;
+}
+
+.github {
+  width: 64px;
+  position: absolute;
+  right: 1%;
+  top: 1%;
+  height: 64px;
+  background-image: url("../src/styles/GitHub-Mark-64px.png");
+}
+
+.linked-in {
+  width: 64px;
+  position: absolute;
+  right: 6%;
+  top: 1%;
+  height: 64px;
+  background-image: url("../src/styles/stepSeq_linkedin_bug.png");
+}
+
+.links {
+  animation: fadeDelay 4s, fadeIn 3s 4s;
+}
+
 .bottom-container {
   display: flex;
   justify-content: center;
@@ -123,7 +157,7 @@ body {
   height: 25rem;
   width: 85%;
   position: relative;
-  z-index: 1;
+  z-index: 2;
   background-color: rgb(45, 49, 50);
   padding: 1rem;
   max-width: 85%;
@@ -135,6 +169,7 @@ body {
   flex-direction: column;
   align-items: center;
   box-shadow: 10px 15px 20px 2px rgba(0, 0, 0, 0.8);
+  gap: 0.7rem;
 }
 
 @keyframes visDelay {
@@ -204,7 +239,7 @@ body {
   top: -8.063rem;
   width: 30%;
   height: 8rem;
-  z-index: 0;
+  z-index: -1;
   background-color: rgb(45, 49, 50);
   border-top-left-radius: 12px;
   border-top-right-radius: 12px;
@@ -309,31 +344,43 @@ body {
   box-shadow: inset 1px 0px rgb(88, 88, 88), inset -1px 0px rgb(88, 88, 88), inset 0px -1px rgb(88, 88, 88), inset 0px 1px rgb(88, 88, 88);
 }
 
-.slider-container-right > .slider {
-  transform: rotate(270deg) translateY(-3.5rem) translateX(-4.3rem);
+.slider-container-right {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   position: relative;
+}
+
+.slider {
+  all: unset;
+  transform: rotate(270deg) translateY(-0.2rem);
+  position: absolute;
+  background: black;
+  height: 0.2rem;
+  width: 400%;
 }
 
 .control-bar {
   position: relative;
-  height: 2.5rem;
+  display: flex;
+  height: 10%;
   width: 100%;
-  border-color: black;
-  border-radius: 2px;
-  border-width: 2px;
-  margin: 4px;
 }
 
 .control-area {
   height: 100%;
-  position: absolute;
   background-color: #666666;
+  border-width: 0.0625rem;
+  border-radius: 0.3125rem;
+  border-color: rgb(82, 82, 82);
+  border-style: dotted;
 }
 
 #FX-readouts {
   width: 28vw;
   display: flex;
   justify-content: space-around;
+  align-items: center;
   color: red;
 }
 
@@ -342,23 +389,26 @@ body {
   justify-content: center;
   align-items: center;
   background-color: #350e0e;
-  height: 100%;
+  height: 70%;
   width: 2.5rem;
   border-radius: 0.2rem;
   font-size: 1.5rem;
   font-family: digital7;
 }
 
+.readout-container > p {
+  padding-top: 0.2rem;
+}
+
 .other-controls {
-  right: 0;
+  width: 20vw;
 }
 
 .grid {
-  order: 2;
   display: flex;
   position: relative;
-  width: 1200px;
-  height: auto;
+  width: 100%;
+  height: 90%;
   flex-direction: column;
   border-radius: 1px;
   border-width: 1px;
@@ -366,77 +416,14 @@ body {
   border-color: rgb(45, 49, 50);
 }
 
-.github:hover {
-  cursor: pointer;
-}
-
-.linked-in:hover {
-  cursor: pointer;
-}
-
-.github {
-  width: 64px;
-  position: absolute;
-  right: 1%;
-  top: 1%;
-  height: 64px;
-  background-image: url("../src/styles/GitHub-Mark-64px.png");
-}
-
-.linked-in {
-  width: 64px;
-  position: absolute;
-  right: 6%;
-  top: 1%;
-  height: 64px;
-  background-image: url("../src/styles/stepSeq_linkedin_bug.png");
-}
-
-.link-delay {
-  animation: fadeDelay 4s;
-}
-
-.links {
-  animation: fadeIn 3s;
-  animation-delay: 4s;
-}
-
-.title {
-  animation: fadeIn 3s;
-}
-
-@keyframes fadeDelay {
-  0% {
-    opacity: 0;
-  }
-  100% {
-    opacity: 0;
-  }
-}
-@keyframes slowZoom {
-  0% {
-    text-size-adjust: 40px;
-  }
-  100% {
-    text-size: 65px;
-  }
-}
-@keyframes fadeIn {
-  0% {
-    opacity: 0;
-  }
-  100% {
-    opacity: 1;
-  }
-}
-.control-bar > div {
+.track {
   display: flex;
-  justify-content: space-around;
-  width: 300px;
-  border-color: black;
-  border-style: dotted;
+  border-style: double;
+  background-color: grey;
   border-width: 1px;
-  border-radius: 5px;
+  border-radius: 3px;
+  border-color: rgb(45, 49, 50);
+  align-content: space-around;
 }
 
 div > button {
@@ -452,20 +439,10 @@ div > button {
   transition: all 0.2s ease-in-out;
 }
 
-.track {
-  display: flex;
-  border-style: double;
-  background-color: grey;
-  border-width: 1px;
-  border-radius: 3px;
-  border-color: rgb(45, 49, 50);
-  align-content: space-around;
-}
-
 .step {
   border-radius: 5px;
-  height: 30px;
-  width: 40px;
+  height: 1.5rem;
+  width: 4rem;
   border-style: solid;
   border-width: 1px;
   border-color: rgb(85, 81, 81);
@@ -504,4 +481,29 @@ div > button:hover {
 
 .highlighted-selected {
   background-color: rgb(255, 175, 69) !important;
+}
+
+@keyframes fadeDelay {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+@keyframes slowZoom {
+  0% {
+    text-size-adjust: 40px;
+  }
+  100% {
+    text-size: 65px;
+  }
+}
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
 }

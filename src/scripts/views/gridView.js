@@ -1,11 +1,17 @@
-export const gridView = () => {
+export const gridView = (sampler) => {
    const grid = document.createElement("div");
    grid.classList.add('grid');
    
-   for (let i = 0; i < 8; i++) {
+   for (let i = 0; i < 23; i++) {
       const track = document.createElement("div");          //DONE EXCEPT CUSTOM TRACK INPUT
       track.classList.add('track');
-      track.setAttribute('id', i);
+
+      if (i < 7) {
+         track.setAttribute('id', `drums-${i}`);
+      } else if (i >= 7 && i < 12) {
+         track.setAttribute('id', `soundfx-${i}`)
+      }
+      
 
       for (let j = 0; j < 32; j++) {
          // if (j % 4 === 0 && j !== 0) {
