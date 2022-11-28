@@ -67,21 +67,15 @@ export const ctrlView = () => {
                   break;
                case 3:
                   button.setAttribute("id", "bpm-down-button");
-                  button.addEventListener("click", () => {
-                     Tone.Transport.bpm.value -= 1;
-                  })
                   icon.setAttribute("class", "fa-solid fa-angle-left");
                   break;
                case 4:
                   readOut.setAttribute("id", "bpm-readout");
+                  readOut.innerHTML = Tone.Transport.bpm.value;
                   readOutContainer.appendChild(readOut)
-                  // readOut
                   break;
                case 5:
                   button.setAttribute("id", "bpm-up-button");
-                  button.addEventListener("click", () => {
-                     Tone.Transport.bpm.value += 1;
-                  })
                   icon.setAttribute("class", "fa-solid fa-angle-right");
                   break;
                default:

@@ -33,7 +33,6 @@ document.addEventListener("DOMContentLoaded", () => {
    //add event listeners
 
    const rightControls = document.getElementById("right-controls").children;
-   console.log(rightControls)
    for (let control of rightControls) {
       control.addEventListener("click", () => {
          for (let control of rightControls) {
@@ -43,7 +42,17 @@ document.addEventListener("DOMContentLoaded", () => {
       })
    }
 
-
+   const bpmReadout = document.getElementById("bpm-readout");
+   const bpmUp = document.getElementById("bpm-up-button");
+   bpmUp.addEventListener("click", () => {
+      Tone.Transport.bpm.value += 1;
+      bpmReadout.innerHTML = Math.floor(Tone.Transport.bpm.value);
+   })
+   const bpmDown = document.getElementById("bpm-down-button");
+   bpmDown.addEventListener("click", () => {
+      Tone.Transport.bpm.value -= 1;
+      bpmReadout.innerHTML = Math.floor(Tone.Transport.bpm.value);
+   })
 
    
    //general slider handler
