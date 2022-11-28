@@ -108,6 +108,7 @@ document.addEventListener("DOMContentLoaded", () => {
    let currentPlayMark = 0;
    
    const loop = (time) => {
+      console.log(time);
       let nextStep = currentPlayMark % 32;
       const allTracks = document.getElementsByClassName('track');
 
@@ -118,7 +119,8 @@ document.addEventListener("DOMContentLoaded", () => {
             // sampleId = step.getAttribute()
             step.classList.toggle('highlighted');
             if (step.getAttribute("data-is-active") === "true") {
-               sampler.playSample(`sound${i + 1}`);
+               // sampler.stopSample(`sound${i + 1}`);
+               sampler.playSample(`sound${i + 1}`, time);
             }
             // step.classList.toggle('highlighted');
          })

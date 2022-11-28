@@ -525,6 +525,11 @@ button:hover {
   width: 3vw;
 }
 
+#bpm-readout {
+  margin-left: 0.5rem;
+  margin-right: 0.5rem;
+}
+
 .grid {
   display: flex;
   position: relative;

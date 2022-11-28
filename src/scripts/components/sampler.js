@@ -37,6 +37,8 @@ export class Sampler {
       }
 
       this.source.sound1.volume.value = +6;
+      this.source.sound6.volume.value = -6;
+      this.source.sound7.volume.value = -8;
 
       for (let i = 1; i <= 7; i++) {      //temporarily 7!!!
          const sound = 'sound' + i;
@@ -46,7 +48,7 @@ export class Sampler {
       this.playSample = this.playSample.bind(this);
    }
 
-   playSample(soundKey) {
-      this.source[soundKey].start("+0.05");
+   playSample(soundKey, time) {
+      this.source[soundKey].start(time);
    }
 };
