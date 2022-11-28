@@ -51,18 +51,12 @@ export const ctrlView = () => {
                   break;
                case 1:
                   button.setAttribute("id", "play-button");
-                  button.addEventListener("click", () => {
-                     Tone.Transport.start();
-                     Tone.start();
-                     
-                  })
+                  button.setAttribute("data-is-active", "false");
                   icon.setAttribute("class", "fa-solid fa-play");
                   break;
                case 2:
                   button.setAttribute("id", "stop-button");
-                  button.addEventListener("click", () => {
-                     Tone.Transport.stop();
-                  })
+                  button.setAttribute("data-is-active", "false");
                   icon.setAttribute("class", "fa-solid fa-stop");
                   break;
                case 3:

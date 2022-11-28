@@ -477,6 +477,14 @@ button:hover {
   right: 36.85%;
 }
 
+#play-button[data-is-active=true] {
+  background-color: rgb(85, 255, 47);
+}
+
+#stop-button[data-is-active=true] {
+  background-color: red;
+}
+
 #right-controls {
   display: flex;
   justify-content: space-around;

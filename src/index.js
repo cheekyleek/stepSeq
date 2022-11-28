@@ -30,17 +30,25 @@ document.addEventListener("DOMContentLoaded", () => {
    sequencer.appendChild(gridView(sampler));
    sequencer.appendChild(palmRest);
 
+
+
    //add event listeners
 
-   const rightControls = document.getElementById("right-controls").children;
-   for (let control of rightControls) {
-      control.addEventListener("click", () => {
-         for (let control of rightControls) {
-            control.setAttribute("data-is-active", "false");
-         }
-         control.setAttribute("data-is-active", "true");
-      })
-   }
+   const playButton = document.getElementById("play-button");
+   playButton.addEventListener("click", () => {
+      Tone.Transport.start();
+      Tone.start();
+      playButton.setAttribute("data-is-active", "true");
+   })
+
+   const stopButton = document.getElementById("stop-button");
+   stopButton.addEventListener("click", () => {
+      Tone.Transport.stop();
+      playButton.setAttribute("data-is-active", "false");
+      stopButton.setAttribute("data-is-active", "true");
+      setTimeout(() => {
+         stopButton.setAttribute("data-is-active", "false")}, 200);
+   })
 
    const bpmReadout = document.getElementById("bpm-readout");
    const bpmUp = document.getElementById("bpm-up-button");
@@ -54,7 +62,19 @@ document.addEventListener("DOMContentLoaded", () => {
       bpmReadout.innerHTML = Math.floor(Tone.Transport.bpm.value);
    })
 
-   
+
+   const rightControls = document.getElementById("right-controls").children;
+   for (let control of rightControls) {
+      control.addEventListener("click", () => {
+         for (let control of rightControls) {
+            control.setAttribute("data-is-active", "false");
+         }
+         control.setAttribute("data-is-active", "true");
+      })
+   }
+
+
+
    //general slider handler
 
    const handleSlider = (element, effect) => {
@@ -135,44 +155,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
 });  
 
-//    // ADD ALL LISTENERS
-   
-
-
-//    function setupStepListeners(masterGrid) {
-//       const sequencer = document.getElementsByClassName("sequencer")
-//       const allTracks = sequencer[0].children;
-      
-//       for (let i = 0; i < 8; i++) {
-//          let track = allTracks[i];
-
-//          for (let j = 0; j < 32; j++) {
-//             let step = track.children[j];
-
-//             step.addEventListener("click", (e) => {
-//                const selectedStep = e.target;
-//                // const stepID = selectedStep.getAttribute("data-step-id");
-              
-//                if (selectedStep.getAttribute('data-is-active') === 'false') {
-//                   selectedStep.setAttribute('data-is-active', true);
-//                   masterGrid[i][j].isActive = true;
-//                   // console.log(selectedStep);
-//                   // console.log(masterGrid[i][j]);
-//                } else {
-//                   selectedStep.setAttribute('data-is-active', false);
-//                   masterGrid[i][j].isActive = false;
-//                   // console.log(selectedStep);
-//                   // console.log(masterGrid[i][j]);
-//                }
-//             })
-//          }
-//       }
-      
-//    };        
-
-//    const playback = document.getElementsByClassName("playback-controls");
-//    const playButton = playback[0].firstChild;
-//    const stopButton = playback[0].children[1];
 
 //    playButton.addEventListener("click", (e) => {
 //       const play = e.target;
