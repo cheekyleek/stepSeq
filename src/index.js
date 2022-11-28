@@ -30,6 +30,19 @@ document.addEventListener("DOMContentLoaded", () => {
    sequencer.appendChild(gridView(sampler));
    sequencer.appendChild(palmRest);
 
+   //add event listeners
+
+   const rightControls = document.getElementById("right-controls").children;
+   console.log(rightControls)
+   for (let control of rightControls) {
+      control.addEventListener("click", () => {
+         for (let control of rightControls) {
+            control.setAttribute("data-is-active", "false");
+         }
+         control.setAttribute("data-is-active", "true");
+      })
+   }
+
    
    //general slider handler
 

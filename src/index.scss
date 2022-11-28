@@ -593,9 +593,27 @@ button:hover {
    border: 1px solid rgb(85, 81, 81);
 }
 
-.step[data-is-active="true"] {
+// .step[data-is-active="true"] {         //want individual colors per instrument bank
+//    background-color: yellow;
+// }
+
+.drums[data-is-active="true"] {
+   background-color: orange;
+}
+
+.synth[data-is-active="true"] {
+   background-color: rgb(46, 199, 184);
+}
+
+.sound-fx[data-is-active="true"] {
    background-color: yellow;
 }
+
+.custom-samples[data-is-active="true"] {
+   background-color: rgb(244, 128, 147);
+}
+
+
 
 .highlighted {
    background-color: rgb(41, 240, 254);

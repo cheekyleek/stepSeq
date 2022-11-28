@@ -1,4 +1,5 @@
 import { CONTROLNAMES } from "./fxView.js";
+import * as Tone from 'tone';
 
 export const ctrlView = () => {
    const controlBar = document.createElement("div");
@@ -50,10 +51,16 @@ export const ctrlView = () => {
                   break;
                case 1:
                   button.setAttribute("id", "play-button");
+                  button.addEventListener("click", () => {
+                     Tone.Transport.start();
+                  })
                   icon.setAttribute("class", "fa-solid fa-play");
                   break;
                case 2:
                   button.setAttribute("id", "stop-button");
+                  button.addEventListener("click", () => {
+                     Tone.Transport.stop();
+                  })
                   icon.setAttribute("class", "fa-solid fa-stop");
                   break;
                case 3:
@@ -91,29 +98,26 @@ export const ctrlView = () => {
             switch(j) {
                case 0:
                   button.setAttribute("id", "drums-selector");
+                  button.setAttribute("class", "drums");
+                  button.setAttribute("data-is-active", "false");
                   button.appendChild(icon);
                   icon.setAttribute("class", "fa-solid fa-drum");
-                  // button.addEventListener("click", () => {
-                  //    if (rack.getAttribute("folded") === "true") {
-                  //       rack.setAttribute("folded", "false");
-                  //    } else {
-                  //       rack.setAttribute("folded", "true");
-                  //    }})
                   break;
                case 1:
                   button.setAttribute("id", "synth-selector");
+                  button.setAttribute("class", "synth");
                   button.appendChild(imgIcon);
                   imgIcon.setAttribute("class", "piano-icon");
                   break;
                case 2:
                   button.setAttribute("id", "sound-fx-selector");
+                  button.setAttribute("class", "sound-fx");
                   button.appendChild(icon);
                   icon.setAttribute("class", "fa-solid fa-bullhorn");
                   break;
                case 3:
                   button.setAttribute("id", "custom-samples-selector");
-                  // button.appendChild(icon);
-                  // icon.setAttribute("class", "fa-solid fa-microphone");
+                  button.setAttribute("class", "custom-samples");
                   button.appendChild(imgIcon);
                   imgIcon.setAttribute("class", "mic-icon");
                   break;

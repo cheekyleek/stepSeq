@@ -22,8 +22,23 @@ export const gridView = (sampler) => {
 
          const step = document.createElement("button");
          step.classList.add('step');
+
+         if (i < 8) {
+            // step.classList.add("custom-samples");
+            // step.classList.add("sound-fx");
+            // step.classList.add("synth");
+            step.classList.add("drums");
+         }
+         
          step.setAttribute('id', j);
-         step.setAttribute('data-is-active', false);
+         step.setAttribute('data-is-active', "false");
+         step.addEventListener('click', () => {
+            if (step.getAttribute('data-is-active') === "false") {
+               step.setAttribute('data-is-active', "true")
+            } else {
+               step.setAttribute('data-is-active', "false")
+            }
+         })
 
          track.appendChild(step);
       }
