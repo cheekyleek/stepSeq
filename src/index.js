@@ -43,6 +43,8 @@ document.addEventListener("DOMContentLoaded", () => {
       })
    }
 
+
+
    
    //general slider handler
 
@@ -91,35 +93,36 @@ document.addEventListener("DOMContentLoaded", () => {
       handleSlider(gainSlider, fxRack.changeGain);
    };
 
+   // console.log(document.getElementsByClassName("grid")[0]);
+
+
+   let currentPlayMark = 0;
+   
+   const loop = (time) => {
+      let nextStep = currentPlayMark % 32;
+      const allTracks = document.getElementsByClassName('track');
+
+      for (let i = 0; i < 7; i++) {
+         const activeColumn = [allTracks[i].children[nextStep]]
+
+         activeColumn.forEach((step) => {
+            // sampleId = step.getAttribute()
+            step.classList.toggle('highlighted');
+            if (step.getAttribute("data-is-active") === "true") {
+               sampler.playSample(`sound${i + 1}`);
+            }
+            // step.classList.toggle('highlighted');
+         })
+      }
+      
+      currentPlayMark++;
+   }
+
+   Tone.Transport.scheduleRepeat(loop, "16n");
+   Tone.Transport.loopEnd = "2m"
+   console.log(Tone.Transport.bpm.value)
+
 });  
-
-   // setupStepListeners(MG);
-// PUSH SAMPLE PLAYER OBJECTS INTO GRID
-
-//    function masterGrid(sampleList) {
-//       const grid = [];
-
-//       for (let i = 0; i < 8; i++) {
-//          const track = [];
-//          for (let j = 0; j < 32; j++) {
-            
-//             const player = {
-//                sample: sampleList[i],     //.connect(pitchShifter)
-//                isActive: false,
-//                pitch: 12
-//             }
-           
-//             track.push(player);
-//          }
-//          grid.push(track);
-//       }
-
-//       return grid;
-//    }
-//    
-//    const MG = masterGrid(technoSamples());
-
-
 
 //    // ADD ALL LISTENERS
    
@@ -207,17 +210,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
       
 //    }
-
-//    stopButton.addEventListener("click", () => {
-//       Tone.Transport.stop();
-//    })
    
    
    
 
 //    Tone.Transport.scheduleRepeat(loop, "32n");
-//    // Tone.Destination.chain(looper, pitchShift);
-//    // looper.chain(pitchShift(shiftValue)).toDestination();         // give the scheduled loop
 
 //    playButton.addEventListener("click", () => {
       

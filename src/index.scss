@@ -576,6 +576,7 @@ button:hover {
    border-radius: 3px;
    align-content: space-around;
    transition: all 1s ease;
+   overflow: hidden;
 }
 
 .track[id^="drums-"] {
@@ -616,7 +617,7 @@ button:hover {
 
 
 .highlighted {
-   background-color: rgb(41, 240, 254);
+   box-shadow: .7px 0 1px 3px white, -.7px 0 1px 3px white, 0 .7px 1px 3px white, 0 -.7px 1px 3px white;
 }
 
 .highlighted-selected {

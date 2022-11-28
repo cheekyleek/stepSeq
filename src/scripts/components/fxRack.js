@@ -3,7 +3,9 @@ import * as Tone from "tone";
 export class FXRack {
    constructor() {
       //devices
-      this.pitchShift = new Tone.PitchShift();
+      this.pitchShift = new Tone.PitchShift({
+         "windowSize": 0.03
+      });
       this.distort = new Tone.Distortion({
          "distortion": 0,
          "wet": 0

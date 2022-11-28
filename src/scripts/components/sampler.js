@@ -47,6 +47,6 @@ export class Sampler {
    }
 
    playSample(soundKey) {
-      this.source[soundKey].start('+0.05');
+      this.source[soundKey].start("+0.05");
    }
 };
