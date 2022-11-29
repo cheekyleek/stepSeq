@@ -16,14 +16,14 @@ export class Sampler {
 
          //synthbass
 
-         sound9: new Tone.Player({url: "./src/samples/bass/e2.wav"}),
-         sound10: new Tone.Player({url: "./src/samples/bass/g2.wav"}),
-         sound11: new Tone.Player({url: "./src/samples/bass/b2.wav"}),
-         sound12: new Tone.Player({url: "./src/samples/bass/d3.wav"}),
-         sound13: new Tone.Player({url: "./src/samples/bass/g3.wav"}),
-         sound14: new Tone.Player({url: "./src/samples/bass/a3.wav"}),
-         sound15: new Tone.Player({url: "./src/samples/bass/b3.wav"}),
-         sound16: new Tone.Player({url: "./src/samples/bass/e4.wav"}),
+         sound9: new Tone.Player({url: "./src/samples/synth/e2.wav"}),
+         sound10: new Tone.Player({url: "./src/samples/synth/g2.wav"}),
+         sound11: new Tone.Player({url: "./src/samples/synth/b2.wav"}),
+         sound12: new Tone.Player({url: "./src/samples/synth/d3.wav"}),
+         sound13: new Tone.Player({url: "./src/samples/synth/g3.wav"}),
+         sound14: new Tone.Player({url: "./src/samples/synth/a3.wav"}),
+         sound15: new Tone.Player({url: "./src/samples/synth/b3.wav"}),
+         sound16: new Tone.Player({url: "./src/samples/synth/e4.wav"}),
          
          //soundfx
 
@@ -50,5 +50,9 @@ export class Sampler {
 
    playSample(soundKey, time) {
       this.source[soundKey].start(time);
+   }
+
+   stopSample(soundKey, time) {
+      this.source[soundKey].stop();
    }
 };

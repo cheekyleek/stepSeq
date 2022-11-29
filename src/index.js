@@ -163,6 +163,7 @@ document.addEventListener("DOMContentLoaded", () => {
             // sampleId = step.getAttribute()
             step.classList.toggle('highlighted');
             if (step.getAttribute("data-is-active") === "true") {
+               sampler.stopSample(`sound${i + 1}`, time);
                sampler.playSample(`sound${i + 1}`, time);
             }
          })
