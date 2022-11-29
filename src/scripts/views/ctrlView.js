@@ -3,7 +3,6 @@ import * as Tone from 'tone';
 
 export const ctrlView = () => {
    const controlBar = document.createElement("div");
-   const rack = document.getElementsByClassName("fx-rack")[0];
    controlBar.classList.add('control-bar');
 
    for (let i = 0; i < 3; i++) {
@@ -42,12 +41,6 @@ export const ctrlView = () => {
                case 0:
                   button.setAttribute("id", "fx-folder");
                   button.innerHTML = "FX"
-                  button.addEventListener("click", () => {
-                     if (rack.getAttribute("folded") === "true") {
-                        rack.setAttribute("folded", "false");
-                     } else {
-                        rack.setAttribute("folded", "true");
-                     }})
                   break;
                case 1:
                   button.setAttribute("id", "play-button");
@@ -95,25 +88,28 @@ export const ctrlView = () => {
                case 0:
                   button.setAttribute("id", "drums-selector");
                   button.setAttribute("class", "drums");
-                  button.setAttribute("data-is-active", "false");
+                  button.setAttribute("data-is-active", "true");
                   button.appendChild(icon);
                   icon.setAttribute("class", "fa-solid fa-drum");
                   break;
                case 1:
                   button.setAttribute("id", "synth-selector");
                   button.setAttribute("class", "synth");
+                  button.setAttribute("data-is-active", "false");
                   button.appendChild(imgIcon);
                   imgIcon.setAttribute("class", "piano-icon");
                   break;
                case 2:
                   button.setAttribute("id", "sound-fx-selector");
                   button.setAttribute("class", "sound-fx");
+                  button.setAttribute("data-is-active", "false");
                   button.appendChild(icon);
                   icon.setAttribute("class", "fa-solid fa-bullhorn");
                   break;
                case 3:
                   button.setAttribute("id", "custom-samples-selector");
-                  button.setAttribute("class", "custom-samples");
+                  button.setAttribute("class", "custom-sample");
+                  button.setAttribute("data-is-active", "false");
                   button.appendChild(imgIcon);
                   imgIcon.setAttribute("class", "mic-icon");
                   break;

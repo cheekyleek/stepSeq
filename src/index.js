@@ -34,6 +34,16 @@ document.addEventListener("DOMContentLoaded", () => {
 
    //add event listeners
 
+   const rack = document.getElementsByClassName("fx-rack")[0];
+   const fxFolder = document.getElementById("fx-folder");
+   fxFolder.addEventListener("click", () => {
+      if (rack.getAttribute("folded") === "true") {
+         rack.setAttribute("folded", "false");
+      } else {
+         rack.setAttribute("folded", "true");
+      }
+   })
+
    const playButton = document.getElementById("play-button");
    playButton.addEventListener("click", () => {
       Tone.Transport.start();
@@ -47,29 +57,47 @@ document.addEventListener("DOMContentLoaded", () => {
       playButton.setAttribute("data-is-active", "false");
       stopButton.setAttribute("data-is-active", "true");
       setTimeout(() => {
-         stopButton.setAttribute("data-is-active", "false")}, 200);
+         stopButton.setAttribute("data-is-active", "false")
+      }, 200);
    })
 
    const bpmReadout = document.getElementById("bpm-readout");
    const bpmUp = document.getElementById("bpm-up-button");
    bpmUp.addEventListener("click", () => {
-      Tone.Transport.bpm.value += 1;
-      bpmReadout.innerHTML = Math.floor(Tone.Transport.bpm.value);
+      if (Tone.Transport.bpm.value >= 200) {
+         return null;
+      } else {
+         Tone.Transport.bpm.value += 1;
+         bpmReadout.innerHTML = Math.floor(Tone.Transport.bpm.value);
+      } 
    })
    const bpmDown = document.getElementById("bpm-down-button");
    bpmDown.addEventListener("click", () => {
-      Tone.Transport.bpm.value -= 1;
-      bpmReadout.innerHTML = Math.floor(Tone.Transport.bpm.value);
+      if (Tone.Transport.bpm.value <= 41) {
+         return null;
+      } else {
+         Tone.Transport.bpm.value -= 1;
+         bpmReadout.innerHTML = Math.floor(Tone.Transport.bpm.value);
+      }
    })
 
-
+   const allTracks = document.getElementsByClassName("track");
    const rightControls = document.getElementById("right-controls").children;
    for (let control of rightControls) {
+      console.log(control)
       control.addEventListener("click", () => {
          for (let control of rightControls) {
             control.setAttribute("data-is-active", "false");
          }
          control.setAttribute("data-is-active", "true");
+         
+         for (let track of allTracks) {
+            if (track.id.includes(control.className)) {
+               track.setAttribute("visible", "true");
+            } else {
+               track.setAttribute("visible", "false");
+            }
+         }
       })
    }
 
@@ -122,27 +150,21 @@ document.addEventListener("DOMContentLoaded", () => {
       handleSlider(gainSlider, fxRack.changeGain);
    };
 
-   // console.log(document.getElementsByClassName("grid")[0]);
-
 
    let currentPlayMark = 0;
    
    const loop = (time) => {
-      console.log(time);
       let nextStep = currentPlayMark % 32;
-      const allTracks = document.getElementsByClassName('track');
 
-      for (let i = 0; i < 7; i++) {
+      for (let i = 0; i < 21; i++) {
          const activeColumn = [allTracks[i].children[nextStep]]
 
          activeColumn.forEach((step) => {
             // sampleId = step.getAttribute()
             step.classList.toggle('highlighted');
             if (step.getAttribute("data-is-active") === "true") {
-               // sampler.stopSample(`sound${i + 1}`);
                sampler.playSample(`sound${i + 1}`, time);
             }
-            // step.classList.toggle('highlighted');
          })
       }
       
@@ -151,73 +173,5 @@ document.addEventListener("DOMContentLoaded", () => {
 
    Tone.Transport.scheduleRepeat(loop, "16n");
    Tone.Transport.loopEnd = "2m"
-   console.log(Tone.Transport.bpm.value)
 
-});  
-
-
-//    playButton.addEventListener("click", (e) => {
-//       const play = e.target;
-//       play.classList.add("active");
-//    })
-
-//    let currentPlayMark = 0;
-   
-//    const loop = function(time) {
-//       let nextStep = currentPlayMark % 32;
-//       const allTracks = seq.getElementsByClassName('track');
-//       // console.log(time);
-//       for (let i = 0; i < 8; i++) {
-//          const activeColumn = [allTracks[i].children[nextStep]]
-
-
-//          activeColumn.forEach((step) => {
-//             if (step.getAttribute("data-is-active") === "true") {
-               
-//                step.classList.toggle('highlighted-selected');
-//             } else {
-//                step.classList.toggle('highlighted');
-//             }
-//          })
-
-            
-         
-//          // activeColumn.classList.remove('highlighted')
-         
-//       }
-//       // console.log(currentSteps);
-
-//       let masterGrid = MG;
-   
-//       for (let i = 0; i < masterGrid.length; i++) {
-//          const columnStep = masterGrid[i][nextStep];
-         
-//          if (columnStep.isActive === true) {
-//             columnStep.sample.start(time).toDestination();    //chain here!!??
-            
-//             // console.log(columnStep.pitch)
-//          }
-//       }
-      
-//       currentPlayMark++;
-
-      
-//    }
-   
-   
-   
-
-//    Tone.Transport.scheduleRepeat(loop, "32n");
-
-//    playButton.addEventListener("click", () => {
-      
-//       Tone.start();
-//       Tone.Transport.start();
-//       Tone.Transport.loopEnd = "1m"
-//       Tone.Transport.bpm.value = 120;
-      
-      
-//       // console.log(Tone.Transport.bpm.value)
-//    })
-
-
+});

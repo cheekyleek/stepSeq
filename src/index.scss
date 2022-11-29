@@ -375,6 +375,7 @@ button:hover {
    border-top-right-radius: 12px;
    box-shadow: .3rem .3rem 1.25rem .125rem rgba(0,0,0,.8);
    transform-origin: bottom center;
+   transform-style: preserve-3d;
    transition: all 2s ease;
 }
 
@@ -445,9 +446,12 @@ button:hover {
    background-size: contain;
    height: 1.25rem;
    width: 2.5rem;
+   perspective: 200rem;
    border: 0;
    background-image: url('../src/styles/assets/fader_head.png');
    cursor: pointer;
+   transform-origin: bottom center;
+   perspective: 1000px;
 }
 
 .slider::-moz-range-thumb {
@@ -571,14 +575,42 @@ button:hover {
 
 
 .grid {
-   display: flex;
+   // display: flex;
    position: relative;
    width: 100%;
-   height: 90%;
-   flex-direction: column;
-   border-radius: 3px;
+   height: 75%;
    border: 1px solid rgb(62, 64, 65);
-   gap: .3rem; 
+   border-radius: 3px;
+   // flex-direction: column;
+   // border-radius: 3px;
+   // border: 1px solid rgb(62, 64, 65);
+   // gap: .3rem; 
+}
+
+.sub-grid {
+   display: flex;
+   position: absolute;
+   width: 100%;
+   height: 100%;
+   flex-direction: column;
+   gap: .3rem;
+}
+
+.sub-grid >:nth-child(n + 2) {
+   z-index: 2;
+}
+
+.sub-grid >:nth-child(-n + 1) {
+   z-index: 1;
+}
+
+.track-groove {
+   border: 1px double rgb(45, 49, 50);
+   background-color: #000000;
+   width: 100%;
+   border-radius: 3px;
+   height: 2rem;
+
 }
 
 .track {
@@ -588,16 +620,48 @@ button:hover {
    width: 100%;
    border-radius: 3px;
    align-content: space-around;
-   transition: all 1s ease;
+   // transition: all .5s linear;
    overflow: hidden;
 }
 
-.track[id^="drums-"] {
-   transform: rotateX(360deg);
+@keyframes rotateOut {
+   0% {
+      transform: rotateX(0);
+      visibility: visible;
+   }
+   // 50% {
+   //    visibility: hidden;
+   // }
+   100% {
+      transform: rotateX(90deg);
+      visibility: hidden;
+   }
+
+}
+@keyframes rotateIn {
+   0% {
+      transform: rotateX(-90deg);
+      visibility: hidden;
+   }
+   // 50% {
+   //    visibility: visible;
+   // }
+   100% {
+      transform: rotateX(0);
+      visibility: visible;
+   }
 }
 
-.track[id^="something-"] {
-   transform: rotateX(360deg);
+
+
+.track[visible="true"] {
+   animation: rotateIn 1s linear;
+}
+
+.track[visible="false"] {
+   transform: rotateX(-90deg);
+   animation: rotateOut 1s linear;
+   visibility: hidden;
 }
 
 .step {
@@ -605,11 +669,8 @@ button:hover {
    height: 1.5rem;
    width: 4rem;
    border: 1px solid rgb(85, 81, 81);
+   transition: none;
 }
-
-// .step[data-is-active="true"] {         //want individual colors per instrument bank
-//    background-color: yellow;
-// }
 
 .drums[data-is-active="true"] {
    background-color: orange;
@@ -623,18 +684,12 @@ button:hover {
    background-color: yellow;
 }
 
-.custom-samples[data-is-active="true"] {
+.custom-sample[data-is-active="true"] {
    background-color: rgb(244, 128, 147);
 }
 
-
-
 .highlighted {
    box-shadow: .7px 0 1px 3px white, -.7px 0 1px 3px white, 0 .7px 1px 3px white, 0 -.7px 1px 3px white;
-}
-
-.highlighted-selected {
-   background-color: rgb(255, 175, 69) !important;
 }
 
 //-----------------------------------------------------
