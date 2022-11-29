@@ -6,7 +6,6 @@ export class Visualizer {
    }
 
    connectAnalyser(output) {
-      console.log(output)
       output.connect(this.analyser);
    }
 
