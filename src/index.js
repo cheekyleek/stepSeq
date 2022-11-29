@@ -1,11 +1,12 @@
 import * as Tone from 'tone';
 import { FXRack } from './scripts/components/fxRack.js';
 import { Sampler } from './scripts/components/sampler.js';
-
+import { Visualizer } from './scripts/components/visualizer.js';
 import { fxView } from './scripts/views/fxView.js';
 import { visView } from './scripts/views/visView.js';
 import { ctrlView } from './scripts/views/ctrlView.js';
 import { gridView } from './scripts/views/gridView.js';
+
 
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -22,6 +23,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
    const fxRack = new FXRack();
    const sampler = new Sampler(fxRack);
+   const visualizer = new Visualizer();
 
    sequencer.appendChild(fxView());
    sequencer.appendChild(ctrlView());
@@ -46,6 +48,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
    const playButton = document.getElementById("play-button");
    playButton.addEventListener("click", () => {
+
       Tone.Transport.start();
       Tone.start();
       playButton.setAttribute("data-is-active", "true");
@@ -84,7 +87,6 @@ document.addEventListener("DOMContentLoaded", () => {
    const allTracks = document.getElementsByClassName("track");
    const rightControls = document.getElementById("right-controls").children;
    for (let control of rightControls) {
-      console.log(control)
       control.addEventListener("click", () => {
          for (let control of rightControls) {
             control.setAttribute("data-is-active", "false");
@@ -151,6 +153,9 @@ document.addEventListener("DOMContentLoaded", () => {
    };
 
 
+   //loop logic
+
+
    let currentPlayMark = 0;
    
    const loop = (time) => {
@@ -175,4 +180,15 @@ document.addEventListener("DOMContentLoaded", () => {
    Tone.Transport.scheduleRepeat(loop, "16n");
    Tone.Transport.loopEnd = "2m"
 
+
+   //connect visualizer
+
+   const canvas = document.getElementsByClassName('waveform-image')[0];
+   visualizer.connectAnalyser(Tone.Destination);
+   Tone.Transport.scheduleRepeat((time) => {
+      Tone.Draw.schedule(() => {
+         visualizer.drawWaveform(canvas);  
+      }, time);
+   })
+   
 });
