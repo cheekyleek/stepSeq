@@ -32,6 +32,9 @@ export class Sampler {
          sound19: new Tone.Player({url: "./src/samples/fx/scratch.wav"}),
          sound20: new Tone.Player({url: "./src/samples/fx/noiseSweepUp.wav"}),
          sound21: new Tone.Player({url: "./src/samples/fx/noiseSweepDown.wav"}),
+         sound22: new Tone.Player({url: "./src/samples/fx/bubbles.wav"}),
+         sound23: new Tone.Player({url: "./src/samples/fx/industrialBalloon.wav"}),
+         sound24: new Tone.Player({url: "./src/samples/fx/formula1ForFlies.wav"})
 
          
       }
@@ -39,8 +42,9 @@ export class Sampler {
       this.source.sound1.volume.value = +6;
       this.source.sound6.volume.value = -6;
       this.source.sound7.volume.value = -8;
+      this.source.sound17.volume.value = +10;
 
-      for (let i = 1; i <= 16; i++) {      //temporarily 7!!!
+      for (let i = 1; i <= 24; i++) {      //temporarily 7!!!
          const sound = 'sound' + i;
          this.source[sound].chain(FXRack.pitchShift, FXRack.distort, FXRack.phaser, FXRack.delay, FXRack.reverb, FXRack.gain, Tone.Destination);
       }

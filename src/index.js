@@ -156,7 +156,7 @@ document.addEventListener("DOMContentLoaded", () => {
    const loop = (time) => {
       let nextStep = currentPlayMark % 32;
 
-      for (let i = 0; i < 21; i++) {
+      for (let i = 0; i < 24; i++) {
          const activeColumn = [allTracks[i].children[nextStep]]
 
          activeColumn.forEach((step) => {
