@@ -4,6 +4,9 @@ export const gridView = (sampler) => {
 
    for (let i = 1; i <= 5; i++) {
       const subGrid = document.createElement("div");
+      const underConstruction = document.createElement("span");
+      underConstruction.classList.add("under-construction");
+      underConstruction.innerHTML = "COMING SOON";
       subGrid.classList.add('sub-grid');
       subGrid.setAttribute("id", i);
 
@@ -13,9 +16,11 @@ export const gridView = (sampler) => {
             trackGroove.classList.add("track-groove");
             subGrid.appendChild(trackGroove);
          }
+      } else if (i === 5) {    //temporary under construction message
+         grid.appendChild(underConstruction);
       } else {
          for (let j = 1; j <= 8; j++) {
-            const track = document.createElement("div");          //DONE EXCEPT CUSTOM TRACK INPUT
+            const track = document.createElement("div");
             track.classList.add('track');
 
             switch(i) {

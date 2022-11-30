@@ -757,11 +757,30 @@ button:hover > .tooltip {
 //-----------------------------------------------------
 
 
+//UNDER CONSTRUCTION MESSAGE
 
-// .playback-controls #0.active {
-//    background-color: rgb(90, 240, 100);            FIX THIS!!!!!!
+// #5 {
+//    background-color: #666666;
+//    border: 1px solid yellow;
+//    width: 5rem;
+//    height: auto;
 // }
 
-// .step[data-is-playing="true"] {
-//    background-color: lime;
-// }
+.under-construction {
+   position: absolute;
+   text-align: center;
+   font-size: 4rem;
+   font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+   color: yellow;
+   background-color: grey;
+   height: 17.5rem;
+   line-height: 16.5rem;
+   border-radius: 3px;
+   width: 100%;
+   z-index: 3;
+
+}
+
+
+
+//-----------------------------------------------------

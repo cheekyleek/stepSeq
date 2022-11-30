@@ -697,3 +697,17 @@ button:hover > .tooltip {
   border-top-right-radius: 5px;
   border: 1px solid rgb(62, 64, 65);
 }
+
+.under-construction {
+  position: absolute;
+  text-align: center;
+  font-size: 4rem;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  color: yellow;
+  background-color: grey;
+  height: 17.5rem;
+  line-height: 16.5rem;
+  border-radius: 3px;
+  width: 100%;
+  z-index: 3;
+}
