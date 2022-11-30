@@ -32,37 +32,45 @@ export const ctrlView = () => {
             const readOutContainer = document.createElement("div");
             const button = document.createElement("button");
             const icon = document.createElement("i");
+            const toolTip = document.createElement("span");
             const readOut = document.createElement("p");
             
             button.appendChild(icon);
+            button.appendChild(toolTip);
             readOutContainer.setAttribute('class', 'readout-container');
+            toolTip.setAttribute("class", "tooltip");
 
             switch(j) {
                case 0:
                   button.setAttribute("id", "fx-folder");
-                  button.innerHTML = "FX"
+                  toolTip.innerHTML = "FX Folder";
+                  icon.setAttribute("class", "fa-solid fa-sliders");
                   break;
                case 1:
                   button.setAttribute("id", "play-button");
                   button.setAttribute("data-is-active", "false");
+                  toolTip.innerHTML = "Play";
                   icon.setAttribute("class", "fa-solid fa-play");
                   break;
                case 2:
                   button.setAttribute("id", "stop-button");
                   button.setAttribute("data-is-active", "false");
+                  toolTip.innerHTML = "Stop";
                   icon.setAttribute("class", "fa-solid fa-stop");
                   break;
                case 3:
                   button.setAttribute("id", "bpm-down-button");
+                  toolTip.innerHTML = "Tempo Down";
                   icon.setAttribute("class", "fa-solid fa-angle-left");
                   break;
                case 4:
                   readOut.setAttribute("id", "bpm-readout");
                   readOut.innerHTML = Tone.Transport.bpm.value;
-                  readOutContainer.appendChild(readOut)
+                  readOutContainer.appendChild(readOut);
                   break;
                case 5:
                   button.setAttribute("id", "bpm-up-button");
+                  toolTip.innerHTML = "Tempo Up";
                   icon.setAttribute("class", "fa-solid fa-angle-right");
                   break;
                default:
@@ -81,8 +89,10 @@ export const ctrlView = () => {
          for (let j = 0; j < 4; j++) {
             const button = document.createElement("button");
             const icon = document.createElement("i");
+            const toolTip = document.createElement("span");
             const imgIcon = document.createElement("div");
-            
+
+            toolTip.setAttribute("class", "tooltip");
 
             switch(j) {
                case 0:
@@ -90,6 +100,8 @@ export const ctrlView = () => {
                   button.setAttribute("class", "drums");
                   button.setAttribute("data-is-active", "true");
                   button.appendChild(icon);
+                  button.appendChild(toolTip);
+                  toolTip.innerHTML = "Drums";
                   icon.setAttribute("class", "fa-solid fa-drum");
                   break;
                case 1:
@@ -97,6 +109,8 @@ export const ctrlView = () => {
                   button.setAttribute("class", "synth");
                   button.setAttribute("data-is-active", "false");
                   button.appendChild(imgIcon);
+                  button.appendChild(toolTip);
+                  toolTip.innerHTML = "Synth";
                   imgIcon.setAttribute("class", "piano-icon");
                   break;
                case 2:
@@ -104,6 +118,8 @@ export const ctrlView = () => {
                   button.setAttribute("class", "sound-fx");
                   button.setAttribute("data-is-active", "false");
                   button.appendChild(icon);
+                  button.appendChild(toolTip);
+                  toolTip.innerHTML = "Sound FX";
                   icon.setAttribute("class", "fa-solid fa-bullhorn");
                   break;
                case 3:
@@ -111,6 +127,8 @@ export const ctrlView = () => {
                   button.setAttribute("class", "custom-sample");
                   button.setAttribute("data-is-active", "false");
                   button.appendChild(imgIcon);
+                  button.appendChild(toolTip);
+                  toolTip.innerHTML = "Custom Samples";
                   imgIcon.setAttribute("class", "mic-icon");
                   break;
                default:

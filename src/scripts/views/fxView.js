@@ -26,7 +26,7 @@ export const fxView = () => {
          input.setAttribute("max", "24");
       } else if (i === 2) {
          input.setAttribute("min", "0");
-         input.setAttribute("max", "90"); // probably going to have to come down once loop is used
+         input.setAttribute("max", "85"); // probably going to have to come down once loop is used
       } else if (i === 5) {
          input.setAttribute("min", "-50");
          input.setAttribute("max", "0"); // probably going to have to come down once loop is used

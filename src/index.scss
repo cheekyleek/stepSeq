@@ -225,6 +225,7 @@ button {
    display: flex;
    justify-content: center;
    align-items: center;
+   position: relative;
 }
 
 button:hover {
@@ -527,6 +528,35 @@ button:hover {
    width: 28vw;
    position: absolute;
    right: 0;
+}
+
+.tooltip {
+   position: absolute;
+   top: -2.2rem;
+   font-size: .7rem;
+   color: white;
+   width: max-content;
+   background-color: #384d8f;
+   height: max-content;
+   padding: .2rem;
+   border: 1px solid rgb(85, 98, 113);
+   border-radius: .2rem;
+   visibility: hidden;
+}
+
+.tooltip::after {
+   content: "";
+   position: absolute;
+   top: 100%;
+   left: 50%;
+   margin-left: -5px;
+   border-width: 5px;
+   border-style: solid;
+   border-color: #384d8f transparent transparent transparent;
+}
+
+button:hover > .tooltip {
+   visibility: visible;
 }
 
 .readout-container {

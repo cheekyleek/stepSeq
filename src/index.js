@@ -165,7 +165,6 @@ document.addEventListener("DOMContentLoaded", () => {
          const activeColumn = [allTracks[i].children[nextStep]]
 
          activeColumn.forEach((step) => {
-            // sampleId = step.getAttribute()
             step.classList.toggle('highlighted');
             if (step.getAttribute("data-is-active") === "true") {
                sampler.stopSample(`sound${i + 1}`, time);

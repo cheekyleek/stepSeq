@@ -4,7 +4,7 @@ export class FXRack {
    constructor() {
       //devices
       this.pitchShift = new Tone.PitchShift({
-         "windowSize": 0.03
+         "windowSize": 0.1
       });
       this.distort = new Tone.Distortion({
          "distortion": 0,
@@ -44,7 +44,7 @@ export class FXRack {
       } else {
          this.distort.wet.value = 1;      
       }
-      this.distort.distortion = distortVal / 10
+      this.distort.distortion = distortVal / 15
    }
 
    changePhaser(phaserVal) {
