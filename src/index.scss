@@ -766,19 +766,21 @@ button:hover > .tooltip {
 //    height: auto;
 // }
 
-.under-construction {
+.visible {
    position: absolute;
    text-align: center;
    font-size: 4rem;
    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-   color: yellow;
-   background-color: grey;
+   color: rgb(244, 128, 147);
+   text-decoration: line-through;
+   text-decoration-thickness: .45rem;
+   text-decoration-color: rgb(45, 49, 50);
    height: 17.5rem;
-   line-height: 16.5rem;
+   line-height: 16.95rem;
    border-radius: 3px;
    width: 100%;
-   z-index: 3;
-
+   z-index: 2;
+   animation: fadeIn 3s;
 }
 
 

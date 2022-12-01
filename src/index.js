@@ -103,6 +103,20 @@ document.addEventListener("DOMContentLoaded", () => {
       })
    }
 
+   //temporary under construction handler
+
+   const message = document.getElementsByClassName("under-construction")[0];
+   for (let i = 0; i < 4; i++) {
+      if (i === 3) {
+         rightControls[i].addEventListener("click", () => {
+            message.classList.add("visible");
+         })
+      } else {
+         rightControls[i].addEventListener("click", () => {
+            message.classList.remove("visible");
+         })
+      }
+   }
 
 
    //general slider handler
