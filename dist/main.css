@@ -626,12 +626,14 @@ button:hover > .tooltip {
 
 @keyframes rotateOut {
   0% {
-    transform: rotateX(0);
+    transform: rotateX(360);
     visibility: visible;
   }
-  100% {
-    transform: rotateX(90deg);
+  50% {
     visibility: hidden;
+  }
+  100% {
+    transform: rotateX(270deg);
   }
 }
 @keyframes rotateIn {
@@ -645,12 +647,12 @@ button:hover > .tooltip {
   }
 }
 .track[visible=true] {
-  animation: rotateIn 1s linear;
+  animation: rotateIn 1s linear, fadeIn 0.5s linear;
 }
 
 .track[visible=false] {
   transform: rotateX(-90deg);
-  animation: rotateOut 1s linear;
+  animation: rotateOut 1s linear, fadeOut 0.5s linear;
   visibility: hidden;
 }
 

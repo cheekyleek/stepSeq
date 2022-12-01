@@ -665,15 +665,14 @@ button:hover > .tooltip {
 
 @keyframes rotateOut {
    0% {
-      transform: rotateX(0);
+      transform: rotateX(360);
       visibility: visible;
    }
-   // 50% {
-   //    visibility: hidden;
-   // }
-   100% {
-      transform: rotateX(90deg);
+   50% {
       visibility: hidden;
+   }
+   100% {
+      transform: rotateX(270deg);
    }
 
 }
@@ -682,9 +681,6 @@ button:hover > .tooltip {
       transform: rotateX(-90deg);
       visibility: hidden;
    }
-   // 50% {
-   //    visibility: visible;
-   // }
    100% {
       transform: rotateX(0);
       visibility: visible;
@@ -694,12 +690,12 @@ button:hover > .tooltip {
 
 
 .track[visible="true"] {
-   animation: rotateIn 1s linear;
+   animation: rotateIn 1s linear, fadeIn .5s linear;
 }
 
 .track[visible="false"] {
    transform: rotateX(-90deg);
-   animation: rotateOut 1s linear;
+   animation: rotateOut 1s linear, fadeOut .5s linear;
    visibility: hidden;
 }
 
