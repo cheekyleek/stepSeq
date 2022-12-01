@@ -10,7 +10,7 @@ import { gridView } from './scripts/views/gridView.js';
 
 
 document.addEventListener("DOMContentLoaded", () => {
-   console.log("Welcome to stepSeq");
+   console.log("Welcome to stepSeq! Have a look around...");
 
    const bottomContainer = document.querySelector(".bottom-container");
    const sequencer = document.createElement("div");
