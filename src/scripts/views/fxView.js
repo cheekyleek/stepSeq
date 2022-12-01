@@ -26,10 +26,10 @@ export const fxView = () => {
          input.setAttribute("max", "24");
       } else if (i === 2) {
          input.setAttribute("min", "0");
-         input.setAttribute("max", "85"); // probably going to have to come down once loop is used
+         input.setAttribute("max", "85"); 
       } else if (i === 5) {
          input.setAttribute("min", "-50");
-         input.setAttribute("max", "0"); // probably going to have to come down once loop is used
+         input.setAttribute("max", "0"); 
       } else {
          input.setAttribute("min", "0");
          input.setAttribute("max", "100");
@@ -56,15 +56,3 @@ export const fxView = () => {
 
    return rack
 };
-
-// const readOut = document.createElement("p");
-
-// controlContainerLower.classList.add('control-container-lower');
-
-// readOut.setAttribute("id", `${controlNames[i]}-readout`);
-
-// controlContainerLower.appendChild(readOut);
-
-// readOut.innerHTML = `${input.value}`;
-
-// controlContainer.appendChild(controlContainerLower);

@@ -570,7 +570,7 @@ button:hover {
    border-right: .063rem solid rgb(67, 66, 66);
    border-top: .063rem solid rgb(67, 66, 66);
    width: 33%;
-   height: 9.5rem; //change this
+   height: 9.5rem;
    z-index: 2;
    background-color: rgb(45, 49, 50);
    border-top-left-radius: 30px;
@@ -608,7 +608,6 @@ button:hover {
    text-orientation: upright;
    position: relative;
    color: rgb(0, 0, 0);
-   // text-shadow: 0rem .05rem .05rem #545454, .05rem 0rem .05rem #545454, -.05rem 0rem .05rem #545454, 0rem -.05rem .05rem #545454;
    font-size: .7rem;
    font-weight: 700;
 }
@@ -941,13 +940,6 @@ button:hover > .tooltip {
 
 
 //UNDER CONSTRUCTION MESSAGE
-
-// #5 {
-//    background-color: #666666;
-//    border: 1px solid yellow;
-//    width: 5rem;
-//    height: auto;
-// }
 
 .visible {
    position: absolute;
