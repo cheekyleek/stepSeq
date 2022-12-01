@@ -84,6 +84,14 @@ document.addEventListener("DOMContentLoaded", () => {
       }
    })
 
+   const allSteps = document.getElementsByClassName("step");
+   const clearButton = document.getElementById("clear-button");
+   clearButton.addEventListener("click", () => {
+      for (let step of allSteps) {
+         step.setAttribute("data-is-active", "false");
+      }
+   })
+
    const allTracks = document.getElementsByClassName("track");
    const rightControls = document.getElementById("right-controls").children;
    for (let control of rightControls) {

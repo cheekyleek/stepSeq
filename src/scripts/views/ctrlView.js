@@ -28,7 +28,7 @@ export const ctrlView = () => {
       } else if (i === 1) {
          controlArea.setAttribute("id", "center-controls");
 
-         for (let j = 0; j < 6; j++) {
+         for (let j = 0; j < 7; j++) {
             const readOutContainer = document.createElement("div");
             const button = document.createElement("button");
             const icon = document.createElement("i");
@@ -72,6 +72,11 @@ export const ctrlView = () => {
                   button.setAttribute("id", "bpm-up-button");
                   toolTip.innerHTML = "Tempo Up";
                   icon.setAttribute("class", "fa-solid fa-angle-right");
+                  break;
+               case 6:
+                  button.setAttribute("id", "clear-button");
+                  toolTip.innerHTML = "Clear All Patterns";
+                  icon.setAttribute("class", "fa-regular fa-circle-xmark");
                   break;
                default:
                   null;

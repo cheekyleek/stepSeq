@@ -71,14 +71,21 @@ table {
 body {
   height: 100vh;
   width: 100vw;
+  overflow: hidden;
 }
 
-.main-container {
-  background: url("../src/styles/assets/natural-wooden-background.jpg") no-repeat center center fixed;
+.background-image {
+  object-fit: cover;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
+  width: 100vw;
+  height: 100vh;
+  position: absolute;
+}
+
+.main-container {
   position: relative;
   width: 100vw;
   height: 100vh;
@@ -104,20 +111,9 @@ body {
   font-family: batteredcooperfont;
   font-size: calc(2.1rem + 2vw);
   color: #181516;
+  animation: delay 5s, fadeIn 3s ease 5s;
 }
 
-.title {
-  animation: fadeIn 3s;
-}
-
-@keyframes slowZoom {
-  0% {
-    text-size-adjust: 40px;
-  }
-  100% {
-    text-size: 65px;
-  }
-}
 .github:hover {
   cursor: pointer;
 }
@@ -159,7 +155,7 @@ body {
   }
 }
 .links {
-  animation: fadeDelay 4s, fadeIn 3s 4s;
+  animation: fadeDelay 9s, fadeIn 3s 9s;
   width: 12rem;
   height: 6rem;
   position: absolute;
@@ -171,13 +167,408 @@ body {
   gap: 1rem;
 }
 
+@keyframes unitSlideUp {
+  0% {
+    position: absolute;
+    bottom: -75rem;
+  }
+  100% {
+    position: absolute;
+    bottom: 0;
+  }
+}
 .bottom-container {
   display: flex;
+  position: relative;
   justify-content: center;
   align-items: flex-end;
   width: 100%;
   height: 76%;
   padding-bottom: 4rem;
+}
+
+.welcome {
+  position: absolute;
+  top: 12rem;
+  width: 60vw;
+  height: 7vw;
+  animation: fadeOut 1s ease 5s;
+}
+
+.to {
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  width: 15vw;
+  height: 7vw;
+  top: 3rem;
+  letter-spacing: 1rem;
+}
+
+.welcome > p,
+.to > p {
+  text-align: center;
+  font-family: batteredcooperfont;
+  width: fit-content;
+}
+
+.welcome > p {
+  font-size: 8vw;
+  position: absolute;
+}
+
+.to > p {
+  position: absolute;
+  font-size: 6vw;
+  width: 3vw;
+  left: 3.3vw;
+  opacity: 0;
+  animation: toSlideUp 3s ease 4s;
+}
+
+@keyframes toSlideUp {
+  0% {
+    opacity: 0;
+    color: #181516;
+    top: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  80% {
+    opacity: 1;
+    top: -7rem;
+  }
+  100% {
+    opacity: 0;
+    color: rgba(91, 91, 91, 0);
+    top: -8rem;
+  }
+}
+@keyframes welcome1 {
+  0% {
+    position: absolute;
+    top: -5rem;
+    left: 3vw;
+    opacity: 1;
+    color: orange;
+  }
+  10% {
+    position: absolute;
+    top: -5rem;
+    left: 3vw;
+  }
+  50% {
+    position: absolute;
+    top: -5rem;
+    left: 3vw;
+  }
+  100% {
+    position: absolute;
+    top: 0;
+    left: 3vw;
+    opacity: 1;
+  }
+}
+@keyframes welcomeFadeIn1 {
+  from {
+    position: absolute;
+    top: -5rem;
+    left: 3vw;
+    opacity: 0;
+    color: orange;
+  }
+  to {
+    position: absolute;
+    top: -5rem;
+    left: 3vw;
+    opacity: 1;
+    color: orange;
+  }
+}
+@keyframes welcomeStay {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 1;
+  }
+}
+.welcome > [id="1"] {
+  animation: welcomeFadeIn1 0.5s, welcome1 1s 0.5s, welcomeStay 5s 1s;
+  opacity: 0;
+  top: 0;
+  left: 3vw;
+}
+
+@keyframes welcome2 {
+  0% {
+    position: absolute;
+    left: 13.5vw;
+    opacity: 1;
+    color: rgb(46, 199, 184);
+  }
+  10% {
+    position: absolute;
+    left: 13.5vw;
+  }
+  50% {
+    position: absolute;
+    left: 13.5vw;
+  }
+  100% {
+    position: absolute;
+    left: 13.5vw;
+    opacity: 1;
+  }
+}
+@keyframes welcomeFadeIn2 {
+  from {
+    position: absolute;
+    left: 13.5vw;
+    opacity: 0;
+    color: rgb(46, 199, 184);
+  }
+  to {
+    position: absolute;
+    left: 13.5vw;
+    opacity: 1;
+    color: rgb(46, 199, 184);
+  }
+}
+.welcome > [id="2"] {
+  animation: welcomeFadeIn2 0.5s 0.5s, welcome2 1s 1s, welcomeStay 4.5s 1.5s;
+  opacity: 0;
+  top: 0rem;
+  left: 13.5vw;
+}
+
+@keyframes welcome3 {
+  0% {
+    position: absolute;
+    top: 7rem;
+    left: 21vw;
+    opacity: 1;
+    color: yellow;
+  }
+  10% {
+    position: absolute;
+    top: 7rem;
+    left: 21vw;
+  }
+  50% {
+    position: absolute;
+    top: 7rem;
+    left: 21vw;
+  }
+  100% {
+    position: absolute;
+    top: 0;
+    left: 21vw;
+    opacity: 1;
+  }
+}
+@keyframes welcomeFadeIn3 {
+  from {
+    position: absolute;
+    top: 7rem;
+    left: 21vw;
+    opacity: 0;
+    color: yellow;
+  }
+  to {
+    position: absolute;
+    top: 7rem;
+    left: 21vw;
+    opacity: 1;
+    color: yellow;
+  }
+}
+.welcome > [id="3"] {
+  animation: welcomeFadeIn3 0.5s 1s, welcome3 1s 1.5s, welcomeStay 4s 2s;
+  opacity: 0;
+  top: 0rem;
+  left: 21vw;
+}
+
+@keyframes welcome4 {
+  0% {
+    position: absolute;
+    left: 27.3vw;
+    opacity: 1;
+    color: rgb(244, 128, 147);
+  }
+  10% {
+    position: absolute;
+    left: 27.3vw;
+  }
+  50% {
+    position: absolute;
+    left: 27.3vw;
+  }
+  100% {
+    position: absolute;
+    left: 27.3vw;
+    opacity: 1;
+  }
+}
+@keyframes welcomeFadeIn4 {
+  from {
+    position: absolute;
+    left: 27.3vw;
+    opacity: 0;
+    color: rgb(244, 128, 147);
+  }
+  to {
+    position: absolute;
+    left: 27.3vw;
+    opacity: 1;
+    color: rgb(244, 128, 147);
+  }
+}
+.welcome > [id="4"] {
+  animation: welcomeFadeIn4 0.5s 1.5s, welcome4 1s 2s, welcomeStay 3.5s 2.5s;
+  opacity: 0;
+  top: 0rem;
+  left: 27.3vw;
+}
+
+@keyframes welcome5 {
+  0% {
+    position: absolute;
+    top: 7rem;
+    left: 34.3vw;
+    opacity: 1;
+    color: rgb(46, 199, 184);
+  }
+  10% {
+    position: absolute;
+    top: 7rem;
+    left: 34.3vw;
+  }
+  50% {
+    position: absolute;
+    top: 7rem;
+    left: 34.3vw;
+  }
+  100% {
+    position: absolute;
+    top: 0;
+    left: 34.3vw;
+    opacity: 1;
+  }
+}
+@keyframes welcomeFadeIn5 {
+  from {
+    position: absolute;
+    top: 7rem;
+    left: 34.3vw;
+    opacity: 0;
+    color: rgb(46, 199, 184);
+  }
+  to {
+    position: absolute;
+    top: 7rem;
+    left: 34.3vw;
+    opacity: 1;
+    color: rgb(46, 199, 184);
+  }
+}
+.welcome > [id="5"] {
+  animation: welcomeFadeIn5 0.5s 2s, welcome5 1s 2.5s, welcomeStay 3s 3s;
+  opacity: 0;
+  top: 0rem;
+  left: 34.3vw;
+}
+
+@keyframes welcome6 {
+  0% {
+    position: absolute;
+    top: -5rem;
+    left: 41.7vw;
+    opacity: 1;
+    color: orange;
+  }
+  10% {
+    position: absolute;
+    top: -5rem;
+    left: 41.7vw;
+  }
+  50% {
+    position: absolute;
+    top: -5rem;
+    left: 41.7vw;
+  }
+  100% {
+    position: absolute;
+    top: 0;
+    left: 41.7vw;
+    opacity: 1;
+  }
+}
+@keyframes welcomeFadeIn6 {
+  from {
+    position: absolute;
+    top: -5rem;
+    left: 41.7vw;
+    opacity: 0;
+    color: orange;
+  }
+  to {
+    position: absolute;
+    top: -5rem;
+    left: 41.7vw;
+    opacity: 1;
+    color: orange;
+  }
+}
+.welcome > [id="6"] {
+  animation: welcomeFadeIn6 0.5s 2.5s, welcome6 1s 3s, welcomeStay 2.5s 3.5s;
+  opacity: 0;
+  top: 0rem;
+  left: 41.7vw;
+}
+
+@keyframes welcome7 {
+  0% {
+    position: absolute;
+    left: 52vw;
+    opacity: 1;
+    color: rgb(244, 128, 147);
+  }
+  10% {
+    position: absolute;
+    left: 52vw;
+  }
+  50% {
+    position: absolute;
+    left: 52vw;
+  }
+  100% {
+    position: absolute;
+    left: 52vw;
+    opacity: 1;
+  }
+}
+@keyframes welcomeFadeIn7 {
+  from {
+    position: absolute;
+    left: 52vw;
+    opacity: 0;
+    color: rgb(244, 128, 147);
+  }
+  to {
+    position: absolute;
+    left: 52vw;
+    opacity: 1;
+    color: rgb(244, 128, 147);
+  }
+}
+.welcome > [id="7"] {
+  animation: welcomeFadeIn7 0.5s 3s, welcome7 1s 3.5s, welcomeStay 2s 4s;
+  opacity: 0;
+  top: 0rem;
+  left: 52vw;
 }
 
 .sequencer {
@@ -200,6 +591,7 @@ body {
   align-items: center;
   box-shadow: 10px 15px 20px 2px rgba(0, 0, 0, 0.8);
   gap: 0.4rem;
+  animation: delay 5s, fadeIn 3s ease 5s;
 }
 
 button {
@@ -209,7 +601,6 @@ button {
   border-width: 1px;
   border-color: rgb(85, 81, 81);
   margin: 3px;
-  height: 25px;
   width: 10vw;
   background-color: lightgrey;
   transition: all 0.2s ease-in-out;
@@ -279,8 +670,8 @@ button:hover {
 }
 .visualizer {
   animation-name: visDelay, visSlideUp, visPushIn;
-  animation-duration: 2s, 2s, 1s;
-  animation-delay: 0s, 2s, 4s;
+  animation-duration: 7s, 2s, 1s;
+  animation-delay: 0s, 7s, 9s;
   display: flex;
   padding: 0.8rem;
   position: absolute;
@@ -299,7 +690,7 @@ button:hover {
   box-shadow: 0.625rem 0.3rem 1.25rem 0.125rem rgba(0, 0, 0, 0.8);
 }
 
-@keyframes screenDelay {
+@keyframes delay {
   0% {
     visibility: hidden;
   }
@@ -341,7 +732,7 @@ button:hover {
   height: 100%;
   border-top-left-radius: 7px;
   border-top-right-radius: 7px;
-  animation-name: screenDelay, screenSlideUp, screenGlowDelay, screenGlow;
+  animation-name: delay, screenSlideUp, screenGlowDelay, screenGlow;
   animation-duration: 2s, 2s, 2s, 2s;
   animation-delay: 0s, 1.2s, 2s, 4s;
 }

@@ -26,19 +26,15 @@ export const gridView = (sampler) => {
             switch(i) {
                case 2:
                   track.setAttribute('id', `drums-${j}`);
-                  track.setAttribute('visible', "true");
                   break;
                case 3:
                   track.setAttribute('id', `synth-${j}`);
-                  track.setAttribute('visible', "false");
                   break;
                case 4:
                   track.setAttribute('id', `sound-fx-${j}`);
-                  track.setAttribute('visible', "false");
                   break;
                case 5:
                   track.setAttribute('id', `custom-sample-${j}`);
-                  track.setAttribute('visible', "false");
                   break;
                default:
                   null;
