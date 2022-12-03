@@ -6,6 +6,7 @@ import { fxView } from './scripts/views/fxView.js';
 import { visView } from './scripts/views/visView.js';
 import { ctrlView } from './scripts/views/ctrlView.js';
 import { gridView } from './scripts/views/gridView.js';
+import { tutorialView } from './scripts/views/tutorialView.js';
 
 
 
@@ -210,6 +211,33 @@ document.addEventListener("DOMContentLoaded", () => {
       Tone.Draw.schedule(() => {
          visualizer.drawWaveform(canvas);  
       }, time);
-   })
+   });
+
+
+   //tutorial logic / listener
+   // const rect = pitchSlider.parentElement.parentElement.getBoundingClientRect();
+   // console.log(rect)
+   // console.log(rect.top, rect.right, rect.bottom, rect.left);
+   // const tutorialContainer = document.getElementsByClassName("tutorial-container")[0];
+   // const tutorialFocus = document.createElement("div");
+   // tutorialFocus.classList.add("tutorial-focus");
+   // tutorialFocus.style.position = "absolute";
+   // console.log(rect.bottom - rect.top)
+   // console.log(rect.width)
+   // tutorialFocus.style.top = rect.top + "px";
+   // tutorialFocus.style.left = rect.left + "px";
+   // tutorialFocus.style.width = rect.width + "px";
+   // tutorialFocus.style.height = rect.height + "px";
+
+   // window.addEventListener("resize", () => {
+   //    console.log(window.innerWidth)
+   //    tutorialFocus.style.top = rect.top + "px";
+   //    tutorialFocus.style.left = window.innerWidth - rect.left + "px";
+   // })
+
+   // tutorialContainer.appendChild(tutorialFocus);
+
+   tutorialView();
+
    
 });

@@ -52,7 +52,7 @@ export const fxView = () => {
       rack.appendChild(sliderContainer);
    }
 
-   rack.setAttribute("folded", true);
+   rack.setAttribute("folded", false);
 
    return rack
 };
