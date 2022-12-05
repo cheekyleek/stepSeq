@@ -64,7 +64,6 @@ table {
   width: 100vw;
   height: 100vh;
   z-index: 10;
-  background-color: rgba(0, 0, 0, 0.75);
   animation: tutorialDelay 11s, tutorialDim 0.5s 11s;
 }
 
@@ -88,8 +87,8 @@ table {
   position: absolute;
   width: 50vw;
   height: fit-content;
-  border: 1px solid white;
-  z-index: 10;
+  z-index: 11;
+  min-width: 10%;
 }
 
 .tutorial-message {
@@ -107,6 +106,7 @@ table {
   border: 1px solid white;
   border-radius: 3px;
   padding: 3px;
+  z-index: 11;
 }
 
 .tutorial-button:hover {
@@ -116,24 +116,43 @@ table {
 }
 
 #skip-button {
-  bottom: 10%;
+  bottom: 5%;
 }
 
 #back-button {
-  top: 110%;
+  top: 115%;
   left: 10%;
 }
 
 #next-button {
-  top: 110%;
+  top: 115%;
   right: 10%;
 }
 
 .tutorial-focus {
   position: absolute;
-  border: 3px solid white;
   box-shadow: 0 0 0 300vw rgba(0, 0, 0, 0.65);
   z-index: 10;
+}
+
+.tutorial-start-button {
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  padding-left: 1.5rem;
+  padding-top: 2rem;
+  width: 12rem;
+  height: fit-content;
+  font-size: calc(0.1rem + 2vw);
+  font-family: batteredcooperfont;
+}
+
+.tutorial-start-button:hover {
+  cursor: pointer;
+  text-decoration: underline;
 }
 
 @font-face {

@@ -33,9 +33,11 @@ export const tutorialView = () => {
    skipButton.innerHTML = "skip tutorial";
    pageCounter.classList.add("page-counter");
 
-   tutorialMessage.innerHTML = `Welcome to stepSeq!` + `<br /><br />` + 
+   const initialMessaage = `Welcome to stepSeq!` + `<br /><br />` + 
    `A step sequencer is a grid-based device that lets the player pick which 
    musical beats they would like their sounds to be played on in a loop...`
+
+   tutorialMessage.innerHTML = initialMessaage;
 
    const tutorialMessages = {
       1: `This grid has 8 rows of 32 steps, representing a 2 bar phrase of
@@ -74,6 +76,7 @@ export const tutorialView = () => {
    messageContainer.appendChild(nextButton);
    tutorial.appendChild(pageCounter);
    tutorial.appendChild(messageContainer);
+   tutorial.appendChild(tutorialFocus);
    tutorial.appendChild(skipButton);
 
    let currentTutPage = 0;
@@ -93,21 +96,30 @@ export const tutorialView = () => {
       tutorial
    ];
 
-   nextButton.addEventListener("click", () => {
-      if (currentTutPage !== 0) {
-         tutorialFlow[currentTutPage].removeChild(tutorialFocus);
-      }
+   let referenceElement;
+
+   nextButton.addEventListener("click", () => {                              // MESS WITH THIS
       currentTutPage += 1;
-      tutorial.style.display = "none";
+      referenceElement = tutorialFlow[currentTutPage].getBoundingClientRect();
+      if (currentTutPage !== 0) {
+         tutorialFocus.style.opacity = 1;
+         tutorialFocus.style.top = referenceElement.top + "px";
+         tutorialFocus.style.width = referenceElement.width + "px";
+         tutorialFocus.style.height = referenceElement.height + "px";
+         tutorialFocus.style.left = referenceElement.left + "px";
+
+         messageContainer.style.left = (messageContainer.width - referenceElement.width) + "px";
+         messageContainer.style.top = (referenceElement.top - 300) + "px";
+         tutorialMessage.style.fontSize = 30 + "px";
+         nextButton.style.fontSize = 30 + "px";
+         backButton.style.fontSize = 30 + "px";
+      }
+      if (currentTutPage === 6) {
+         tutorialFocus.style.width = 4 * referenceElement.width + "px";
+         tutorialFocus.style.left = referenceElement.left - (1.5 * referenceElement.width) + "px";
+      }
       backButton.style.opacity = "1";
       tutorialMessage.innerHTML = tutorialMessages[currentTutPage];
-      tutorialFocus.appendChild(messageContainer);
-      messageContainer.style.top = "-15rem";
-      tutorialFlow[currentTutPage].appendChild(tutorialFocus);
-      tutorialFocus.style.width = "100%";
-      tutorialFocus.style.height = "100%";
-      tutorialFocus.style.top = "0";
-      console.log(currentTutPage)
 
       switch(currentTutPage) {
 
@@ -116,16 +128,58 @@ export const tutorialView = () => {
 
    backButton.addEventListener("click", () => {
       currentTutPage -= 1;
+      referenceElement = tutorialFlow[currentTutPage].getBoundingClientRect();
+      if (currentTutPage !== 0) {
+         tutorialFocus.style.top = referenceElement.top + "px";
+         tutorialFocus.style.width = referenceElement.width + "px";
+         tutorialFocus.style.height = referenceElement.height + "px";
+         tutorialFocus.style.left = referenceElement.left + "px";
+
+         messageContainer.style.left = (messageContainer.width - referenceElement.width) + "px";
+         messageContainer.style.top = (referenceElement.top - 300) + "px";
+         tutorialMessage.style.fontSize = 30 + "px";
+         nextButton.style.fontSize = 30 + "px";
+         backButton.style.fontSize = 30 + "px";
+      }
+      if (currentTutPage === 6) {
+         tutorialFocus.style.width = 4 * referenceElement.width + "px";
+         tutorialFocus.style.left = referenceElement.left - (1.5 * referenceElement.width) + "px";
+      }
       if (currentTutPage === 0) {
          backButton.style.opacity = "0";
+         tutorialMessage.innerHTML = initialMessaage;
+         messageContainer.style.left = "";
+         messageContainer.style.top = "";
+         tutorialMessage.style.fontSize = "calc(1rem + 2vw)";
+         nextButton.style.fontSize = "calc(.5rem + 2vw)";
+         backButton.style.fontSize = "calc(.5rem + 2vw)";
+         tutorialFocus.style.width = 0;
+         tutorialFocus.style.height = 0;
+      } else {
+         tutorialMessage.innerHTML = tutorialMessages[currentTutPage];
       }
-      tutorialMessage.innerHTML = tutorialMessages[currentTutPage];
-      tutorialFlow[currentTutPage].appendChild(messageContainer);
    })
 
    skipButton.addEventListener("click", () => {
-      tutorial.style.opacity = "0";
-      // currentTutPage = 0;   //maybe?
+      tutorial.style.zIndex = -10;
+      currentTutPage = 0;
+   })
+
+   window.addEventListener("resize", () => {
+      referenceElement = tutorialFlow[currentTutPage].getBoundingClientRect();
+      if (currentTutPage !== 0) {
+         tutorialFocus.style.top = referenceElement.top + "px";
+         tutorialFocus.style.width = referenceElement.width + "px";
+         tutorialFocus.style.height = referenceElement.height + "px";
+         tutorialFocus.style.left = referenceElement.left + "px";
+
+         messageContainer.style.left = (messageContainer.width - referenceElement.width) + "px";
+         messageContainer.style.top = (referenceElement.top - 300) + "px";
+      }
+      if (currentTutPage === 6) {
+         tutorialFocus.style.width = 4 * referenceElement.width + "px";
+         tutorialFocus.style.left = referenceElement.left - (1.5 * referenceElement.width) + "px";
+      }
    })
 
 
