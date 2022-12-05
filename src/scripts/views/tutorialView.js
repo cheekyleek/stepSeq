@@ -145,10 +145,6 @@ export const tutorialView = () => {
       }
       backButton.style.opacity = "1";
       tutorialMessage.innerHTML = tutorialMessages[currentTutPage];
-
-      switch(currentTutPage) {
-
-      }
    })
 
    backButton.addEventListener("click", () => {
