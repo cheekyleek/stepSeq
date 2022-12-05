@@ -4,7 +4,7 @@ export class FXRack {
    constructor() {
       //devices
       this.pitchShift = new Tone.PitchShift({
-         "windowSize": 0.1
+         "windowSize": .1
       });
       this.distort = new Tone.Distortion({
          "distortion": 0,
