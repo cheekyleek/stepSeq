@@ -1,5 +1,6 @@
 export const tutorialView = () => {
    const tutorial = document.getElementsByClassName("tutorial-container")[0];
+   const tutorialStart = document.getElementsByClassName("tutorial-start-button")[0];
    const tutorialFocus = document.createElement("div");
    const messageContainer = document.createElement("div");
    const tutorialMessage = document.createElement("p");
@@ -8,6 +9,7 @@ export const tutorialView = () => {
    const skipButton = document.createElement("div");
    const pageCounter = document.createElement("p");
    const grid = document.getElementsByClassName("grid")[0];
+   const drumSelector = document.getElementById("drums-selector");
    const step = document.getElementsByClassName("step")[0];
    const track = document.getElementsByClassName("track")[0];
    const rightControls = document.getElementById("right-controls");
@@ -38,7 +40,7 @@ export const tutorialView = () => {
    musical beats they would like their sounds to be played on in a loop...`
 
    tutorialMessage.innerHTML = initialMessaage;
-
+   // Here we can hear the common "4 on the floor" kick drum beat. /// add when example sequence is in
    const tutorialMessages = {
       1: `This grid has 8 rows of 32 steps, representing a 2 bar phrase of
          4/4 time in musical terms. Here, we can choose where we want to place 
@@ -46,8 +48,7 @@ export const tutorialView = () => {
       2: `If you click on a step, it will ready that step, and as the loop, well,
          LOOPS.. it will then activate that step.`,
       3: `This is a track. Each track on the grid has a different sound 
-         associated with it. Here we can hear the common "4 on the floor" kick drum 
-         beat.`,
+         associated with it. This one belongs to the kick drum.`,
       4: `Over here are the controls for the sound banks. You can switch between 
          drums, synthesizer, sound effects, or adding your own custom samples into 
          the mix (disclaimer: custom sample functionality coming soon!). Selecting a 
@@ -100,8 +101,22 @@ export const tutorialView = () => {
 
    nextButton.addEventListener("click", () => {                              // MESS WITH THIS
       currentTutPage += 1;
+      if (currentTutPage === 1) {
+         drumSelector.click();
+      }
+      if (currentTutPage === 12) {
+         fxRack.setAttribute("folded", "true");
+         tutorial.style.zIndex = -10;
+         tutorialStart.style.opacity = 1;
+         nextButton.innerHTML = "next";
+         return null;
+      }
+      if (currentTutPage === 8) {
+         fxRack.setAttribute("folded", "false");
+      }
       referenceElement = tutorialFlow[currentTutPage].getBoundingClientRect();
-      if (currentTutPage !== 0) {
+
+      if (currentTutPage !== 0 && currentTutPage !== 11) {
          tutorialFocus.style.opacity = 1;
          tutorialFocus.style.top = referenceElement.top + "px";
          tutorialFocus.style.width = referenceElement.width + "px";
@@ -118,6 +133,16 @@ export const tutorialView = () => {
          tutorialFocus.style.width = 4 * referenceElement.width + "px";
          tutorialFocus.style.left = referenceElement.left - (1.5 * referenceElement.width) + "px";
       }
+      if (currentTutPage === 11) {
+         tutorialMessage.style.fontSize = "3rem";
+         skipButton.style.opacity = 0;
+         nextButton.innerHTML = "play!"
+         nextButton.style.fontSize = "calc(.5rem + 2vw)";
+         backButton.style.fontSize = "calc(.5rem + 2vw)";
+         tutorialFocus.style.width = 0;
+         tutorialFocus.style.height = 0;
+         messageContainer.style.top = "26rem";
+      }
       backButton.style.opacity = "1";
       tutorialMessage.innerHTML = tutorialMessages[currentTutPage];
 
@@ -128,7 +153,11 @@ export const tutorialView = () => {
 
    backButton.addEventListener("click", () => {
       currentTutPage -= 1;
+      if (currentTutPage < 8) {
+         fxRack.setAttribute("folded", "true");
+      }
       referenceElement = tutorialFlow[currentTutPage].getBoundingClientRect();
+      
       if (currentTutPage !== 0) {
          tutorialFocus.style.top = referenceElement.top + "px";
          tutorialFocus.style.width = referenceElement.width + "px";
@@ -158,16 +187,33 @@ export const tutorialView = () => {
       } else {
          tutorialMessage.innerHTML = tutorialMessages[currentTutPage];
       }
+      nextButton.innerHTML = "next";
    })
 
    skipButton.addEventListener("click", () => {
       tutorial.style.zIndex = -10;
+      tutorialStart.style.opacity = 1;
+      drumSelector.click();
+   })
+
+   tutorialStart.addEventListener("click", () => {
+      tutorialStart.style.opacity = 0;
+      tutorial.style.zIndex = 10;
       currentTutPage = 0;
+      backButton.style.opacity = "0";
+      tutorialMessage.innerHTML = initialMessaage;
+      messageContainer.style.left = "";
+      messageContainer.style.top = "";
+      tutorialMessage.style.fontSize = "calc(1rem + 2vw)";
+      nextButton.style.fontSize = "calc(.5rem + 2vw)";
+      backButton.style.fontSize = "calc(.5rem + 2vw)";
+      tutorialFocus.style.width = 0;
+      tutorialFocus.style.height = 0;
    })
 
    window.addEventListener("resize", () => {
       referenceElement = tutorialFlow[currentTutPage].getBoundingClientRect();
-      if (currentTutPage !== 0) {
+      if (currentTutPage !== 0 & currentTutPage !== 11) {
          tutorialFocus.style.top = referenceElement.top + "px";
          tutorialFocus.style.width = referenceElement.width + "px";
          tutorialFocus.style.height = referenceElement.height + "px";
