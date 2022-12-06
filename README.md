@@ -46,23 +46,32 @@ The welcome page is designed to reflect the operation of the device, making for 
 
 **Tutorial Pages**
 
-I created a separate layer for the tutorial "slides", and in order to make it so the specific areas that were being discussed were "lit up", i used the ```.getBoundingClientRect()``` function of the focus element to super-impose the focus-square over it, while keeping it inside of its own layer. I then gave the focus-square a really big box-shadow to simulate the tinting of everything except what is being discussed
+The tutorial layer is separate from the device layer, and in order to make the specific areas that were being discussed "light up", ```.getBoundingClientRect()``` was used to find the location of the currently discussed component, and a "highlighted" square with a large box-shadow was super-imposed over that 
 
 ![welcome page1](src/styles/assets/tutorial_preview.jpg)
 
-This focus-square is dynamically positioned and given a custom message depending on where you are in the tutorial, and it's dimensions set to be the same as the grabbed element. In addition, there is a listener on the window that will resize the highlighted square upon a resize event
+This focus-square is dynamically positioned and given a custom message depending on where you are in the tutorial, and will line up correctly even upon a resize event
 
 ![tutorial messages](src/styles/assets/tutorial_messages.jpg)
-![focus square](src/styles/assets/tutorial_messages.jpg)
+![focus square](src/styles/assets/focus_square.jpg)
 
 ---------------------------------------------------------------------------------------
 
 **The Sequencer**
 
-I wanted to lean towards slight realism for the actual device, and so went for mixer-style faders / value readouts / visualizer. As the loop plays, each step within that column is given a white box-shadow to simulate the beat marker passing over it.
+Leaning towards slight realism for the actual device, the faders for the sliders are an edited vector image, and the sliders have been transformed 90 degrees counterclockwise. As the loop plays, each step within that column is given a white box-shadow to simulate the beat marker passing over it
 
 ![device on start](src/styles/assets/device_on_start.jpg)
 ![device operating](src/styles/assets/device_operating.gif)
+
+---------------------------------------------------------------------------------------
+
+**Building the Tracks**
+
+Each "track" of the grid is comprised of a single ```Tone.Player``` instance inside of a ```Sampler``` object, which upon initiation has its audio signal routed through each of the FX modules into ```Tone.Destination```. As the beat marker passes over a step with a ```data-is-active``` attribute of "true", the id of the step is passed in to key into the correct audio sample and activate it
+
+![sampler](src/styles/assets/sampler_guts.jpg)
+![loop logic](src/styles/assets/loop_logic.jpg)
 
 ---------------------------------------------------------------------------------------
 
