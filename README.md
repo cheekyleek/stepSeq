@@ -80,6 +80,7 @@ Each "track" of the grid is comprised of a single ```Tone.Player``` instance ins
 - WebAudio API
 - Canvas API
 - Tone.js
+- GIMP
 
 ---------------------------------------------------------------------------------------
 
