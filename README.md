@@ -1,5 +1,5 @@
 # *stepSeq*
-A step sequencer with preset style patterns/ themes, effects, and custom sample loading
+A step sequencer with preset samples, effects, and custom sample loading
 
 ---------------------------------------------------------------------------------------
 
