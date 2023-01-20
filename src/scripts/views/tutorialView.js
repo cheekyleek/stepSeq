@@ -56,7 +56,7 @@ export const tutorialView = () => {
          previous grid, so don't worry.`,
       5: `The center controls are where your standard play and stop buttons exists, 
          along with some other neat features...`,
-      6: `You can adjust the bpm, or "beats per measure", of your sequence with the 
+      6: `You can adjust the bpm, or "beats per minute", of your sequence with the 
          left and right arrows here. Caffeinated rug cutter? Slowww danncee foorr 
          snaaaailllss? Your choice!`,
       7: `If you aren't really digging the groove, just clear it out entirely with
