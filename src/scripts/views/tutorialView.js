@@ -99,7 +99,7 @@ export const tutorialView = () => {
 
    let referenceElement;
 
-   nextButton.addEventListener("click", () => {                              // MESS WITH THIS
+   nextButton.addEventListener("click", () => {                              
       currentTutPage += 1;
       if (currentTutPage === 1) {
          drumSelector.click();
@@ -133,6 +133,15 @@ export const tutorialView = () => {
          tutorialFocus.style.width = 4 * referenceElement.width + "px";
          tutorialFocus.style.left = referenceElement.left - (1.5 * referenceElement.width) + "px";
       }
+
+      if (currentTutPage === 9) {
+         messageContainer.style.top = 35 + "rem";
+      }
+
+      if (currentTutPage === 10) {
+         messageContainer.style.top = 8 + "rem";
+      }
+
       if (currentTutPage === 11) {
          tutorialMessage.style.fontSize = "3rem";
          skipButton.style.opacity = 0;
