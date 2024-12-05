@@ -35,7 +35,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
 
-   //add event listeners
+   // add event listeners
 
    const rack = document.getElementsByClassName("fx-rack")[0];
    const fxFolder = document.getElementById("fx-folder");
